@@ -17,8 +17,6 @@
  */
 package com.phloc.datetime.format;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import javax.annotation.Nonnull;
@@ -40,9 +38,6 @@ import com.phloc.datetime.config.PDTConfig;
 @Immutable
 public final class PDTFormatter
 {
-  public static final int DEFAULT_STYLE_DATE = DateFormat.MEDIUM;
-  public static final int DEFAULT_STYLE_TIME = DateFormat.MEDIUM;
-
   @PresentForCodeCoverage
   @SuppressWarnings ("unused")
   private static final PDTFormatter s_aInstance = new PDTFormatter ();
@@ -50,29 +45,219 @@ public final class PDTFormatter
   private PDTFormatter ()
   {}
 
+  /**
+   * Assign the passed display locale and the default chronology to the passed
+   * date time formatter.
+   * 
+   * @param aFormatter
+   *        The formatter to be modified. May not be <code>null</code>.
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The modified date time formatter. Never <code>null</code>.
+   */
   @Nonnull
-  private static DateTimeFormatter _withLocaleAndChrono (@Nonnull final DateTimeFormatter aFormatter,
-                                                         @Nullable final Locale aDisplayLocale)
+  public static DateTimeFormatter getWithLocaleAndChrono (@Nonnull final DateTimeFormatter aFormatter,
+                                                          @Nullable final Locale aDisplayLocale)
   {
     return aFormatter.withLocale (aDisplayLocale).withChronology (PDTConfig.getDefaultChronology ());
   }
 
+  /**
+   * Get the default date formatter for the passed locale. This used medium
+   * style.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
   @Nonnull
   public static DateTimeFormatter getDefaultFormatterDate (@Nullable final Locale aDisplayLocale)
   {
-    return _withLocaleAndChrono (DateTimeFormat.mediumDate (), aDisplayLocale);
+    return getMediumFormatterDate (aDisplayLocale);
   }
 
+  /**
+   * Get the short date formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getShortFormatterDate (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.shortDate (), aDisplayLocale);
+  }
+
+  /**
+   * Get the medium date formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getMediumFormatterDate (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.mediumDate (), aDisplayLocale);
+  }
+
+  /**
+   * Get the long date formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getLongFormatterDate (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.longDate (), aDisplayLocale);
+  }
+
+  /**
+   * Get the full date formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getFullFormatterDate (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.fullDate (), aDisplayLocale);
+  }
+
+  /**
+   * Get the default time formatter for the passed locale. This used medium
+   * style.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
   @Nonnull
   public static DateTimeFormatter getDefaultFormatterTime (@Nullable final Locale aDisplayLocale)
   {
-    return _withLocaleAndChrono (DateTimeFormat.mediumTime (), aDisplayLocale);
+    return getMediumFormatterTime (aDisplayLocale);
   }
 
+  /**
+   * Get the short time formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getShortFormatterTime (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.shortTime (), aDisplayLocale);
+  }
+
+  /**
+   * Get the medium time formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getMediumFormatterTime (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.mediumTime (), aDisplayLocale);
+  }
+
+  /**
+   * Get the long time formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getLongFormatterTime (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.longTime (), aDisplayLocale);
+  }
+
+  /**
+   * Get the full time formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getFullFormatterTime (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.fullTime (), aDisplayLocale);
+  }
+
+  /**
+   * Get the default date time formatter for the passed locale. The default
+   * style is medium.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
   @Nonnull
   public static DateTimeFormatter getDefaultFormatterDateTime (@Nullable final Locale aDisplayLocale)
   {
-    return _withLocaleAndChrono (DateTimeFormat.mediumDateTime (), aDisplayLocale);
+    return getMediumFormatterDateTime (aDisplayLocale);
+  }
+
+  /**
+   * Get the short date time formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getShortFormatterDateTime (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.shortDateTime (), aDisplayLocale);
+  }
+
+  /**
+   * Get the medium date time formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getMediumFormatterDateTime (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.mediumDateTime (), aDisplayLocale);
+  }
+
+  /**
+   * Get the long date time formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getLongFormatterDateTime (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.longDateTime (), aDisplayLocale);
+  }
+
+  /**
+   * Get the full date time formatter for the passed locale.
+   * 
+   * @param aDisplayLocale
+   *        The display locale to be used. May be <code>null</code>.
+   * @return The created date time formatter. Never <code>null</code>.
+   */
+  @Nonnull
+  public static DateTimeFormatter getFullFormatterDateTime (@Nullable final Locale aDisplayLocale)
+  {
+    return getWithLocaleAndChrono (DateTimeFormat.fullDateTime (), aDisplayLocale);
   }
 
   /**
@@ -106,26 +291,6 @@ public final class PDTFormatter
   @Nonnull
   public static DateTimeFormatter getForPattern (@Nonnull final String sPattern, @Nullable final Locale aDisplayLocale) throws IllegalArgumentException
   {
-    return _withLocaleAndChrono (DateTimeFormat.forPattern (sPattern), aDisplayLocale);
-  }
-
-  public static String getDefaultPatternDate (@Nonnull final Locale aDisplayLocale)
-  {
-    // Not nice but it works
-    return ((SimpleDateFormat) DateFormat.getDateInstance (DEFAULT_STYLE_DATE, aDisplayLocale)).toPattern ();
-  }
-
-  @Nonnull
-  public static String getDefaultPatternTime (@Nonnull final Locale aDisplayLocale)
-  {
-    // Not nice but it works
-    return ((SimpleDateFormat) DateFormat.getTimeInstance (DEFAULT_STYLE_TIME, aDisplayLocale)).toPattern ();
-  }
-
-  @Nonnull
-  public static String getDefaultPatternDateTime (@Nonnull final Locale aDisplayLocale)
-  {
-    // Not nice but it works
-    return ((SimpleDateFormat) DateFormat.getDateTimeInstance (DEFAULT_STYLE_DATE, DEFAULT_STYLE_TIME, aDisplayLocale)).toPattern ();
+    return getWithLocaleAndChrono (DateTimeFormat.forPattern (sPattern), aDisplayLocale);
   }
 }

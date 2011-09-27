@@ -32,6 +32,11 @@ import org.joda.time.ReadablePartial;
 
 import com.phloc.commons.annotations.PresentForCodeCoverage;
 
+/**
+ * Standard API to convert a date, time or date time to a {@link String}.
+ * 
+ * @author philip
+ */
 @Immutable
 public final class PDTToString
 {
@@ -42,47 +47,55 @@ public final class PDTToString
   private PDTToString ()
   {}
 
-  public static String defaultToString (@Nonnull final LocalDate aDate, @Nonnull final Locale aDisplayLocale)
+  @Nullable
+  public static String getAsString (@Nullable final LocalDate aDate, @Nonnull final Locale aDisplayLocale)
   {
-    return PDTFormatter.getDefaultFormatterDate (aDisplayLocale).print (aDate);
+    return aDate == null ? null : PDTFormatter.getDefaultFormatterDate (aDisplayLocale).print (aDate);
   }
 
-  public static String defaultToString (@Nonnull final LocalTime aTime, @Nonnull final Locale aDisplayLocale)
+  @Nullable
+  public static String getAsString (@Nullable final LocalTime aTime, @Nonnull final Locale aDisplayLocale)
   {
-    return PDTFormatter.getDefaultFormatterTime (aDisplayLocale).print (aTime);
+    return aTime == null ? null : PDTFormatter.getDefaultFormatterTime (aDisplayLocale).print (aTime);
   }
 
-  public static String defaultToString (@Nonnull final LocalDateTime aDateTime, @Nonnull final Locale aDisplayLocale)
+  @Nullable
+  public static String getAsString (@Nullable final LocalDateTime aDateTime, @Nonnull final Locale aDisplayLocale)
   {
-    return PDTFormatter.getDefaultFormatterDateTime (aDisplayLocale).print (aDateTime);
+    return aDateTime == null ? null : PDTFormatter.getDefaultFormatterDateTime (aDisplayLocale).print (aDateTime);
   }
 
-  public static String defaultToString (@Nonnull final DateTime aDate, @Nonnull final Locale aDisplayLocale)
+  @Nullable
+  public static String getAsString (@Nullable final DateTime aDateTime, @Nonnull final Locale aDisplayLocale)
   {
-    return PDTFormatter.getDefaultFormatterDateTime (aDisplayLocale).print (aDate);
+    return aDateTime == null ? null : PDTFormatter.getDefaultFormatterDateTime (aDisplayLocale).print (aDateTime);
   }
 
-  public static String toString (@Nonnull final String sFormatPattern, @Nonnull final ReadablePartial aDate)
+  @Nullable
+  public static String getAsString (@Nonnull final String sFormatPattern, @Nullable final ReadablePartial aPartial)
   {
-    return toString (sFormatPattern, aDate, (Locale) null);
+    return getAsString (sFormatPattern, aPartial, (Locale) null);
   }
 
-  public static String toString (@Nonnull final String sFormatPattern,
-                                 @Nonnull final ReadablePartial aDate,
-                                 @Nullable final Locale aDisplayLocale)
+  @Nullable
+  public static String getAsString (@Nonnull final String sFormatPattern,
+                                    @Nullable final ReadablePartial aPartial,
+                                    @Nullable final Locale aDisplayLocale)
   {
-    return PDTFormatter.getForPattern (sFormatPattern, aDisplayLocale).print (aDate);
+    return aPartial == null ? null : PDTFormatter.getForPattern (sFormatPattern, aDisplayLocale).print (aPartial);
   }
 
-  public static String toString (@Nonnull final String sFormatPattern, @Nonnull final ReadableInstant aDate)
+  @Nullable
+  public static String getAsString (@Nonnull final String sFormatPattern, @Nullable final ReadableInstant aInstant)
   {
-    return toString (sFormatPattern, aDate, (Locale) null);
+    return getAsString (sFormatPattern, aInstant, (Locale) null);
   }
 
-  public static String toString (@Nonnull final String sFormatPattern,
-                                 @Nonnull final ReadableInstant aDate,
-                                 @Nullable final Locale aDisplayLocale)
+  @Nullable
+  public static String getAsString (@Nonnull final String sFormatPattern,
+                                    @Nullable final ReadableInstant aInstant,
+                                    @Nullable final Locale aDisplayLocale)
   {
-    return PDTFormatter.getForPattern (sFormatPattern, aDisplayLocale).print (aDate);
+    return aInstant == null ? null : PDTFormatter.getForPattern (sFormatPattern, aDisplayLocale).print (aInstant);
   }
 }

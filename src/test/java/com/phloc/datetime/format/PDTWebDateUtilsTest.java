@@ -39,21 +39,22 @@ public final class PDTWebDateUtilsTest
   public void testRfc822 ()
   {
     final DateTime d = PDTFactory.getCurrentDateTime ().withZone (DateTimeZone.forID ("GMT")).withMillisOfSecond (0);
-    final String s = PDTWebDateUtils.formatRFC822 (d);
+    final String s = PDTWebDateUtils.getAsStringRFC822 (d);
     assertNotNull (s);
-    final DateTime d2 = PDTWebDateUtils.parseRFC822 (s);
+    final DateTime d2 = PDTWebDateUtils.getDateTimeFromRFC822 (s);
     assertNotNull (d2);
     assertEquals (d, d2);
 
-    final String sNow = PDTWebDateUtils.getCurrentDateTimeFormattedRFC822 ();
-    assertNotNull (PDTWebDateUtils.parseRFC822 (sNow));
+    final String sNow = PDTWebDateUtils.getCurrentDateTimeAsStringRFC822 ();
+    assertNotNull (PDTWebDateUtils.getDateTimeFromRFC822 (sNow));
+    assertNotNull (PDTWebDateUtils.getAsStringRFC822 ((DateTime) null));
   }
 
   private static void _testW3C (final DateTime aDT)
   {
-    final String s = PDTWebDateUtils.formatW3CDateTime (aDT);
+    final String s = PDTWebDateUtils.getAsStringW3C (aDT);
     assertNotNull (s);
-    final DateTime aDT2 = PDTWebDateUtils.parseW3CDateTime (s);
+    final DateTime aDT2 = PDTWebDateUtils.getDateTimeFromW3C (s);
     assertNotNull (aDT2);
     assertEquals (aDT, aDT2);
   }
@@ -65,18 +66,19 @@ public final class PDTWebDateUtilsTest
     _testW3C (PDTFactory.createDateTime (2010, DateTimeConstants.FEBRUARY, 4));
     _testW3C (PDTFactory.createDateTimeFromMillis (12345678000L));
 
-    final String sNow = PDTWebDateUtils.getCurrentDateTimeFormattedW3C ();
-    assertNotNull (PDTWebDateUtils.parseW3CDateTime (sNow));
+    final String sNow = PDTWebDateUtils.getCurrentDateTimeAsStringW3C ();
+    assertNotNull (PDTWebDateUtils.getDateTimeFromW3C (sNow));
+    assertNotNull (PDTWebDateUtils.getAsStringW3C ((DateTime) null));
   }
 
   @Test
   public void testXSD ()
   {
     final DateTime aDT = new DateTime ().withChronology (ISOChronology.getInstanceUTC ());
-    final String s = PDTWebDateUtils.formatXSDDateTime (aDT);
+    final String s = PDTWebDateUtils.getAsStringXSD (aDT);
     assertNotNull (s);
-    assertEquals (aDT, PDTWebDateUtils.parseXSDDateTime (s));
+    assertEquals (aDT, PDTWebDateUtils.getDateTimeFromXSD (s));
 
-    assertNotNull (PDTWebDateUtils.formatXSDDateTime ((DateTime) null));
+    assertNotNull (PDTWebDateUtils.getAsStringXSD ((DateTime) null));
   }
 }
