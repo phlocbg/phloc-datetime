@@ -20,6 +20,31 @@
 -->
 <changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-datetime">
+  <entry date="2011-09-27" category="api" action="change">
+    <change>
+      <text locale="en">Made PDTIOHelper pattern constants public</text>
+    </change>
+  </entry>
+  <entry date="2011-09-27" category="api" action="change" incompatible="true">
+    <change>
+      <text locale="en">All PDTWebDateUtils methods were renamed so they start with "get"</text>
+    </change>
+  </entry>
+  <entry date="2011-09-27" category="api" action="change" incompatible="true">
+    <change>
+      <text locale="en">All PDTToString methods now accept null values and delivery null in that case</text>
+    </change>
+  </entry>
+  <entry date="2011-09-27" category="api" action="change" incompatible="true">
+    <change>
+      <text locale="en">Changed PDTToString and PDTFromString methods to start with "get"</text>
+    </change>
+  </entry>
+  <entry date="2011-09-27" category="api" action="add">
+    <change>
+      <text locale="en">Extended PDTFormatter to support all short/medium/long/full versions of Date, Time and DateTime</text>
+    </change>
+  </entry>
   <release date="2011-09-12" version="2.7.0" />
   <entry date="2011-09-12" category="api" action="change">
     <change>

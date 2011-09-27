@@ -138,7 +138,7 @@ public final class PDTWebDateUtils
                                            .withChronology (PDTConfig.getDefaultChronology ());
       if (aDTZ != null)
         aDTF = aDTF.withZone (aDTZ);
-      final DateTime aDT = PDTFromString.dateTimeFromString (sDate, aDTF);
+      final DateTime aDT = PDTFromString.getDateTimeFromString (sDate, aDTF);
       if (aDT != null)
         return aDT;
     }
@@ -190,16 +190,18 @@ public final class PDTWebDateUtils
    * <p/>
    * 
    * @param sDate
-   *        string to parse for a date.
+   *        string to parse for a date. May be <code>null</code>.
    * @return the Date represented by the given RFC822 string. It returns
    *         <b>null</b> if it was not possible to parse the given string into a
-   *         Date.
+   *         {@link DateTime} or if the passed {@link String} was
+   *         <code>null</code>.
    */
   @Nullable
-  public static DateTime parseRFC822 (@Nonnull final String sDate)
+  public static DateTime getDateTimeFromRFC822 (@Nullable final String sDate)
   {
     if (sDate == null)
-      throw new NullPointerException ("date");
+      return null;
+
     final IReadonlyPair <String, DateTimeZone> aPair = _extractDateTimeZone (sDate.trim ());
     return _parseUsingMask (RFC822_MASKS, aPair.getFirst (), aPair.getSecond ());
   }
@@ -221,16 +223,17 @@ public final class PDTWebDateUtils
    * <p/>
    * 
    * @param sDate
-   *        string to parse for a date.
+   *        string to parse for a date. May be <code>null</code>.
    * @return the Date represented by the given W3C date-time string. It returns
    *         <b>null</b> if it was not possible to parse the given string into a
-   *         Date.
+   *         {@link DateTime} or if the input string was <code>null</code>.
    */
   @Nullable
-  public static DateTime parseW3CDateTime (@Nonnull final String sDate)
+  public static DateTime getDateTimeFromW3C (@Nullable final String sDate)
   {
     if (sDate == null)
-      throw new NullPointerException ("date");
+      return null;
+
     final IReadonlyPair <String, DateTimeZone> aPair = _extractDateTimeZone (sDate.trim ());
     return _parseUsingMask (W3CDATETIME_MASKS, aPair.getFirst (), aPair.getSecond ());
   }
@@ -247,12 +250,12 @@ public final class PDTWebDateUtils
    *         Date.
    */
   @Nullable
-  public static DateTime parseDateTime (@Nonnull final String sDate)
+  public static DateTime getDateTimeFromW3COrRFC822 (@Nonnull final String sDate)
   {
-    DateTime d = parseW3CDateTime (sDate);
-    if (d == null)
-      d = parseRFC822 (sDate);
-    return d;
+    DateTime aDateTime = getDateTimeFromW3C (sDate);
+    if (aDateTime == null)
+      aDateTime = getDateTimeFromRFC822 (sDate);
+    return aDateTime;
   }
 
   /**
@@ -264,7 +267,7 @@ public final class PDTWebDateUtils
    * @return the RFC822 represented by the given Date.
    */
   @Nonnull
-  public static String formatRFC822 (@Nullable final DateTime aDateTime)
+  public static String getAsStringRFC822 (@Nullable final DateTime aDateTime)
   {
     return PDTFormatter.getForPattern (FORMAT_RFC822, LOCALE_TO_USE)
                        .withZone (PDTConfig.getDateTimeZoneUTC ())
@@ -280,7 +283,7 @@ public final class PDTWebDateUtils
    * @return the RFC822 represented by the given Date.
    */
   @Nonnull
-  public static String formatRFC822 (@Nullable final LocalDateTime aDateTime)
+  public static String getAsStringRFC822 (@Nullable final LocalDateTime aDateTime)
   {
     return PDTFormatter.getForPattern (FORMAT_RFC822, LOCALE_TO_USE)
                        .withZone (PDTConfig.getDateTimeZoneUTC ())
@@ -296,9 +299,12 @@ public final class PDTWebDateUtils
    * @return the W3C Date Time represented by the given Date.
    */
   @Nonnull
-  public static String formatW3CDateTime (@Nonnull final DateTime aDateTime)
+  public static String getAsStringW3C (@Nullable final DateTime aDateTime)
   {
-    return PDTFormatter.getForPattern (FORMAT_W3C, LOCALE_TO_USE).withZone (aDateTime.getZone ()).print (aDateTime);
+    DateTimeFormatter aFormatter = PDTFormatter.getForPattern (FORMAT_W3C, LOCALE_TO_USE);
+    if (aDateTime != null)
+      aFormatter = aFormatter.withZone (aDateTime.getZone ());
+    return aFormatter.print (aDateTime);
   }
 
   /**
@@ -311,33 +317,33 @@ public final class PDTWebDateUtils
    * @return the W3C Date Time represented by the given Date.
    */
   @Nonnull
-  public static String formatW3CDateTime (@Nonnull final LocalDateTime aDateTime)
+  public static String getAsStringW3C (@Nullable final LocalDateTime aDateTime)
   {
-    return formatW3CDateTime (aDateTime.toDateTime (PDTConfig.getDateTimeZoneUTC ()));
+    return getAsStringW3C (aDateTime == null ? (DateTime) null : aDateTime.toDateTime (PDTConfig.getDateTimeZoneUTC ()));
   }
 
   /**
    * @return The current date time formatted using RFC 822
    */
   @Nonnull
-  public static String getCurrentDateTimeFormattedRFC822 ()
+  public static String getCurrentDateTimeAsStringRFC822 ()
   {
     // Important to use date time zone GMT as this is what the standard
     // printer emits!
     // Use no milli seconds as the standard printer does not print them!
     final DateTime aNow = PDTFactory.getCurrentDateTime ().withZone (DateTimeZone.forID ("GMT")).withMillisOfSecond (0);
-    return formatRFC822 (aNow);
+    return getAsStringRFC822 (aNow);
   }
 
   /**
    * @return The current date time formatted using W3C format
    */
   @Nonnull
-  public static String getCurrentDateTimeFormattedW3C ()
+  public static String getCurrentDateTimeAsStringW3C ()
   {
     // Use no milli seconds as the standard printer does not print them!
     final DateTime aNow = PDTFactory.getCurrentDateTime ().withMillisOfSecond (0);
-    return formatW3CDateTime (aNow);
+    return getAsStringW3C (aNow);
   }
 
   @Nonnull
@@ -347,20 +353,21 @@ public final class PDTWebDateUtils
   }
 
   @Nullable
-  public static DateTime parseXSDDateTime (@Nullable final String sValue)
+  public static DateTime getDateTimeFromXSD (@Nullable final String sValue)
   {
-    return PDTFromString.dateTimeFromString (sValue, _getXSDFormatter ());
+    return PDTFromString.getDateTimeFromString (sValue, _getXSDFormatter ());
   }
 
   @Nonnull
-  public static String formatXSDDateTime (@Nullable final DateTime aDateTime)
+  public static String getAsStringXSD (@Nullable final DateTime aDateTime)
   {
     return _getXSDFormatter ().print (aDateTime);
   }
 
   @Nonnull
-  public static String formatXSDDateTime (@Nonnull final LocalDateTime aLocalDateTime)
+  public static String getAsStringXSD (@Nullable final LocalDateTime aLocalDateTime)
   {
-    return formatXSDDateTime (aLocalDateTime.toDateTime (PDTConfig.getDateTimeZoneUTC ()));
+    return getAsStringXSD (aLocalDateTime == null ? (DateTime) null
+                                                 : aLocalDateTime.toDateTime (PDTConfig.getDateTimeZoneUTC ()));
   }
 }

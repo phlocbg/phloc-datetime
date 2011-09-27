@@ -38,9 +38,9 @@ import com.phloc.datetime.format.PDTToString;
 public final class PDTIOHelper
 {
   // This would be suitable for generic sorting
-  private static final String PATTERN_DATE = "yyyyMMdd";
-  private static final String PATTERN_TIME = "HHmmss";
-  private static final String PATTERN_DATETIME = PATTERN_DATE + '_' + PATTERN_TIME;
+  public static final String PATTERN_DATE = "yyyyMMdd";
+  public static final String PATTERN_TIME = "HHmmss";
+  public static final String PATTERN_DATETIME = PATTERN_DATE + '_' + PATTERN_TIME;
 
   @PresentForCodeCoverage
   @SuppressWarnings ("unused")
@@ -68,7 +68,7 @@ public final class PDTIOHelper
   @Nonnull
   public static String getDateTimeForFilename (@Nonnull final DateTime aDT)
   {
-    return PDTToString.toString (PATTERN_DATETIME, aDT);
+    return PDTToString.getAsString (PATTERN_DATETIME, aDT);
   }
 
   /**
@@ -90,7 +90,7 @@ public final class PDTIOHelper
   @Nonnull
   public static String getLocalDateTimeForFilename (@Nonnull final LocalDateTime aDT)
   {
-    return PDTToString.toString (PATTERN_DATETIME, aDT);
+    return PDTToString.getAsString (PATTERN_DATETIME, aDT);
   }
 
   /**
@@ -110,7 +110,7 @@ public final class PDTIOHelper
    */
   public static String getDateForFilename (@Nonnull final LocalDate aLocalDate)
   {
-    return PDTToString.toString (PATTERN_DATE, aLocalDate);
+    return PDTToString.getAsString (PATTERN_DATE, aLocalDate);
   }
 
   /**
@@ -130,6 +130,6 @@ public final class PDTIOHelper
    */
   public static String getTimeForFilename (@Nonnull final LocalTime aLocalTime)
   {
-    return PDTToString.toString (PATTERN_TIME, aLocalTime);
+    return PDTToString.getAsString (PATTERN_TIME, aLocalTime);
   }
 }

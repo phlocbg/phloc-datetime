@@ -48,14 +48,14 @@ public final class PDTFromStringTest
     // No chronology
     DateTimeFormatter aDTF = DateTimeFormat.forPattern ("yyyy/MM/dd HH:mm:ss");
     assertNotNull (aDTF);
-    DateTime aDT = PDTFromString.dateTimeFromString ("2009/03/28 15:06:34", aDTF);
+    DateTime aDT = PDTFromString.getDateTimeFromString ("2009/03/28 15:06:34", aDTF);
     assertNotNull (aDT);
     assertEquals (ISOChronology.getInstance (), aDT.getChronology ());
 
     // Our default chronology
     aDTF = PDTFormatter.getForPattern ("yyyy/MM/dd HH:mm:ss");
     assertNotNull (aDTF);
-    aDT = PDTFromString.dateTimeFromString ("2009/03/28 15:06:34", aDTF);
+    aDT = PDTFromString.getDateTimeFromString ("2009/03/28 15:06:34", aDTF);
     assertNotNull (aDT);
     assertEquals (PDTConfig.getDefaultChronology (), aDT.getChronology ());
   }
@@ -64,14 +64,14 @@ public final class PDTFromStringTest
   public void testDateTimeFromString ()
   {
     assertEquals (PDTFactory.createDateTime (2000, DateTimeConstants.JULY, 6),
-                  PDTFromString.dateTimeFromString ("2000.07.06", "yyyy.MM.dd"));
-    assertNull (PDTFromString.dateTimeFromString ("2000.07.06 abc", "yyyy.MM.dd"));
-    assertNull (PDTFromString.dateTimeFromString (null, "yyyy.MM.dd"));
+                  PDTFromString.getDateTimeFromString ("2000.07.06", "yyyy.MM.dd"));
+    assertNull (PDTFromString.getDateTimeFromString ("2000.07.06 abc", "yyyy.MM.dd"));
+    assertNull (PDTFromString.getDateTimeFromString (null, "yyyy.MM.dd"));
 
     try
     {
       // Illegal DT pattern
-      PDTFromString.dateTimeFromString ("2000.07.06", "abc");
+      PDTFromString.getDateTimeFromString ("2000.07.06", "abc");
       fail ();
     }
     catch (final IllegalArgumentException ex)
@@ -80,7 +80,7 @@ public final class PDTFromStringTest
     try
     {
       // null DT pattern
-      PDTFromString.dateTimeFromString ("2000.07.06", (DateTimeFormatter) null);
+      PDTFromString.getDateTimeFromString ("2000.07.06", (DateTimeFormatter) null);
       fail ();
     }
     catch (final NullPointerException ex)
@@ -91,14 +91,14 @@ public final class PDTFromStringTest
   public void testLocalDateFromString ()
   {
     assertEquals (PDTFactory.createLocalDate (2000, DateTimeConstants.JULY, 6),
-                  PDTFromString.localDateFromString ("2000.07.06", "yyyy.MM.dd"));
-    assertNull (PDTFromString.localDateFromString ("2000.07.06 abc", "yyyy.MM.dd"));
-    assertNull (PDTFromString.localDateFromString (null, "yyyy.MM.dd"));
+                  PDTFromString.getLocalDateFromString ("2000.07.06", "yyyy.MM.dd"));
+    assertNull (PDTFromString.getLocalDateFromString ("2000.07.06 abc", "yyyy.MM.dd"));
+    assertNull (PDTFromString.getLocalDateFromString (null, "yyyy.MM.dd"));
 
     try
     {
       // Illegal DT pattern
-      PDTFromString.localDateFromString ("2000.07.06", "abc");
+      PDTFromString.getLocalDateFromString ("2000.07.06", "abc");
       fail ();
     }
     catch (final IllegalArgumentException ex)
@@ -107,7 +107,7 @@ public final class PDTFromStringTest
     try
     {
       // null DT pattern
-      PDTFromString.localDateFromString ("2000.07.06", (DateTimeFormatter) null);
+      PDTFromString.getLocalDateFromString ("2000.07.06", (DateTimeFormatter) null);
       fail ();
     }
     catch (final NullPointerException ex)

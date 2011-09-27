@@ -49,40 +49,6 @@ public final class PDTFormatterTest
   }
 
   @Test
-  public void testGetDefaultPattern ()
-  {
-    for (final Locale aLocale : LocaleCache.getAllLocales ())
-    {
-      // get pattern
-      assertNotNull (PDTFormatter.getDefaultPatternDate (aLocale));
-      assertNotNull (PDTFormatter.getDefaultPatternTime (aLocale));
-      assertNotNull (PDTFormatter.getDefaultPatternDateTime (aLocale));
-    }
-
-    try
-    {
-      PDTFormatter.getDefaultPatternDate (null);
-      fail ();
-    }
-    catch (final NullPointerException ex)
-    {}
-    try
-    {
-      PDTFormatter.getDefaultPatternTime (null);
-      fail ();
-    }
-    catch (final NullPointerException ex)
-    {}
-    try
-    {
-      PDTFormatter.getDefaultPatternDateTime (null);
-      fail ();
-    }
-    catch (final NullPointerException ex)
-    {}
-  }
-
-  @Test
   public void testGetForPattern ()
   {
     for (final Locale aLocale : LocaleCache.getAllLocales ())
