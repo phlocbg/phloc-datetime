@@ -72,11 +72,11 @@
       <text locale="en">Updated joda-time to version 2.0</text>
     </change>
   </entry>
-  <relese date="2011-07-31" version="2.5.1" />
+  <release date="2011-07-31" version="2.5.1" />
   <entry date="2011-07-31" category="tech" action="fix">
     <change>
       <text locale="en">Fixed PDTFactory API using Date and Calendar to use the correct JDK TImeZone</text>
     </change>
   </entry>
-  <relese date="2011-07-26" version="2.5.0" />
+  <release date="2011-07-26" version="2.5.0" />
 </changelog>
