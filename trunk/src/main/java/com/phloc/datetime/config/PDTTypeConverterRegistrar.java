@@ -32,6 +32,7 @@ import org.joda.time.Duration;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
+import org.joda.time.Period;
 import org.joda.time.convert.ConverterManager;
 
 import com.phloc.commons.annotations.IsSPIImplementation;
@@ -191,5 +192,27 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     TypeConverterRegistry.registerTypeConverter (Long.class, Duration.class, aConverterToDuration);
     TypeConverterRegistry.registerTypeConverter (Short.class, Duration.class, aConverterToDuration);
     TypeConverterRegistry.registerTypeConverter (Duration.class, String.class, aConverterToString);
+
+    // Duration
+    final ITypeConverter aConverterToPeriod = new ITypeConverter ()
+    {
+      @Nonnull
+      public Period convert (final Object aSource)
+      {
+        return new Period (aSource);
+      }
+    };
+    TypeConverterRegistry.registerTypeConverter (String.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (AtomicInteger.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (AtomicLong.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (BigDecimal.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (BigInteger.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (Byte.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (Double.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (Float.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (Integer.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (Long.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (Short.class, Period.class, aConverterToPeriod);
+    TypeConverterRegistry.registerTypeConverter (Period.class, String.class, aConverterToString);
   }
 }
