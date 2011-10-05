@@ -17,6 +17,7 @@
  */
 package com.phloc.datetime.config;
 
+import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import org.joda.time.DateTime;
@@ -28,27 +29,22 @@ import org.joda.time.Period;
 
 import com.phloc.commons.annotations.IsSPIImplementation;
 import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistrarSPI;
-import com.phloc.commons.microdom.convert.MicroTypeConverterRegistry;
+import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistry;
 import com.phloc.commons.microdom.convert.impl.StringBasedMicroTypeConverter;
 
 @Immutable
 @IsSPIImplementation
 public final class PDTMicroTypeConverterRegistrar implements IMicroTypeConverterRegistrarSPI
 {
-  public void registerMicroTypeConverter ()
+  public void registerMicroTypeConverter (@Nonnull final IMicroTypeConverterRegistry aRegistry)
   {
     // Register XML converters based on the String converter
-    MicroTypeConverterRegistry.registerMicroElementTypeConverter (LocalDate.class,
-                                                                  new StringBasedMicroTypeConverter (LocalDate.class));
-    MicroTypeConverterRegistry.registerMicroElementTypeConverter (LocalTime.class,
-                                                                  new StringBasedMicroTypeConverter (LocalTime.class));
-    MicroTypeConverterRegistry.registerMicroElementTypeConverter (LocalDateTime.class,
-                                                                  new StringBasedMicroTypeConverter (LocalDateTime.class));
-    MicroTypeConverterRegistry.registerMicroElementTypeConverter (DateTime.class,
-                                                                  new StringBasedMicroTypeConverter (DateTime.class));
-    MicroTypeConverterRegistry.registerMicroElementTypeConverter (Duration.class,
-                                                                  new StringBasedMicroTypeConverter (Duration.class));
-    MicroTypeConverterRegistry.registerMicroElementTypeConverter (Period.class,
-                                                                  new StringBasedMicroTypeConverter (Period.class));
+    aRegistry.registerMicroElementTypeConverter (LocalDate.class, new StringBasedMicroTypeConverter (LocalDate.class));
+    aRegistry.registerMicroElementTypeConverter (LocalTime.class, new StringBasedMicroTypeConverter (LocalTime.class));
+    aRegistry.registerMicroElementTypeConverter (LocalDateTime.class,
+                                                 new StringBasedMicroTypeConverter (LocalDateTime.class));
+    aRegistry.registerMicroElementTypeConverter (DateTime.class, new StringBasedMicroTypeConverter (DateTime.class));
+    aRegistry.registerMicroElementTypeConverter (Duration.class, new StringBasedMicroTypeConverter (Duration.class));
+    aRegistry.registerMicroElementTypeConverter (Period.class, new StringBasedMicroTypeConverter (Period.class));
   }
 }
