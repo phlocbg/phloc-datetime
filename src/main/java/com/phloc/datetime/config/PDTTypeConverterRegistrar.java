@@ -38,6 +38,7 @@ import org.joda.time.convert.ConverterManager;
 import com.phloc.commons.annotations.IsSPIImplementation;
 import com.phloc.commons.typeconvert.ITypeConverter;
 import com.phloc.commons.typeconvert.ITypeConverterRegistrarSPI;
+import com.phloc.commons.typeconvert.ITypeConverterRegistry;
 import com.phloc.commons.typeconvert.TypeConverterRegistry;
 
 /**
@@ -59,7 +60,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     ConverterManager.getInstance ().addDurationConverter (PDTJodaNumberConverter.INSTANCE);
   }
 
-  public void registerTypeConverter ()
+  public void registerTypeConverter (@Nonnull final ITypeConverterRegistry aRegistry)
   {
     // Register Joda native converters
     _registerJodaConverter ();
@@ -82,20 +83,20 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
         return new DateTime (aSource, PDTConfig.getDefaultChronology ());
       }
     };
-    TypeConverterRegistry.registerTypeConverter (String.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (GregorianCalendar.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (Date.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (AtomicInteger.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (AtomicLong.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (BigDecimal.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (BigInteger.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (Byte.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (Double.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (Float.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (Integer.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (Long.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (Short.class, DateTime.class, aConverterToDateTime);
-    TypeConverterRegistry.registerTypeConverter (DateTime.class, String.class, aConverterToString);
+    aRegistry.registerTypeConverter (String.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (GregorianCalendar.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (Date.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (AtomicInteger.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (AtomicLong.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (BigDecimal.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (BigInteger.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (Byte.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (Double.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (Float.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (Integer.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (Long.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (Short.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (DateTime.class, String.class, aConverterToString);
 
     // LocalDateTime
     final ITypeConverter aConverterToLocalDateTime = new ITypeConverter ()
@@ -106,22 +107,20 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
         return new LocalDateTime (aSource, PDTConfig.getDefaultChronology ());
       }
     };
-    TypeConverterRegistry.registerTypeConverter (String.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (GregorianCalendar.class,
-                                                 LocalDateTime.class,
-                                                 aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (Date.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (AtomicInteger.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (AtomicLong.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (BigDecimal.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (BigInteger.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (Byte.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (Double.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (Float.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (Integer.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (Long.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (Short.class, LocalDateTime.class, aConverterToLocalDateTime);
-    TypeConverterRegistry.registerTypeConverter (LocalDateTime.class, String.class, aConverterToString);
+    aRegistry.registerTypeConverter (String.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (GregorianCalendar.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (Date.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (AtomicInteger.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (AtomicLong.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (BigDecimal.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (BigInteger.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (Byte.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (Double.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (Float.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (Integer.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (Long.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (Short.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (LocalDateTime.class, String.class, aConverterToString);
 
     // LocalDate
     final ITypeConverter aConverterToLocalDate = new ITypeConverter ()
@@ -132,20 +131,20 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
         return new LocalDate (aSource, PDTConfig.getDefaultChronology ());
       }
     };
-    TypeConverterRegistry.registerTypeConverter (String.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (GregorianCalendar.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (Date.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (AtomicInteger.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (AtomicLong.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (BigDecimal.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (BigInteger.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (Byte.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (Double.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (Float.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (Integer.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (Long.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (Short.class, LocalDate.class, aConverterToLocalDate);
-    TypeConverterRegistry.registerTypeConverter (LocalDate.class, String.class, aConverterToString);
+    aRegistry.registerTypeConverter (String.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (GregorianCalendar.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (Date.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (AtomicInteger.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (AtomicLong.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (BigDecimal.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (BigInteger.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (Byte.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (Double.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (Float.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (Integer.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (Long.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (Short.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (LocalDate.class, String.class, aConverterToString);
 
     // LocalTime
     final ITypeConverter aConverterToLocalTime = new ITypeConverter ()
@@ -156,20 +155,20 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
         return new LocalTime (aSource, PDTConfig.getDefaultChronology ());
       }
     };
-    TypeConverterRegistry.registerTypeConverter (String.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (GregorianCalendar.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (Date.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (AtomicInteger.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (AtomicLong.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (BigDecimal.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (BigInteger.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (Byte.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (Double.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (Float.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (Integer.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (Long.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (Short.class, LocalTime.class, aConverterToLocalTime);
-    TypeConverterRegistry.registerTypeConverter (LocalTime.class, String.class, aConverterToString);
+    aRegistry.registerTypeConverter (String.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (GregorianCalendar.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (Date.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (AtomicInteger.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (AtomicLong.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (BigDecimal.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (BigInteger.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (Byte.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (Double.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (Float.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (Integer.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (Long.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (Short.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (LocalTime.class, String.class, aConverterToString);
 
     // Duration
     final ITypeConverter aConverterToDuration = new ITypeConverter ()
@@ -180,18 +179,18 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
         return new Duration (aSource);
       }
     };
-    TypeConverterRegistry.registerTypeConverter (String.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (AtomicInteger.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (AtomicLong.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (BigDecimal.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (BigInteger.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (Byte.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (Double.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (Float.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (Integer.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (Long.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (Short.class, Duration.class, aConverterToDuration);
-    TypeConverterRegistry.registerTypeConverter (Duration.class, String.class, aConverterToString);
+    aRegistry.registerTypeConverter (String.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (AtomicInteger.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (AtomicLong.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (BigDecimal.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (BigInteger.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (Byte.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (Double.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (Float.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (Integer.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (Long.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (Short.class, Duration.class, aConverterToDuration);
+    aRegistry.registerTypeConverter (Duration.class, String.class, aConverterToString);
 
     // Duration
     final ITypeConverter aConverterToPeriod = new ITypeConverter ()
@@ -202,17 +201,17 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
         return new Period (aSource);
       }
     };
-    TypeConverterRegistry.registerTypeConverter (String.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (AtomicInteger.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (AtomicLong.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (BigDecimal.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (BigInteger.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (Byte.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (Double.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (Float.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (Integer.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (Long.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (Short.class, Period.class, aConverterToPeriod);
-    TypeConverterRegistry.registerTypeConverter (Period.class, String.class, aConverterToString);
+    aRegistry.registerTypeConverter (String.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (AtomicInteger.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (AtomicLong.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (BigDecimal.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (BigInteger.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (Byte.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (Double.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (Float.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (Integer.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (Long.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (Short.class, Period.class, aConverterToPeriod);
+    aRegistry.registerTypeConverter (Period.class, String.class, aConverterToString);
   }
 }
