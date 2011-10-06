@@ -112,33 +112,39 @@ public final class PDTXMLConverter
     return aBase == null ? null : s_aDTFactory.newXMLGregorianCalendar (aBase.toGregorianCalendar ());
   }
 
-  @Nonnull
-  public static GregorianCalendar convert (final XMLGregorianCalendar aCal)
+  @Nullable
+  public static GregorianCalendar getConverted (@Nullable final XMLGregorianCalendar aCal)
   {
-    return aCal.toGregorianCalendar (aCal.getTimeZone (aCal.getTimezone ()), null, null);
+    return aCal == null ? null : aCal.toGregorianCalendar (aCal.getTimeZone (aCal.getTimezone ()), null, null);
+  }
+
+  @Nullable
+  public static XMLGregorianCalendar getConverted (@Nullable final GregorianCalendar aCal)
+  {
+    return aCal == null ? null : s_aDTFactory.newXMLGregorianCalendar (aCal);
   }
 
   @Nullable
   public static LocalDate getLocalDate (@Nullable final XMLGregorianCalendar aCal)
   {
-    return aCal == null ? null : PDTFactory.createLocalDate (convert (aCal));
+    return aCal == null ? null : PDTFactory.createLocalDate (getConverted (aCal));
   }
 
   @Nullable
   public static LocalTime getLocalTime (@Nullable final XMLGregorianCalendar aCal)
   {
-    return aCal == null ? null : PDTFactory.createLocalTime (convert (aCal));
+    return aCal == null ? null : PDTFactory.createLocalTime (getConverted (aCal));
   }
 
   @Nullable
   public static LocalDateTime getLocalDateTime (@Nullable final XMLGregorianCalendar aCal)
   {
-    return aCal == null ? null : PDTFactory.createLocalDateTime (convert (aCal));
+    return aCal == null ? null : PDTFactory.createLocalDateTime (getConverted (aCal));
   }
 
   @Nullable
   public static DateTime getDateTime (@Nullable final XMLGregorianCalendar aCal)
   {
-    return aCal == null ? null : PDTFactory.createDateTime (convert (aCal));
+    return aCal == null ? null : PDTFactory.createDateTime (getConverted (aCal));
   }
 }
