@@ -18,7 +18,7 @@
     limitations under the License.
 
 -->
-<translationitems>
+<translationitems count="26">
   <item id="com.phloc.datetime.format.PeriodFormatMultilingual$EText.LONG_DAY_PLURAL">
     <de> Tage</de>
     <en> days</en>
