@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 import org.joda.time.LocalTime;
 import org.joda.time.Period;
 
-import com.phloc.commons.compare.CompareUtils;
+import com.phloc.commons.compare.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.ToStringGenerator;
 
@@ -67,8 +67,8 @@ public abstract class AbstractLocalTimePeriod implements ILocalTimePeriod
     if (o == null || !getClass ().equals (o.getClass ()))
       return false;
     final AbstractLocalTimePeriod rhs = (AbstractLocalTimePeriod) o;
-    return CompareUtils.nullSafeEquals (m_aStartLocalTime, rhs.m_aStartLocalTime) &&
-           CompareUtils.nullSafeEquals (m_aEndLocalTime, rhs.m_aEndLocalTime);
+    return EqualsUtils.nullSafeEquals (m_aStartLocalTime, rhs.m_aStartLocalTime) &&
+           EqualsUtils.nullSafeEquals (m_aEndLocalTime, rhs.m_aEndLocalTime);
   }
 
   @Override

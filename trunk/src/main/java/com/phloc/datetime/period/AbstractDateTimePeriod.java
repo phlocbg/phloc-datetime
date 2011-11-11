@@ -23,13 +23,13 @@ import javax.annotation.Nullable;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 
-import com.phloc.commons.string.ToStringGenerator;
-import com.phloc.commons.compare.CompareUtils;
+import com.phloc.commons.compare.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
+import com.phloc.commons.string.ToStringGenerator;
 
 /**
  * Default implementation of the {@link IDateTimePeriod} interface.
- *
+ * 
  * @author philip
  */
 public abstract class AbstractDateTimePeriod implements IDateTimePeriod
@@ -67,8 +67,8 @@ public abstract class AbstractDateTimePeriod implements IDateTimePeriod
     if (o == null || !getClass ().equals (o.getClass ()))
       return false;
     final AbstractDateTimePeriod rhs = (AbstractDateTimePeriod) o;
-    return CompareUtils.nullSafeEquals (m_aStartDateTime, rhs.m_aStartDateTime) &&
-           CompareUtils.nullSafeEquals (m_aEndDateTime, rhs.m_aEndDateTime);
+    return EqualsUtils.nullSafeEquals (m_aStartDateTime, rhs.m_aStartDateTime) &&
+           EqualsUtils.nullSafeEquals (m_aEndDateTime, rhs.m_aEndDateTime);
   }
 
   @Override
