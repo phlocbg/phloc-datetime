@@ -23,6 +23,7 @@ import static org.junit.Assert.assertNotNull;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.DateTimeZone;
+import org.joda.time.LocalDate;
 import org.joda.time.chrono.ISOChronology;
 import org.junit.Test;
 
@@ -72,7 +73,7 @@ public final class PDTWebDateUtilsTest
   }
 
   @Test
-  public void testXSD ()
+  public void testXSDDateTime ()
   {
     final DateTime aDT = new DateTime ().withChronology (ISOChronology.getInstanceUTC ());
     final String s = PDTWebDateUtils.getAsStringXSD (aDT);
@@ -80,5 +81,16 @@ public final class PDTWebDateUtilsTest
     assertEquals (aDT, PDTWebDateUtils.getDateTimeFromXSD (s));
 
     assertNotNull (PDTWebDateUtils.getAsStringXSD ((DateTime) null));
+  }
+
+  @Test
+  public void testXSDLocalDate ()
+  {
+    final LocalDate aDT = PDTFactory.getCurrentLocalDate ();
+    final String s = PDTWebDateUtils.getAsStringXSD (aDT);
+    assertNotNull (s);
+    assertEquals (aDT, PDTWebDateUtils.getLocalDateFromXSD (s));
+
+    assertNotNull (PDTWebDateUtils.getAsStringXSD ((LocalDate) null));
   }
 }
