@@ -26,6 +26,7 @@ import javax.annotation.concurrent.Immutable;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.joda.time.chrono.ISOChronology;
 import org.joda.time.format.DateTimeFormatter;
@@ -347,7 +348,7 @@ public final class PDTWebDateUtils
   }
 
   @Nonnull
-  private static DateTimeFormatter _getXSDFormatter ()
+  private static DateTimeFormatter _getXSDFormatterDateTime ()
   {
     return ISODateTimeFormat.dateTime ().withChronology (ISOChronology.getInstanceUTC ());
   }
@@ -355,13 +356,13 @@ public final class PDTWebDateUtils
   @Nullable
   public static DateTime getDateTimeFromXSD (@Nullable final String sValue)
   {
-    return PDTFromString.getDateTimeFromString (sValue, _getXSDFormatter ());
+    return PDTFromString.getDateTimeFromString (sValue, _getXSDFormatterDateTime ());
   }
 
   @Nonnull
   public static String getAsStringXSD (@Nullable final DateTime aDateTime)
   {
-    return _getXSDFormatter ().print (aDateTime);
+    return _getXSDFormatterDateTime ().print (aDateTime);
   }
 
   @Nonnull
@@ -369,5 +370,24 @@ public final class PDTWebDateUtils
   {
     return getAsStringXSD (aLocalDateTime == null ? (DateTime) null
                                                  : aLocalDateTime.toDateTime (PDTConfig.getDateTimeZoneUTC ()));
+  }
+
+  @Nonnull
+  private static DateTimeFormatter _getXSDFormatterDate ()
+  {
+    return ISODateTimeFormat.date ().withChronology (ISOChronology.getInstanceUTC ());
+  }
+
+  @Nullable
+  public static LocalDate getLocalDateFromXSD (@Nullable final String sValue)
+  {
+    final DateTime aDT = PDTFromString.getDateTimeFromString (sValue, _getXSDFormatterDate ());
+    return aDT == null ? null : aDT.withChronology (PDTConfig.getDefaultChronologyUTC ()).toLocalDate ();
+  }
+
+  @Nonnull
+  public static String getAsStringXSD (@Nullable final LocalDate aLocalDate)
+  {
+    return _getXSDFormatterDate ().print (aLocalDate == null ? PDTFactory.getCurrentLocalDate () : aLocalDate);
   }
 }
