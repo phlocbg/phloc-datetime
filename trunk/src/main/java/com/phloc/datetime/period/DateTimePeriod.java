@@ -17,38 +17,77 @@
  */
 package com.phloc.datetime.period;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.joda.time.DateTime;
+import org.joda.time.Interval;
+import org.joda.time.Period;
+
+import com.phloc.datetime.PDTFactory;
 
 /**
  * Default implementation of the {@link IDateTimePeriod} interface.
  * 
  * @author philip
  */
-public final class DateTimePeriod extends AbstractDateTimePeriod
+public final class DateTimePeriod extends AbstractFlexiblePeriod <DateTime> implements IDateTimePeriod
 {
   public DateTimePeriod ()
-  {}
-
-  public DateTimePeriod (@Nullable final DateTime aStartDateTime)
   {
-    setStartDateTime (aStartDateTime);
+    this (null, null);
   }
 
-  public DateTimePeriod (@Nullable final DateTime aStartDateTime, @Nullable final DateTime aEndDateTime)
+  public DateTimePeriod (@Nullable final DateTime aStart)
   {
-    setStartDateTime (aStartDateTime);
-    setEndDateTime (aEndDateTime);
+    this (aStart, null);
   }
 
-  public void setStartDateTime (@Nullable final DateTime aStartDateTime)
+  public DateTimePeriod (@Nullable final DateTime aStart, @Nullable final DateTime aEnd)
   {
-    m_aStartDateTime = aStartDateTime;
+    super (aStart, aEnd);
   }
 
-  public void setEndDateTime (@Nullable final DateTime aEndDateTime)
+  public final boolean isValidFor (@Nonnull final DateTime aDate)
   {
-    m_aEndDateTime = aEndDateTime;
+    if (aDate == null)
+      throw new NullPointerException ("date");
+
+    if (m_aStart != null && m_aStart.isAfter (aDate))
+      return false;
+    if (m_aEnd != null && m_aEnd.isBefore (aDate))
+      return false;
+    return true;
+  }
+
+  public final boolean isValidForNow ()
+  {
+    return isValidFor (PDTFactory.getCurrentDateTime ());
+  }
+
+  public boolean canConvertToPeriod ()
+  {
+    return m_aStart != null && m_aEnd != null;
+  }
+
+  @Nonnull
+  public final Period getAsPeriod ()
+  {
+    if (!canConvertToPeriod ())
+      throw new IllegalStateException ("Cannot convert to a Period!");
+    return new Period (m_aStart, m_aEnd);
+  }
+
+  public boolean canConvertToInterval ()
+  {
+    return m_aStart != null && m_aEnd != null;
+  }
+
+  @Nonnull
+  public Interval getAsInterval ()
+  {
+    if (!canConvertToInterval ())
+      throw new IllegalStateException ("Cannot convert to an Interval!");
+    return new Interval (m_aStart, m_aEnd);
   }
 }

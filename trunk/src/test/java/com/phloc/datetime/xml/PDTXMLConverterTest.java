@@ -71,6 +71,7 @@ public final class PDTXMLConverterTest
     final LocalDate aLD2 = PDTXMLConverter.getLocalDate (c1);
     assertNotNull (aLD2);
     assertEquals (aLD, aLD2);
+    assertNull (PDTXMLConverter.getLocalDate (null));
   }
 
   @Test
@@ -91,6 +92,7 @@ public final class PDTXMLConverterTest
     final LocalTime aLT2 = PDTXMLConverter.getLocalTime (c1);
     assertNotNull (aLT2);
     assertEquals (aLT, aLT2);
+    assertNull (PDTXMLConverter.getLocalTime (null));
   }
 
   @Test
@@ -111,6 +113,7 @@ public final class PDTXMLConverterTest
     final LocalDateTime aLT2 = PDTXMLConverter.getLocalDateTime (c1);
     assertNotNull (aLT2);
     assertEquals (aLDT, aLT2);
+    assertNull (PDTXMLConverter.getLocalDateTime (null));
   }
 
   @Test
@@ -133,5 +136,6 @@ public final class PDTXMLConverterTest
     assertNotNull (aLDT2);
     assertEquals (aLDT.withChronology (PDTConfig.getDefaultChronology ()),
                   aLDT2.withChronology (PDTConfig.getDefaultChronology ()));
+    assertNull (PDTXMLConverter.getDateTime (null));
   }
 }

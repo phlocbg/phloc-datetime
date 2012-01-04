@@ -17,8 +17,6 @@
  */
 package com.phloc.datetime.period;
 
-import javax.annotation.Nullable;
-
 import org.joda.time.DateTime;
 
 /**
@@ -27,17 +25,7 @@ import org.joda.time.DateTime;
  * 
  * @author philip
  */
-public interface IDateTimePeriod extends IPeriodProvider
+public interface IDateTimePeriod extends IFlexiblePeriod <DateTime>, IIntervalProvider
 {
-  /**
-   * @return The start date and time. May be <code>null</code>.
-   */
-  @Nullable
-  DateTime getStartDateTime ();
-
-  /**
-   * @return The end date and time. May be <code>null</code>.
-   */
-  @Nullable
-  DateTime getEndDateTime ();
+  /* empty */
 }

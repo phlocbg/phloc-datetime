@@ -20,6 +20,21 @@
 -->
 <changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-datetime">
+  <entry date="2012-01-04" category="api" action="add" >
+    <change>
+      <text locale="en">IDateTimePeriod now has the possibility to convert to an Interval instance</text>
+    </change>
+  </entry>
+  <entry date="2012-01-04" category="api" action="change" incompatible="true">
+    <change>
+      <text locale="en">Restructured period package so that it contains a different hierarchy and an isValidFor method</text>
+    </change>
+  </entry>
+  <entry date="2012-01-04" category="api" action="add">
+    <change>
+      <text locale="en">Added some PDTFactory.createDateTime overloads</text>
+    </change>
+  </entry>
   <entry date="2011-12-08" category="api" action="add">
     <change>
       <text locale="en">Added PDTWebDateUtils date support</text>

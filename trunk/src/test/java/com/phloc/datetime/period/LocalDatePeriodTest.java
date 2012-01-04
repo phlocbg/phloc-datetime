@@ -18,11 +18,14 @@
 package com.phloc.datetime.period;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.joda.time.DateTimeConstants;
+import org.joda.time.LocalDate;
 import org.joda.time.Period;
 import org.junit.Test;
 
@@ -40,8 +43,8 @@ public final class LocalDatePeriodTest
   public void testAll ()
   {
     LocalDatePeriod p = new LocalDatePeriod ();
-    assertNull (p.getStartLocalDate ());
-    assertNull (p.getEndLocalDate ());
+    assertNull (p.getStart ());
+    assertNull (p.getEnd ());
 
     try
     {
@@ -51,7 +54,7 @@ public final class LocalDatePeriodTest
     catch (final IllegalStateException ex)
     {}
 
-    p.setStartLocalDate (PDTFactory.createLocalDate (2010, DateTimeConstants.FEBRUARY, 10));
+    p.setStart (PDTFactory.createLocalDate (2010, DateTimeConstants.FEBRUARY, 10));
 
     try
     {
@@ -61,7 +64,7 @@ public final class LocalDatePeriodTest
     catch (final IllegalStateException ex)
     {}
 
-    p.setEndLocalDate (PDTFactory.createLocalDate (2010, DateTimeConstants.FEBRUARY, 11));
+    p.setEnd (PDTFactory.createLocalDate (2010, DateTimeConstants.FEBRUARY, 11));
 
     final Period per = p.getAsPeriod ();
     assertNotNull (per);
@@ -74,13 +77,13 @@ public final class LocalDatePeriodTest
     assertEquals (0, per.getMillis ());
 
     p = new LocalDatePeriod (PDTFactory.createLocalDate (2010, DateTimeConstants.FEBRUARY, 10));
-    assertNotNull (p.getStartLocalDate ());
-    assertNull (p.getEndLocalDate ());
+    assertNotNull (p.getStart ());
+    assertNull (p.getEnd ());
 
     p = new LocalDatePeriod (PDTFactory.createLocalDate (2010, DateTimeConstants.FEBRUARY, 10),
                              PDTFactory.createLocalDate (2010, DateTimeConstants.FEBRUARY, 11));
-    assertNotNull (p.getStartLocalDate ());
-    assertNotNull (p.getEndLocalDate ());
+    assertNotNull (p.getStart ());
+    assertNotNull (p.getEnd ());
     assertEquals (per, p.getAsPeriod ());
 
     PhlocTestUtils.testDefaultImplementationWithEqualContentObject (p,
@@ -114,5 +117,62 @@ public final class LocalDatePeriodTest
                                                                                                                          DateTimeConstants.FEBRUARY,
                                                                                                                          10),
                                                                                              null));
+  }
+
+  @Test
+  public void testValidity ()
+  {
+    LocalDatePeriod vr = new LocalDatePeriod (null, null);
+    assertNull (vr.getStart ());
+    assertNull (vr.getEnd ());
+    assertTrue (vr.isValidForNow ());
+    assertTrue (vr.isValidFor (PDTFactory.createLocalDate (2000, DateTimeConstants.JANUARY, 1)));
+    assertTrue (vr.isValidFor (PDTFactory.createLocalDate (9999, DateTimeConstants.DECEMBER, 31)));
+    PhlocTestUtils.testDefaultImplementationWithEqualContentObject (vr, new LocalDatePeriod (null, null));
+
+    try
+    {
+      vr.isValidFor (null);
+      fail ();
+    }
+    catch (final NullPointerException ex)
+    {}
+
+    final LocalDate aStart = PDTFactory.createLocalDate (2011, DateTimeConstants.JULY, 18);
+    vr = new LocalDatePeriod (aStart, null);
+    assertEquals (aStart, vr.getStart ());
+    assertNull (vr.getEnd ());
+    assertTrue (vr.isValidForNow ());
+    // Start date
+    assertFalse (vr.isValidFor (PDTFactory.createLocalDate (2000, DateTimeConstants.JANUARY, 1)));
+    assertFalse (vr.isValidFor (PDTFactory.createLocalDate (2011, DateTimeConstants.JULY, 17)));
+    assertTrue (vr.isValidFor (PDTFactory.createLocalDate (2011, DateTimeConstants.JULY, 18)));
+    assertTrue (vr.isValidFor (PDTFactory.createLocalDate (2011, DateTimeConstants.JULY, 19)));
+    // End date
+    assertTrue (vr.isValidFor (PDTFactory.createLocalDate (9999, DateTimeConstants.DECEMBER, 31)));
+    PhlocTestUtils.testDefaultImplementationWithEqualContentObject (vr, new LocalDatePeriod (aStart, null));
+
+    final LocalDate aEnd = PDTFactory.createLocalDate (2011, DateTimeConstants.NOVEMBER, 18);
+    vr = new LocalDatePeriod (aStart, aEnd);
+    assertEquals (aStart, vr.getStart ());
+    assertEquals (aEnd, vr.getEnd ());
+    assertFalse (vr.isValidForNow ());
+    // Start date
+    assertFalse (vr.isValidFor (PDTFactory.createLocalDate (2000, DateTimeConstants.JANUARY, 1)));
+    assertFalse (vr.isValidFor (PDTFactory.createLocalDate (2011, DateTimeConstants.JULY, 17)));
+    assertTrue (vr.isValidFor (PDTFactory.createLocalDate (2011, DateTimeConstants.JULY, 18)));
+    assertTrue (vr.isValidFor (PDTFactory.createLocalDate (2011, DateTimeConstants.JULY, 19)));
+    // End date
+    assertTrue (vr.isValidFor (PDTFactory.createLocalDate (2011, DateTimeConstants.NOVEMBER, 17)));
+    assertTrue (vr.isValidFor (PDTFactory.createLocalDate (2011, DateTimeConstants.NOVEMBER, 18)));
+    assertFalse (vr.isValidFor (PDTFactory.createLocalDate (2011, DateTimeConstants.NOVEMBER, 19)));
+    assertFalse (vr.isValidFor (PDTFactory.createLocalDate (9999, DateTimeConstants.DECEMBER, 31)));
+    PhlocTestUtils.testDefaultImplementationWithEqualContentObject (vr, new LocalDatePeriod (aStart, aEnd));
+    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (vr, new LocalDatePeriod (aStart.plusDays (1),
+                                                                                                 aEnd));
+    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (vr,
+                                                                        new LocalDatePeriod (aStart, aEnd.plusDays (1)));
+    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (vr, new LocalDatePeriod (null, aEnd));
+    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (vr, new LocalDatePeriod (aStart, null));
   }
 }

@@ -17,38 +17,63 @@
  */
 package com.phloc.datetime.period;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.joda.time.LocalDate;
+import org.joda.time.Period;
+
+import com.phloc.datetime.PDTFactory;
 
 /**
  * Default implementation of the {@link ILocalDatePeriod} interface.
  * 
  * @author philip
  */
-public final class LocalDatePeriod extends AbstractLocalDatePeriod
+public final class LocalDatePeriod extends AbstractFlexiblePeriod <LocalDate> implements ILocalDatePeriod
 {
   public LocalDatePeriod ()
-  {}
-
-  public LocalDatePeriod (@Nullable final LocalDate aStartLocalDate)
   {
-    setStartLocalDate (aStartLocalDate);
+    this (null, null);
   }
 
-  public LocalDatePeriod (@Nullable final LocalDate aStartLocalDate, @Nullable final LocalDate aEndLocalDate)
+  public LocalDatePeriod (@Nullable final LocalDate aStart)
   {
-    setStartLocalDate (aStartLocalDate);
-    setEndLocalDate (aEndLocalDate);
+    this (aStart, null);
   }
 
-  public void setStartLocalDate (@Nullable final LocalDate aStartLocalDate)
+  public LocalDatePeriod (@Nullable final LocalDate aStart, @Nullable final LocalDate aEnd)
   {
-    m_aStartLocalDate = aStartLocalDate;
+    super (aStart, aEnd);
   }
 
-  public void setEndLocalDate (@Nullable final LocalDate aEndLocalDate)
+  public final boolean isValidFor (@Nonnull final LocalDate aDate)
   {
-    m_aEndLocalDate = aEndLocalDate;
+    if (aDate == null)
+      throw new NullPointerException ("date");
+
+    if (m_aStart != null && m_aStart.isAfter (aDate))
+      return false;
+    if (m_aEnd != null && m_aEnd.isBefore (aDate))
+      return false;
+    return true;
+  }
+
+  public final boolean isValidForNow ()
+  {
+    return isValidFor (PDTFactory.getCurrentLocalDate ());
+  }
+
+  public boolean canConvertToPeriod ()
+  {
+    return m_aStart != null && m_aEnd != null;
+  }
+
+  @Nonnull
+  public final Period getAsPeriod ()
+  {
+    if (!canConvertToPeriod ())
+      throw new IllegalStateException ("Cannot convert to a Period!");
+    return new Period (m_aStart, m_aEnd);
   }
 }

@@ -19,26 +19,26 @@ package com.phloc.datetime.period;
 
 import javax.annotation.Nonnull;
 
-import org.joda.time.Period;
+import org.joda.time.Interval;
 
 /**
- * Interface for objects providing a {@link Period}.
+ * Interface for objects providing an {@link Interval}.
  * 
  * @author philip
  */
-public interface IPeriodProvider
+public interface IIntervalProvider
 {
   /**
    * @return <code>true</code> if this object can be converted to a
-   *         {@link Period}.
+   *         {@link Interval}.
    */
-  boolean canConvertToPeriod ();
+  boolean canConvertToInterval ();
 
   /**
-   * Get the current object as a Joda {@link Period}.
+   * Get the current object as a Joda {@link Interval}.
    * 
-   * @return The period as a Joda time object. Never <code>null</code>.
+   * @return The interval as a Joda time object.Never <code>null</code>.
    */
   @Nonnull
-  Period getAsPeriod ();
+  Interval getAsInterval ();
 }

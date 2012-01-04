@@ -78,7 +78,47 @@ public final class PDTFactory
   @Nonnull
   public static DateTime createDateTime (final int nYears, final int nMonths, final int nDays)
   {
-    return new DateTime (nYears, nMonths, nDays, 0, 0, 0, 0, PDTConfig.getDefaultChronology ());
+    return createDateTime (nYears, nMonths, nDays, 0, 0, 0, 0);
+  }
+
+  @Nonnull
+  public static DateTime createDateTime (final int nYears,
+                                         final int nMonths,
+                                         final int nDays,
+                                         final int nHours,
+                                         final int nMinutes)
+  {
+    return createDateTime (nYears, nMonths, nDays, nHours, nMinutes, 0, 0);
+  }
+
+  @Nonnull
+  public static DateTime createDateTime (final int nYears,
+                                         final int nMonths,
+                                         final int nDays,
+                                         final int nHours,
+                                         final int nMinutes,
+                                         final int nSeconds)
+  {
+    return createDateTime (nYears, nMonths, nDays, nHours, nMinutes, nSeconds, 0);
+  }
+
+  @Nonnull
+  public static DateTime createDateTime (final int nYears,
+                                         final int nMonths,
+                                         final int nDays,
+                                         final int nHours,
+                                         final int nMinutes,
+                                         final int nSeconds,
+                                         final int nMilliSeconds)
+  {
+    return new DateTime (nYears,
+                         nMonths,
+                         nDays,
+                         nHours,
+                         nMinutes,
+                         nSeconds,
+                         nMilliSeconds,
+                         PDTConfig.getDefaultChronology ());
   }
 
   @Nonnull
@@ -204,6 +244,12 @@ public final class PDTFactory
   }
 
   @Nonnull
+  public static LocalTime createLocalTime (final int nHours, final int nMinutes)
+  {
+    return createLocalTime (nHours, nMinutes, 0, 0);
+  }
+
+  @Nonnull
   public static LocalTime createLocalTime (final int nHours, final int nMinutes, final int nSeconds)
   {
     return createLocalTime (nHours, nMinutes, nSeconds, 0);
@@ -284,6 +330,27 @@ public final class PDTFactory
   public static LocalDateTime createLocalDateTime (final int nYears, final int nMonths, final int nDays)
   {
     return createLocalDateTime (nYears, nMonths, nDays, 0, 0, 0, 0);
+  }
+
+  @Nonnull
+  public static LocalDateTime createLocalDateTime (final int nYears,
+                                                   final int nMonths,
+                                                   final int nDays,
+                                                   final int nHours,
+                                                   final int nMinutes)
+  {
+    return createLocalDateTime (nYears, nMonths, nDays, nHours, nMinutes, 0, 0);
+  }
+
+  @Nonnull
+  public static LocalDateTime createLocalDateTime (final int nYears,
+                                                   final int nMonths,
+                                                   final int nDays,
+                                                   final int nHours,
+                                                   final int nMinutes,
+                                                   final int nSeconds)
+  {
+    return createLocalDateTime (nYears, nMonths, nDays, nHours, nMinutes, nSeconds, 0);
   }
 
   @Nonnull

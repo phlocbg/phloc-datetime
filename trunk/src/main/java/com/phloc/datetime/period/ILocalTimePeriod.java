@@ -17,8 +17,6 @@
  */
 package com.phloc.datetime.period;
 
-import javax.annotation.Nullable;
-
 import org.joda.time.LocalTime;
 
 /**
@@ -27,17 +25,7 @@ import org.joda.time.LocalTime;
  * 
  * @author philip
  */
-public interface ILocalTimePeriod extends IPeriodProvider
+public interface ILocalTimePeriod extends IFlexiblePeriod <LocalTime>
 {
-  /**
-   * @return The start date. May be <code>null</code>.
-   */
-  @Nullable
-  LocalTime getStartLocalTime ();
-
-  /**
-   * @return The end date. May be <code>null</code>.
-   */
-  @Nullable
-  LocalTime getEndLocalTime ();
+  /* empty */
 }
