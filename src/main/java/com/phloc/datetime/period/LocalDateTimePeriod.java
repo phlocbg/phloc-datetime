@@ -17,38 +17,63 @@
  */
 package com.phloc.datetime.period;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.joda.time.LocalDateTime;
+import org.joda.time.Period;
+
+import com.phloc.datetime.PDTFactory;
 
 /**
  * Default implementation of the {@link ILocalDateTimePeriod} interface.
  * 
  * @author philip
  */
-public final class LocalDateTimePeriod extends AbstractLocalDateTimePeriod
+public final class LocalDateTimePeriod extends AbstractFlexiblePeriod <LocalDateTime> implements ILocalDateTimePeriod
 {
   public LocalDateTimePeriod ()
-  {}
-
-  public LocalDateTimePeriod (@Nullable final LocalDateTime aStartLocalDateTime)
   {
-    setStartLocalDateTime (aStartLocalDateTime);
+    this (null, null);
   }
 
-  public LocalDateTimePeriod (@Nullable final LocalDateTime aStartLocalDateTime, @Nullable final LocalDateTime aEndLocalDateTime)
+  public LocalDateTimePeriod (@Nullable final LocalDateTime aStart)
   {
-    setStartLocalDateTime (aStartLocalDateTime);
-    setEndLocalDateTime (aEndLocalDateTime);
+    this (aStart, null);
   }
 
-  public void setStartLocalDateTime (@Nullable final LocalDateTime aStartLocalDateTime)
+  public LocalDateTimePeriod (@Nullable final LocalDateTime aStart, @Nullable final LocalDateTime aEnd)
   {
-    m_aStartLocalDateTime = aStartLocalDateTime;
+    super (aStart, aEnd);
   }
 
-  public void setEndLocalDateTime (@Nullable final LocalDateTime aEndLocalDateTime)
+  public final boolean isValidFor (@Nonnull final LocalDateTime aDate)
   {
-    m_aEndLocalDateTime = aEndLocalDateTime;
+    if (aDate == null)
+      throw new NullPointerException ("date");
+
+    if (m_aStart != null && m_aStart.isAfter (aDate))
+      return false;
+    if (m_aEnd != null && m_aEnd.isBefore (aDate))
+      return false;
+    return true;
+  }
+
+  public final boolean isValidForNow ()
+  {
+    return isValidFor (PDTFactory.getCurrentLocalDateTime ());
+  }
+
+  public boolean canConvertToPeriod ()
+  {
+    return m_aStart != null && m_aEnd != null;
+  }
+
+  @Nonnull
+  public final Period getAsPeriod ()
+  {
+    if (!canConvertToPeriod ())
+      throw new IllegalStateException ("Cannot convert to a Period!");
+    return new Period (m_aStart, m_aEnd);
   }
 }
