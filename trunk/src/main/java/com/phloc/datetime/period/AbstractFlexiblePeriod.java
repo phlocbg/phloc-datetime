@@ -18,6 +18,7 @@
 package com.phloc.datetime.period;
 
 import javax.annotation.Nullable;
+import javax.annotation.concurrent.NotThreadSafe;
 
 import com.phloc.commons.compare.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
@@ -30,6 +31,7 @@ import com.phloc.commons.string.ToStringGenerator;
  * @param <DATATYPE>
  *        Date and time type
  */
+@NotThreadSafe
 public abstract class AbstractFlexiblePeriod <DATATYPE> implements IFlexiblePeriod <DATATYPE>
 {
   protected DATATYPE m_aStart;

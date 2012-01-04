@@ -19,6 +19,7 @@ package com.phloc.datetime.period;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.concurrent.NotThreadSafe;
 
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
@@ -31,7 +32,8 @@ import com.phloc.datetime.PDTFactory;
  * 
  * @author philip
  */
-public final class DateTimePeriod extends AbstractFlexiblePeriod <DateTime> implements IDateTimePeriod
+@NotThreadSafe
+public class DateTimePeriod extends AbstractFlexiblePeriod <DateTime> implements IDateTimePeriod
 {
   public DateTimePeriod ()
   {

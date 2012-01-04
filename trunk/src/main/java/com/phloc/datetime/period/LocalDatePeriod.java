@@ -19,6 +19,7 @@ package com.phloc.datetime.period;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.concurrent.NotThreadSafe;
 
 import org.joda.time.LocalDate;
 import org.joda.time.Period;
@@ -30,7 +31,8 @@ import com.phloc.datetime.PDTFactory;
  * 
  * @author philip
  */
-public final class LocalDatePeriod extends AbstractFlexiblePeriod <LocalDate> implements ILocalDatePeriod
+@NotThreadSafe
+public class LocalDatePeriod extends AbstractFlexiblePeriod <LocalDate> implements ILocalDatePeriod
 {
   public LocalDatePeriod ()
   {
