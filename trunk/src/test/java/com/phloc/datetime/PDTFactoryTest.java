@@ -29,6 +29,8 @@ import java.util.GregorianCalendar;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+import org.joda.time.LocalTime;
 import org.joda.time.Period;
 import org.junit.Test;
 
@@ -119,5 +121,21 @@ public final class PDTFactoryTest
     aLD = PDTFactory.createLocalDate (aCal);
     assertEquals (aDate, aLD.toDateTimeAtStartOfDay ().toDate ());
     assertEquals (aCal, aLD.toDateTimeAtStartOfDay ().toCalendar (null));
+  }
+
+  @Test
+  public void testConvert ()
+  {
+    final LocalDate aLD1 = PDTFactory.getCurrentLocalDate ();
+    DateTime aDT = PDTFactory.createDateTime (aLD1);
+    assertEquals (aLD1, aDT.toLocalDate ());
+
+    final LocalTime aLT1 = PDTFactory.getCurrentLocalTime ();
+    aDT = PDTFactory.createDateTime (aLT1);
+    assertEquals (aLT1, aDT.toLocalTime ());
+
+    final LocalDateTime aLDT1 = PDTFactory.getCurrentLocalDateTime ();
+    aDT = PDTFactory.createDateTime (aLDT1);
+    assertEquals (aLDT1, aDT.toLocalDateTime ());
   }
 }
