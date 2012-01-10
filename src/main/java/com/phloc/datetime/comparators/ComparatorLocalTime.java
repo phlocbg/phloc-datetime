@@ -24,6 +24,11 @@ import org.joda.time.LocalTime;
 import com.phloc.commons.compare.AbstractComparator;
 import com.phloc.commons.compare.ESortOrder;
 
+/**
+ * Comparator for {@link LocalTime} objects.
+ * 
+ * @author philip
+ */
 public final class ComparatorLocalTime extends AbstractComparator <LocalTime>
 {
   public ComparatorLocalTime ()

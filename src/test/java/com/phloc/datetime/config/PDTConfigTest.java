@@ -40,15 +40,36 @@ public final class PDTConfigTest
 
     aDTZ = PDTConfig.getDateTimeZoneUTC ();
     assertNotNull (aDTZ);
+    assertEquals ("UTC", aDTZ.getID ());
 
     assertNotNull (PDTConfig.getDefaultChronologyUTC ());
+    assertEquals (PDTConfig.getDateTimeZoneUTC (), PDTConfig.getDefaultChronologyUTC ().getZone ());
+
     assertNotNull (PDTConfig.getDefaultChronologyWithoutDateTimeZone ());
+    assertEquals (DateTimeZone.getDefault (), PDTConfig.getDefaultChronologyWithoutDateTimeZone ().getZone ());
 
     try
     {
+      // Invalid
       assertFalse (PDTConfig.setDefaultDateTimeZoneID ("does not exist").isSuccess ());
+
+      // Regular
       assertTrue (PDTConfig.setDefaultDateTimeZoneID ("Europe/Berlin").isSuccess ());
       assertEquals ("Europe/Berlin", PDTConfig.getDefaultDateTimeZone ().getID ());
+
+      // I hope this is not the standard time zone anywhere
+      assertTrue (PDTConfig.setDefaultDateTimeZoneID ("UTC").isSuccess ());
+      assertEquals ("UTC", PDTConfig.getDefaultDateTimeZone ().getID ());
+
+      // The default date time zone was not modified
+      assertEquals (DateTimeZone.getDefault (), PDTConfig.getDefaultChronologyWithoutDateTimeZone ().getZone ());
+
+      if (!DateTimeZone.getDefault ().getID ().equals ("UTC"))
+      {
+        // And therefore this must not be equal
+        assertTrue (!PDTConfig.getDefaultDateTimeZone ().equals (PDTConfig.getDefaultChronologyWithoutDateTimeZone ()
+                                                                          .getZone ()));
+      }
     }
     finally
     {
