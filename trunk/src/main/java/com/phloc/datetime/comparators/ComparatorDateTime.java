@@ -24,6 +24,11 @@ import org.joda.time.DateTime;
 import com.phloc.commons.compare.AbstractComparator;
 import com.phloc.commons.compare.ESortOrder;
 
+/**
+ * Comparator for {@link DateTime} objects.
+ * 
+ * @author philip
+ */
 public final class ComparatorDateTime extends AbstractComparator <DateTime>
 {
   public ComparatorDateTime ()

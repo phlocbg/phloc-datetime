@@ -105,12 +105,18 @@ public final class PDTConfig
     return GJChronology.getInstance (getDefaultDateTimeZone ());
   }
 
+  /**
+   * @return The default chronology with the system date time zone
+   */
   @Nonnull
   public static Chronology getDefaultChronologyWithoutDateTimeZone ()
   {
     return GJChronology.getInstance ();
   }
 
+  /**
+   * @return The default chronology with UTC date time zone
+   */
   @Nonnull
   public static Chronology getDefaultChronologyUTC ()
   {
