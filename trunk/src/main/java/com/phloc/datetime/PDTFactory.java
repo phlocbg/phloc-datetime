@@ -245,6 +245,18 @@ public final class PDTFactory
   }
 
   @Nonnull
+  public static LocalDate createLocalDate (@Nonnull final DateTime aDateTime)
+  {
+    return aDateTime.toLocalDate ();
+  }
+
+  @Nonnull
+  public static LocalDate createLocalDate (@Nonnull final LocalDateTime aLocalDateTime)
+  {
+    return aLocalDateTime.toLocalDate ();
+  }
+
+  @Nonnull
   public static LocalTime getCurrentLocalTime ()
   {
     return new LocalTime (_getLocalChronology ());
@@ -311,6 +323,18 @@ public final class PDTFactory
   }
 
   @Nonnull
+  public static LocalTime createLocalTime (@Nonnull final DateTime aDateTime)
+  {
+    return aDateTime.toLocalTime ();
+  }
+
+  @Nonnull
+  public static LocalTime createLocalTime (@Nonnull final LocalDateTime aLocalDateTime)
+  {
+    return aLocalDateTime.toLocalTime ();
+  }
+
+  @Nonnull
   public static LocalDateTime getCurrentLocalDateTime ()
   {
     return new LocalDateTime (_getLocalChronology ());
@@ -327,6 +351,24 @@ public final class PDTFactory
   public static LocalDateTime createLocalDateTime (@Nonnull final String sDateTime)
   {
     return new LocalDateTime (sDateTime, _getLocalChronology ());
+  }
+
+  @Nonnull
+  public static LocalDateTime createLocalDateTime (@Nonnull final DateTime aDateTime)
+  {
+    return aDateTime.toLocalDateTime ();
+  }
+
+  @Nonnull
+  public static LocalDateTime createLocalDateTime (@Nonnull final LocalDate aDate)
+  {
+    return createLocalDateTime (aDate.getYear (), aDate.getMonthOfYear (), aDate.getDayOfMonth ());
+  }
+
+  @Nonnull
+  public static LocalDateTime createLocalDateTime (@Nonnull final LocalTime aTime)
+  {
+    return CPDT.NULL_LOCAL_DATE.toLocalDateTime (aTime);
   }
 
   @Nonnull

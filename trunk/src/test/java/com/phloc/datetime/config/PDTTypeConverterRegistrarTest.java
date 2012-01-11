@@ -109,10 +109,26 @@ public final class PDTTypeConverterRegistrarTest
       assertNotNull (TypeConverter.convertIfNecessary (aNumber, LocalTime.class));
 
     // Test auto conversion to and from string
-    final LocalTime aNow = PDTFactory.getCurrentLocalTime ();
-    final String sNow = TypeConverter.convertIfNecessary (aNow, String.class);
-    final LocalTime aNow2 = TypeConverter.convertIfNecessary (sNow, aNow.getClass ());
-    assertEquals (aNow, aNow2);
+    final LocalTime aNowTime = PDTFactory.getCurrentLocalTime ();
+    final String sNow = TypeConverter.convertIfNecessary (aNowTime, String.class);
+    final LocalTime aNowTime2 = TypeConverter.convertIfNecessary (sNow, aNowTime.getClass ());
+    assertEquals (aNowTime, aNowTime2);
+
+    // Test auto conversion between joda types
+    for (final Class <?> aDestClass : new Class <?> [] { DateTime.class, LocalDateTime.class })
+    {
+      final LocalTime aNow = PDTFactory.getCurrentLocalTime ();
+      final Object aDT = TypeConverter.convertIfNecessary (aNow, aDestClass);
+      final LocalTime aNow2 = TypeConverter.convertIfNecessary (aDT, aNow.getClass ());
+      assertEquals (aNow, aNow2);
+    }
+    for (final Class <?> aDestClass : new Class <?> [] { DateTime.class, LocalDateTime.class })
+    {
+      final LocalDate aNow = PDTFactory.getCurrentLocalDate ();
+      final Object aDT = TypeConverter.convertIfNecessary (aNow, aDestClass);
+      final LocalDate aNow2 = TypeConverter.convertIfNecessary (aDT, aNow.getClass ());
+      assertEquals (aNow, aNow2);
+    }
   }
 
   @Test

@@ -137,5 +137,10 @@ public final class PDTFactoryTest
     final LocalDateTime aLDT1 = PDTFactory.getCurrentLocalDateTime ();
     aDT = PDTFactory.createDateTime (aLDT1);
     assertEquals (aLDT1, aDT.toLocalDateTime ());
+
+    aDT = PDTFactory.getCurrentDateTime ();
+    final LocalDateTime aLDT = PDTFactory.createLocalDateTime (aDT);
+    final DateTime aDT2 = PDTFactory.createDateTime (aLDT);
+    assertEquals (aDT, aDT2);
   }
 }

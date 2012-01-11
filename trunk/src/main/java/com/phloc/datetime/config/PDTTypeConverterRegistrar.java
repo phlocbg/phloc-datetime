@@ -40,6 +40,7 @@ import com.phloc.commons.typeconvert.ITypeConverter;
 import com.phloc.commons.typeconvert.ITypeConverterRegistrarSPI;
 import com.phloc.commons.typeconvert.ITypeConverterRegistry;
 import com.phloc.commons.typeconvert.TypeConverterRegistry;
+import com.phloc.datetime.PDTFactory;
 
 /**
  * Register all {@link ITypeConverter} objects to the central
@@ -96,6 +97,30 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (Integer.class, DateTime.class, aConverterToDateTime);
     aRegistry.registerTypeConverter (Long.class, DateTime.class, aConverterToDateTime);
     aRegistry.registerTypeConverter (Short.class, DateTime.class, aConverterToDateTime);
+    aRegistry.registerTypeConverter (LocalDate.class, DateTime.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public DateTime convert (final Object aSource)
+      {
+        return PDTFactory.createDateTime ((LocalDate) aSource);
+      }
+    });
+    aRegistry.registerTypeConverter (LocalTime.class, DateTime.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public DateTime convert (final Object aSource)
+      {
+        return PDTFactory.createDateTime ((LocalTime) aSource);
+      }
+    });
+    aRegistry.registerTypeConverter (LocalDateTime.class, DateTime.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public DateTime convert (final Object aSource)
+      {
+        return PDTFactory.createDateTime ((LocalDateTime) aSource);
+      }
+    });
     aRegistry.registerTypeConverter (DateTime.class, String.class, aConverterToString);
 
     // LocalDateTime
@@ -120,6 +145,30 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (Integer.class, LocalDateTime.class, aConverterToLocalDateTime);
     aRegistry.registerTypeConverter (Long.class, LocalDateTime.class, aConverterToLocalDateTime);
     aRegistry.registerTypeConverter (Short.class, LocalDateTime.class, aConverterToLocalDateTime);
+    aRegistry.registerTypeConverter (DateTime.class, LocalDateTime.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public LocalDateTime convert (final Object aSource)
+      {
+        return PDTFactory.createLocalDateTime ((DateTime) aSource);
+      }
+    });
+    aRegistry.registerTypeConverter (LocalDate.class, LocalDateTime.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public LocalDateTime convert (final Object aSource)
+      {
+        return PDTFactory.createLocalDateTime ((LocalDate) aSource);
+      }
+    });
+    aRegistry.registerTypeConverter (LocalTime.class, LocalDateTime.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public LocalDateTime convert (final Object aSource)
+      {
+        return PDTFactory.createLocalDateTime ((LocalTime) aSource);
+      }
+    });
     aRegistry.registerTypeConverter (LocalDateTime.class, String.class, aConverterToString);
 
     // LocalDate
@@ -144,6 +193,22 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (Integer.class, LocalDate.class, aConverterToLocalDate);
     aRegistry.registerTypeConverter (Long.class, LocalDate.class, aConverterToLocalDate);
     aRegistry.registerTypeConverter (Short.class, LocalDate.class, aConverterToLocalDate);
+    aRegistry.registerTypeConverter (DateTime.class, LocalDate.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public LocalDate convert (final Object aSource)
+      {
+        return PDTFactory.createLocalDate ((DateTime) aSource);
+      }
+    });
+    aRegistry.registerTypeConverter (LocalDateTime.class, LocalDate.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public LocalDate convert (final Object aSource)
+      {
+        return PDTFactory.createLocalDate ((LocalDateTime) aSource);
+      }
+    });
     aRegistry.registerTypeConverter (LocalDate.class, String.class, aConverterToString);
 
     // LocalTime
@@ -168,6 +233,22 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (Integer.class, LocalTime.class, aConverterToLocalTime);
     aRegistry.registerTypeConverter (Long.class, LocalTime.class, aConverterToLocalTime);
     aRegistry.registerTypeConverter (Short.class, LocalTime.class, aConverterToLocalTime);
+    aRegistry.registerTypeConverter (DateTime.class, LocalTime.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public LocalTime convert (final Object aSource)
+      {
+        return PDTFactory.createLocalTime ((DateTime) aSource);
+      }
+    });
+    aRegistry.registerTypeConverter (LocalDateTime.class, LocalTime.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public LocalTime convert (final Object aSource)
+      {
+        return PDTFactory.createLocalTime ((LocalDateTime) aSource);
+      }
+    });
     aRegistry.registerTypeConverter (LocalTime.class, String.class, aConverterToString);
 
     // Duration
