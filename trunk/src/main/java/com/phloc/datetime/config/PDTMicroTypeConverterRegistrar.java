@@ -17,6 +17,10 @@
  */
 package com.phloc.datetime.config;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -46,5 +50,9 @@ public final class PDTMicroTypeConverterRegistrar implements IMicroTypeConverter
     aRegistry.registerMicroElementTypeConverter (DateTime.class, new StringBasedMicroTypeConverter (DateTime.class));
     aRegistry.registerMicroElementTypeConverter (Duration.class, new StringBasedMicroTypeConverter (Duration.class));
     aRegistry.registerMicroElementTypeConverter (Period.class, new StringBasedMicroTypeConverter (Period.class));
+    // J2SE stuff
+    aRegistry.registerMicroElementTypeConverter (Date.class, new StringBasedMicroTypeConverter (Date.class));
+    aRegistry.registerMicroElementTypeConverter (GregorianCalendar.class,
+                                                 new StringBasedMicroTypeConverter (Calendar.class));
   }
 }
