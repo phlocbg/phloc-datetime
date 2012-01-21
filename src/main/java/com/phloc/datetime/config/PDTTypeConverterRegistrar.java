@@ -19,6 +19,7 @@ package com.phloc.datetime.config;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -36,6 +37,7 @@ import org.joda.time.Period;
 import org.joda.time.convert.ConverterManager;
 
 import com.phloc.commons.annotations.IsSPIImplementation;
+import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.typeconvert.ITypeConverter;
 import com.phloc.commons.typeconvert.ITypeConverterRegistrarSPI;
 import com.phloc.commons.typeconvert.ITypeConverterRegistry;
@@ -294,5 +296,59 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (Long.class, Period.class, aConverterToPeriod);
     aRegistry.registerTypeConverter (Short.class, Period.class, aConverterToPeriod);
     aRegistry.registerTypeConverter (Period.class, String.class, aConverterToString);
+
+    // Date and Calendar
+    aRegistry.registerTypeConverter (Calendar.class, String.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public String convert (final Object aSource)
+      {
+        return Long.toString (((Calendar) aSource).getTimeInMillis ());
+      }
+    });
+    aRegistry.registerTypeConverter (Calendar.class, Date.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public Date convert (final Object aSource)
+      {
+        return ((Calendar) aSource).getTime ();
+      }
+    });
+    aRegistry.registerTypeConverter (String.class, Calendar.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public Calendar convert (final Object aSource)
+      {
+        final Calendar aCal = Calendar.getInstance ();
+        aCal.setTimeInMillis (StringHelper.parseLong ((String) aSource, 0));
+        return aCal;
+      }
+    });
+    aRegistry.registerTypeConverter (Date.class, Calendar.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public Calendar convert (final Object aSource)
+      {
+        final Calendar aCal = Calendar.getInstance ();
+        aCal.setTime ((Date) aSource);
+        return aCal;
+      }
+    });
+    aRegistry.registerTypeConverter (Date.class, String.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public String convert (final Object aSource)
+      {
+        return Long.toString (((Date) aSource).getTime ());
+      }
+    });
+    aRegistry.registerTypeConverter (String.class, Date.class, new ITypeConverter ()
+    {
+      @Nonnull
+      public Date convert (final Object aSource)
+      {
+        return new Date (StringHelper.parseLong ((String) aSource, 0));
+      }
+    });
   }
 }
