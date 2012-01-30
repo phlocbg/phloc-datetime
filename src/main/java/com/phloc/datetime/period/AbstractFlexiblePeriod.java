@@ -17,11 +17,13 @@
  */
 package com.phloc.datetime.period;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.NotThreadSafe;
 
 import com.phloc.commons.compare.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
+import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
 
 /**
@@ -49,19 +51,28 @@ public abstract class AbstractFlexiblePeriod <DATATYPE> implements IFlexiblePeri
     return m_aStart;
   }
 
-  public void setStart (@Nullable final DATATYPE aStart)
+  @Nonnull
+  public final EChange setStart (@Nullable final DATATYPE aStart)
   {
+    if (EqualsUtils.nullSafeEquals (m_aStart, aStart))
+      return EChange.UNCHANGED;
     m_aStart = aStart;
+    return EChange.CHANGED;
   }
 
+  @Nullable
   public final DATATYPE getEnd ()
   {
     return m_aEnd;
   }
 
-  public void setEnd (@Nullable final DATATYPE aEnd)
+  @Nonnull
+  public final EChange setEnd (@Nullable final DATATYPE aEnd)
   {
+    if (EqualsUtils.nullSafeEquals (m_aEnd, aEnd))
+      return EChange.UNCHANGED;
     m_aEnd = aEnd;
+    return EChange.CHANGED;
   }
 
   @Override
