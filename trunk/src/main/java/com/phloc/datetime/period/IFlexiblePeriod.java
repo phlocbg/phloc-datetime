@@ -17,6 +17,8 @@
  */
 package com.phloc.datetime.period;
 
+import java.io.Serializable;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -27,7 +29,7 @@ import javax.annotation.Nonnull;
  * @param <DATATYPE>
  *        Date and time type
  */
-public interface IFlexiblePeriod <DATATYPE> extends IPeriodProvider, IHasStartAndEnd <DATATYPE>
+public interface IFlexiblePeriod <DATATYPE> extends IPeriodProvider, IHasStartAndEnd <DATATYPE>, Serializable
 {
   /**
    * Check if this object is valid for this specific date.
