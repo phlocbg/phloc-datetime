@@ -142,5 +142,9 @@ public final class PDTFactoryTest
     final LocalDateTime aLDT = PDTFactory.createLocalDateTime (aDT);
     final DateTime aDT2 = PDTFactory.createDateTime (aLDT);
     assertEquals (aDT, aDT2);
+
+    aDT = PDTFactory.createDateTimeFromMillis (1328008438966L);
+    assertNotNull (aDT);
+    assertEquals (aDT, PDTFactory.createDateTime (2012, DateTimeConstants.JANUARY, 31, 12, 13, 58, 966));
   }
 }
