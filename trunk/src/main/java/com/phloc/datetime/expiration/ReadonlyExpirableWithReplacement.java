@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 
 import org.joda.time.DateTime;
 
-import com.phloc.commons.compare.EqualsUtils;
+import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.ToStringGenerator;
 
@@ -74,8 +74,8 @@ public final class ReadonlyExpirableWithReplacement <DATATYPE> implements IReado
     if (!(o instanceof ReadonlyExpirableWithReplacement <?>))
       return false;
     final ReadonlyExpirableWithReplacement <?> rhs = (ReadonlyExpirableWithReplacement <?>) o;
-    return EqualsUtils.nullSafeEquals (m_aExpirationDateTime, rhs.m_aExpirationDateTime) &&
-           EqualsUtils.nullSafeEquals (m_aReplacement, rhs.m_aReplacement);
+    return EqualsUtils.equals (m_aExpirationDateTime, rhs.m_aExpirationDateTime) &&
+           EqualsUtils.equals (m_aReplacement, rhs.m_aReplacement);
   }
 
   @Override

@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 
 import org.joda.time.DateTime;
 
-import com.phloc.commons.compare.EqualsUtils;
+import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
@@ -63,7 +63,7 @@ public final class Expirable implements IExpirable
   @Nonnull
   public EChange setExpirationDateTime (@Nullable final DateTime aExpirationDateTime)
   {
-    if (EqualsUtils.nullSafeEquals (aExpirationDateTime, m_aExpirationDateTime))
+    if (EqualsUtils.equals (aExpirationDateTime, m_aExpirationDateTime))
       return EChange.UNCHANGED;
     m_aExpirationDateTime = aExpirationDateTime;
     return EChange.CHANGED;
@@ -83,7 +83,7 @@ public final class Expirable implements IExpirable
     if (!(o instanceof Expirable))
       return false;
     final Expirable rhs = (Expirable) o;
-    return EqualsUtils.nullSafeEquals (m_aExpirationDateTime, rhs.m_aExpirationDateTime);
+    return EqualsUtils.equals (m_aExpirationDateTime, rhs.m_aExpirationDateTime);
   }
 
   @Override

@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 
 import org.joda.time.DateTime;
 
-import com.phloc.commons.compare.EqualsUtils;
+import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.ToStringGenerator;
 
@@ -63,7 +63,7 @@ public final class ReadonlyExpirable implements IReadonlyExpirable
     if (!(o instanceof ReadonlyExpirable))
       return false;
     final ReadonlyExpirable rhs = (ReadonlyExpirable) o;
-    return EqualsUtils.nullSafeEquals (m_aExpirationDateTime, rhs.m_aExpirationDateTime);
+    return EqualsUtils.equals (m_aExpirationDateTime, rhs.m_aExpirationDateTime);
   }
 
   @Override
