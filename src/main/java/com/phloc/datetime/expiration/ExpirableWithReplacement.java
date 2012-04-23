@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 
 import org.joda.time.DateTime;
 
-import com.phloc.commons.compare.EqualsUtils;
+import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
@@ -67,7 +67,7 @@ public final class ExpirableWithReplacement <DATATYPE> implements IExpirableWith
   @Nonnull
   public EChange setExpirationDateTime (@Nullable final DateTime aExpirationDateTime)
   {
-    if (EqualsUtils.nullSafeEquals (aExpirationDateTime, m_aExpirationDateTime))
+    if (EqualsUtils.equals (aExpirationDateTime, m_aExpirationDateTime))
       return EChange.UNCHANGED;
     m_aExpirationDateTime = aExpirationDateTime;
     return EChange.CHANGED;
@@ -82,7 +82,7 @@ public final class ExpirableWithReplacement <DATATYPE> implements IExpirableWith
   @Nonnull
   public EChange setReplacement (@Nullable final DATATYPE aReplacement)
   {
-    if (EqualsUtils.nullSafeEquals (aReplacement, m_aReplacement))
+    if (EqualsUtils.equals (aReplacement, m_aReplacement))
       return EChange.UNCHANGED;
     m_aReplacement = aReplacement;
     return EChange.CHANGED;
@@ -102,8 +102,8 @@ public final class ExpirableWithReplacement <DATATYPE> implements IExpirableWith
     if (!(o instanceof ExpirableWithReplacement <?>))
       return false;
     final ExpirableWithReplacement <?> rhs = (ExpirableWithReplacement <?>) o;
-    return EqualsUtils.nullSafeEquals (m_aExpirationDateTime, rhs.m_aExpirationDateTime) &&
-           EqualsUtils.nullSafeEquals (m_aReplacement, rhs.m_aReplacement);
+    return EqualsUtils.equals (m_aExpirationDateTime, rhs.m_aExpirationDateTime) &&
+           EqualsUtils.equals (m_aReplacement, rhs.m_aReplacement);
   }
 
   @Override

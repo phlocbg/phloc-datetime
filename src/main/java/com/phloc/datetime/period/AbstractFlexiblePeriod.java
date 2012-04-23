@@ -21,7 +21,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.NotThreadSafe;
 
-import com.phloc.commons.compare.EqualsUtils;
+import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
@@ -54,7 +54,7 @@ public abstract class AbstractFlexiblePeriod <DATATYPE> implements IFlexiblePeri
   @Nonnull
   public final EChange setStart (@Nullable final DATATYPE aStart)
   {
-    if (EqualsUtils.nullSafeEquals (m_aStart, aStart))
+    if (EqualsUtils.equals (m_aStart, aStart))
       return EChange.UNCHANGED;
     m_aStart = aStart;
     return EChange.CHANGED;
@@ -69,7 +69,7 @@ public abstract class AbstractFlexiblePeriod <DATATYPE> implements IFlexiblePeri
   @Nonnull
   public final EChange setEnd (@Nullable final DATATYPE aEnd)
   {
-    if (EqualsUtils.nullSafeEquals (m_aEnd, aEnd))
+    if (EqualsUtils.equals (m_aEnd, aEnd))
       return EChange.UNCHANGED;
     m_aEnd = aEnd;
     return EChange.CHANGED;
@@ -83,7 +83,7 @@ public abstract class AbstractFlexiblePeriod <DATATYPE> implements IFlexiblePeri
     if (o == null || !getClass ().equals (o.getClass ()))
       return false;
     final AbstractFlexiblePeriod <?> rhs = (AbstractFlexiblePeriod <?>) o;
-    return EqualsUtils.nullSafeEquals (m_aStart, rhs.m_aStart) && EqualsUtils.nullSafeEquals (m_aEnd, rhs.m_aEnd);
+    return EqualsUtils.equals (m_aStart, rhs.m_aStart) && EqualsUtils.equals (m_aEnd, rhs.m_aEnd);
   }
 
   @Override
