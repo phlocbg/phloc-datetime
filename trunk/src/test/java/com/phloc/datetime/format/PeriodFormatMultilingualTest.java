@@ -36,7 +36,7 @@ public final class PeriodFormatMultilingualTest
   @Test
   public void testSimple ()
   {
-    final Locale DE = LocaleCache.get ("de", "AT");
+    final Locale DE = LocaleCache.getLocale ("de", "AT");
     final Period aPeriod = new Period (123456);
     assertNotNull (PeriodFormatMultilingual.getFormatterLong (DE).print (aPeriod));
     assertNotNull (PeriodFormatMultilingual.getFormatterShort (DE).print (aPeriod));
