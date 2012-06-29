@@ -71,7 +71,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     final ITypeConverter aConverterToString = new ITypeConverter ()
     {
       @Nonnull
-      public String convert (final Object aSource)
+      public String convert (@Nonnull final Object aSource)
       {
         return aSource.toString ();
       }
@@ -81,7 +81,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     final ITypeConverter aConverterToDateTime = new ITypeConverter ()
     {
       @Nonnull
-      public DateTime convert (final Object aSource)
+      public DateTime convert (@Nonnull final Object aSource)
       {
         return new DateTime (aSource, PDTConfig.getDefaultChronology ());
       }
@@ -102,7 +102,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (LocalDate.class, DateTime.class, new ITypeConverter ()
     {
       @Nonnull
-      public DateTime convert (final Object aSource)
+      public DateTime convert (@Nonnull final Object aSource)
       {
         return PDTFactory.createDateTime ((LocalDate) aSource);
       }
@@ -110,7 +110,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (LocalTime.class, DateTime.class, new ITypeConverter ()
     {
       @Nonnull
-      public DateTime convert (final Object aSource)
+      public DateTime convert (@Nonnull final Object aSource)
       {
         return PDTFactory.createDateTime ((LocalTime) aSource);
       }
@@ -118,7 +118,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (LocalDateTime.class, DateTime.class, new ITypeConverter ()
     {
       @Nonnull
-      public DateTime convert (final Object aSource)
+      public DateTime convert (@Nonnull final Object aSource)
       {
         return PDTFactory.createDateTime ((LocalDateTime) aSource);
       }
@@ -129,7 +129,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     final ITypeConverter aConverterToLocalDateTime = new ITypeConverter ()
     {
       @Nonnull
-      public LocalDateTime convert (final Object aSource)
+      public LocalDateTime convert (@Nonnull final Object aSource)
       {
         return new LocalDateTime (aSource, PDTConfig.getDefaultChronology ());
       }
@@ -150,7 +150,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (DateTime.class, LocalDateTime.class, new ITypeConverter ()
     {
       @Nonnull
-      public LocalDateTime convert (final Object aSource)
+      public LocalDateTime convert (@Nonnull final Object aSource)
       {
         return PDTFactory.createLocalDateTime ((DateTime) aSource);
       }
@@ -158,7 +158,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (LocalDate.class, LocalDateTime.class, new ITypeConverter ()
     {
       @Nonnull
-      public LocalDateTime convert (final Object aSource)
+      public LocalDateTime convert (@Nonnull final Object aSource)
       {
         return PDTFactory.createLocalDateTime ((LocalDate) aSource);
       }
@@ -166,7 +166,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (LocalTime.class, LocalDateTime.class, new ITypeConverter ()
     {
       @Nonnull
-      public LocalDateTime convert (final Object aSource)
+      public LocalDateTime convert (@Nonnull final Object aSource)
       {
         return PDTFactory.createLocalDateTime ((LocalTime) aSource);
       }
@@ -177,7 +177,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     final ITypeConverter aConverterToLocalDate = new ITypeConverter ()
     {
       @Nonnull
-      public LocalDate convert (final Object aSource)
+      public LocalDate convert (@Nonnull final Object aSource)
       {
         return new LocalDate (aSource, PDTConfig.getDefaultChronology ());
       }
@@ -198,7 +198,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (DateTime.class, LocalDate.class, new ITypeConverter ()
     {
       @Nonnull
-      public LocalDate convert (final Object aSource)
+      public LocalDate convert (@Nonnull final Object aSource)
       {
         return PDTFactory.createLocalDate ((DateTime) aSource);
       }
@@ -206,7 +206,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (LocalDateTime.class, LocalDate.class, new ITypeConverter ()
     {
       @Nonnull
-      public LocalDate convert (final Object aSource)
+      public LocalDate convert (@Nonnull final Object aSource)
       {
         return PDTFactory.createLocalDate ((LocalDateTime) aSource);
       }
@@ -217,7 +217,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     final ITypeConverter aConverterToLocalTime = new ITypeConverter ()
     {
       @Nonnull
-      public LocalTime convert (final Object aSource)
+      public LocalTime convert (@Nonnull final Object aSource)
       {
         return new LocalTime (aSource, PDTConfig.getDefaultChronology ());
       }
@@ -238,7 +238,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (DateTime.class, LocalTime.class, new ITypeConverter ()
     {
       @Nonnull
-      public LocalTime convert (final Object aSource)
+      public LocalTime convert (@Nonnull final Object aSource)
       {
         return PDTFactory.createLocalTime ((DateTime) aSource);
       }
@@ -246,7 +246,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (LocalDateTime.class, LocalTime.class, new ITypeConverter ()
     {
       @Nonnull
-      public LocalTime convert (final Object aSource)
+      public LocalTime convert (@Nonnull final Object aSource)
       {
         return PDTFactory.createLocalTime ((LocalDateTime) aSource);
       }
@@ -257,7 +257,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     final ITypeConverter aConverterToDuration = new ITypeConverter ()
     {
       @Nonnull
-      public Duration convert (final Object aSource)
+      public Duration convert (@Nonnull final Object aSource)
       {
         return new Duration (aSource);
       }
@@ -279,7 +279,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     final ITypeConverter aConverterToPeriod = new ITypeConverter ()
     {
       @Nonnull
-      public Period convert (final Object aSource)
+      public Period convert (@Nonnull final Object aSource)
       {
         return new Period (aSource);
       }
@@ -301,7 +301,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (Calendar.class, String.class, new ITypeConverter ()
     {
       @Nonnull
-      public String convert (final Object aSource)
+      public String convert (@Nonnull final Object aSource)
       {
         return Long.toString (((Calendar) aSource).getTimeInMillis ());
       }
@@ -309,7 +309,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (Calendar.class, Date.class, new ITypeConverter ()
     {
       @Nonnull
-      public Date convert (final Object aSource)
+      public Date convert (@Nonnull final Object aSource)
       {
         return ((Calendar) aSource).getTime ();
       }
@@ -317,7 +317,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (String.class, Calendar.class, new ITypeConverter ()
     {
       @Nonnull
-      public Calendar convert (final Object aSource)
+      public Calendar convert (@Nonnull final Object aSource)
       {
         final Calendar aCal = Calendar.getInstance ();
         aCal.setTimeInMillis (StringHelper.parseLong ((String) aSource, 0));
@@ -327,7 +327,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (Date.class, Calendar.class, new ITypeConverter ()
     {
       @Nonnull
-      public Calendar convert (final Object aSource)
+      public Calendar convert (@Nonnull final Object aSource)
       {
         final Calendar aCal = Calendar.getInstance ();
         aCal.setTime ((Date) aSource);
@@ -337,7 +337,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (Date.class, String.class, new ITypeConverter ()
     {
       @Nonnull
-      public String convert (final Object aSource)
+      public String convert (@Nonnull final Object aSource)
       {
         return Long.toString (((Date) aSource).getTime ());
       }
@@ -345,7 +345,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
     aRegistry.registerTypeConverter (String.class, Date.class, new ITypeConverter ()
     {
       @Nonnull
-      public Date convert (final Object aSource)
+      public Date convert (@Nonnull final Object aSource)
       {
         return new Date (StringHelper.parseLong ((String) aSource, 0));
       }
