@@ -46,6 +46,8 @@ import com.phloc.commons.string.ToStringGenerator;
  */
 public final class SerializableDateTimeFormatter implements Serializable
 {
+  private static final long serialVersionUID = 582607745264511789L;
+
   public static enum EFormatStyle
   {
     SHORT ("S", DateFormat.SHORT),
