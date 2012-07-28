@@ -37,7 +37,7 @@ import org.joda.time.Period;
 import org.joda.time.convert.ConverterManager;
 
 import com.phloc.commons.annotations.IsSPIImplementation;
-import com.phloc.commons.string.StringHelper;
+import com.phloc.commons.string.StringParser;
 import com.phloc.commons.typeconvert.ITypeConverter;
 import com.phloc.commons.typeconvert.ITypeConverterRegistrarSPI;
 import com.phloc.commons.typeconvert.ITypeConverterRegistry;
@@ -320,7 +320,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
       public Calendar convert (@Nonnull final Object aSource)
       {
         final Calendar aCal = Calendar.getInstance ();
-        aCal.setTimeInMillis (StringHelper.parseLong ((String) aSource, 0));
+        aCal.setTimeInMillis (StringParser.parseLong ((String) aSource, 0));
         return aCal;
       }
     });
@@ -347,7 +347,7 @@ public final class PDTTypeConverterRegistrar implements ITypeConverterRegistrarS
       @Nonnull
       public Date convert (@Nonnull final Object aSource)
       {
-        return new Date (StringHelper.parseLong ((String) aSource, 0));
+        return new Date (StringParser.parseLong ((String) aSource, 0));
       }
     });
   }
