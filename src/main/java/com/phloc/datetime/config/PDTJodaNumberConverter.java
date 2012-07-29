@@ -51,14 +51,14 @@ final class PDTJodaNumberConverter extends AbstractConverter implements
   {}
 
   @Override
-  public long getInstantMillis (@Nonnull final Object object, final Chronology chrono)
+  public long getInstantMillis (@Nonnull final Object aObject, final Chronology aChrono)
   {
-    return ((Number) object).longValue ();
+    return ((Number) aObject).longValue ();
   }
 
-  public long getDurationMillis (@Nonnull final Object object)
+  public long getDurationMillis (@Nonnull final Object aObject)
   {
-    return ((Number) object).longValue ();
+    return ((Number) aObject).longValue ();
   }
 
   @Nonnull
