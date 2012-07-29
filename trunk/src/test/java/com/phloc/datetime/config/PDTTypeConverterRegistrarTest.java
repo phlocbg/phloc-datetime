@@ -22,6 +22,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -34,6 +35,12 @@ import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
 import org.junit.Test;
 
+import com.phloc.commons.mutable.MutableByte;
+import com.phloc.commons.mutable.MutableDouble;
+import com.phloc.commons.mutable.MutableFloat;
+import com.phloc.commons.mutable.MutableInt;
+import com.phloc.commons.mutable.MutableLong;
+import com.phloc.commons.mutable.MutableShort;
 import com.phloc.commons.typeconvert.TypeConverter;
 import com.phloc.datetime.PDTFactory;
 
@@ -53,11 +60,18 @@ public final class PDTTypeConverterRegistrarTest
                                                           Float.valueOf (123433.324f),
                                                           Integer.valueOf (567),
                                                           Long.valueOf (213687123617283L),
-                                                          Short.valueOf ((short) 12345) };
+                                                          Short.valueOf ((short) 12345),
+                                                          new MutableByte ((byte) 47),
+                                                          new MutableDouble (34432.45465),
+                                                          new MutableFloat (3245678.1f),
+                                                          new MutableInt (4711),
+                                                          new MutableLong (4567890987654l),
+                                                          new MutableShort (65532), };
 
   @Test
   public void testDateTime ()
   {
+    assertNotNull (TypeConverter.convertIfNecessary (Calendar.getInstance (), DateTime.class));
     assertNotNull (TypeConverter.convertIfNecessary (new GregorianCalendar (), DateTime.class));
     assertNotNull (TypeConverter.convertIfNecessary (new Date (), DateTime.class));
     for (final Object aNumber : NUMBERS)
@@ -73,6 +87,7 @@ public final class PDTTypeConverterRegistrarTest
   @Test
   public void testLocalDateTime ()
   {
+    assertNotNull (TypeConverter.convertIfNecessary (Calendar.getInstance (), LocalDateTime.class));
     assertNotNull (TypeConverter.convertIfNecessary (new GregorianCalendar (), LocalDateTime.class));
     assertNotNull (TypeConverter.convertIfNecessary (new Date (), LocalDateTime.class));
     for (final Object aNumber : NUMBERS)
@@ -88,6 +103,7 @@ public final class PDTTypeConverterRegistrarTest
   @Test
   public void testLocalDate ()
   {
+    assertNotNull (TypeConverter.convertIfNecessary (Calendar.getInstance (), LocalDate.class));
     assertNotNull (TypeConverter.convertIfNecessary (new GregorianCalendar (), LocalDate.class));
     assertNotNull (TypeConverter.convertIfNecessary (new Date (), LocalDate.class));
     for (final Object aNumber : NUMBERS)
@@ -103,6 +119,7 @@ public final class PDTTypeConverterRegistrarTest
   @Test
   public void testLocalTime ()
   {
+    assertNotNull (TypeConverter.convertIfNecessary (Calendar.getInstance (), LocalTime.class));
     assertNotNull (TypeConverter.convertIfNecessary (new GregorianCalendar (), LocalTime.class));
     assertNotNull (TypeConverter.convertIfNecessary (new Date (), LocalTime.class));
     for (final Object aNumber : NUMBERS)
