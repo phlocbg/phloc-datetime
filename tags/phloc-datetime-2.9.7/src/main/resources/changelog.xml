@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2006-2012 phloc systems
+    http://www.phloc.com
+    office[at]phloc[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-datetime">
+  <release date="2012-07-31" version="2.9.7" />
+  <entry date="2012-07-30" category="tech" action="update">
+    <change>
+      <text locale="en">Updated to phloc-commons 3.7.0 because of moved type converters</text>
+    </change>
+  </entry>
+  <release date="2012-07-25" version="2.9.6" />
+  <entry date="2012-07-25" category="api" action="add">
+    <change>
+      <text locale="en">Added new class SerializableDateTimeFormatter wrapping a DateTimeFormatter</text>
+    </change>
+  </entry>
+  <release date="2012-04-23" version="2.9.5" />
+  <entry date="2012-04-23" category="tech" action="update" incompatible="true">
+    <change>
+      <text locale="en">Updated to phloc-commons 3.5.0</text>
+    </change>
+  </entry>
+  <release date="2012-02-24" version="2.9.2" />
+  <entry date="2012-02-24" category="tech" action="update" >
+    <change>
+      <text locale="en">Updated to joda-time 2.1</text>
+    </change>
+  </entry>
+  <release date="2012-02-17" version="2.9.1" />
+  <entry date="2012-02-17" category="api" action="add" >
+    <change>
+      <text locale="en">Added new package 'expiration' with expiration stuff</text>
+    </change>
+  </entry>
+  <entry date="2012-01-31" category="tech" action="change" >
+    <change>
+      <text locale="en">IFlexiblePeriod is now Serializable</text>
+    </change>
+  </entry>
+  <release date="2012-01-29" version="2.9.0" />
+  <entry date="2012-01-29" category="api" action="remove" >
+    <change>
+      <text locale="en">Removed unnecessary calendar methods</text>
+    </change>
+  </entry>
+  <entry date="2012-01-29" category="api" action="change" >
+    <change>
+      <text locale="en">Changed return type of AbstractFlexiblePeriod.set(Start|End) to EChange</text>
+    </change>
+  </entry>
+  <release date="2012-01-21" version="2.8.6" />
+  <entry date="2012-01-21" category="tech" action="add" >
+    <change>
+      <text locale="en">Added type converter for Date and Calendar</text>
+    </change>
+  </entry>
+  <entry date="2012-01-11" category="tech" action="add" >
+    <change>
+      <text locale="en">Added new type converters between DateTime, LocalDate, LocalTime and LocalDateTime</text>
+    </change>
+  </entry>
+  <release date="2012-01-11" version="2.8.5" />
+  <entry date="2012-01-09" category="tech" action="change" >
+    <change>
+      <text locale="en">Using the same chronologies for Local(Date|Time|DateTime) as for DateTime instead of UTC</text>
+    </change>
+  </entry>
+  <release date="2012-01-04" version="2.8.2" />
+  <entry date="2012-01-04" category="api" action="change" >
+    <change>
+      <text locale="en">Made flexible period implementations non-final</text>
+    </change>
+  </entry>
+  <release date="2012-01-04" version="2.8.1" />
+  <entry date="2012-01-04" category="api" action="add" >
+    <change>
+      <text locale="en">IDateTimePeriod now has the possibility to convert to an Interval instance</text>
+    </change>
+  </entry>
+  <entry date="2012-01-04" category="api" action="change" incompatible="true">
+    <change>
+      <text locale="en">Restructured period package so that it contains a different hierarchy and an isValidFor method</text>
+    </change>
+  </entry>
+  <entry date="2012-01-04" category="api" action="add">
+    <change>
+      <text locale="en">Added some PDTFactory.create(DateTime|LocalDateTime|LocalTime) overloads</text>
+    </change>
+  </entry>
+  <entry date="2011-12-08" category="api" action="add">
+    <change>
+      <text locale="en">Added PDTWebDateUtils date support</text>
+    </change>
+  </entry>
+  <release date="2011-10-06" version="2.8.0" />
+  <entry date="2011-10-06" category="api" action="change" incompatible="true">
+    <change>
+      <text locale="en">Renamed PDTXMLConverter 'convert' method to 'getConverted' and added other direction getConverted as well</text>
+    </change>
+  </entry>
+  <entry date="2011-10-04" category="tech" action="add">
+    <change>
+      <text locale="en">Added Period type conversion</text>
+    </change>
+  </entry>
+  <entry date="2011-10-04" category="tech" action="add">
+    <change>
+      <text locale="en">Added class PDTMicroTypeConverterRegistrar to register datetime XML converters</text>
+    </change>
+  </entry>
+  <entry date="2011-09-27" category="api" action="change">
+    <change>
+      <text locale="en">Made PDTIOHelper pattern constants public</text>
+    </change>
+  </entry>
+  <entry date="2011-09-27" category="api" action="change" incompatible="true">
+    <change>
+      <text locale="en">All PDTWebDateUtils methods were renamed so they start with "get"</text>
+    </change>
+  </entry>
+  <entry date="2011-09-27" category="api" action="change" incompatible="true">
+    <change>
+      <text locale="en">All PDTToString methods now accept null values and delivery null in that case</text>
+    </change>
+  </entry>
+  <entry date="2011-09-27" category="api" action="change" incompatible="true">
+    <change>
+      <text locale="en">Changed PDTToString and PDTFromString methods to start with "get"</text>
+    </change>
+  </entry>
+  <entry date="2011-09-27" category="api" action="add">
+    <change>
+      <text locale="en">Extended PDTFormatter to support all short/medium/long/full versions of Date, Time and DateTime</text>
+    </change>
+  </entry>
+  <release date="2011-09-12" version="2.7.0" />
+  <entry date="2011-09-12" category="api" action="change">
+    <change>
+      <text locale="en">Updated to phloc-commons 3.1.0</text>
+    </change>
+  </entry>
+  <entry date="2011-09-01" category="api" action="change">
+    <change>
+      <text locale="en">Moved the dynamic types to phloc-types project</text>
+    </change>
+  </entry>
+  <release date="2011-08-18" version="2.6.0" />
+  <entry date="2011-08-17" category="tech" action="change">
+    <change>
+      <text locale="en">Changed the type conversion handling so that it matches the new phloc-commons rules</text>
+    </change>
+  </entry>
+  <entry date="2011-08-13" category="api" action="add">
+    <change>
+      <text locale="en">Added support for LocalDateTime in the PDTUtils</text>
+    </change>
+  </entry>
+  <entry date="2011-08-01" category="tech" action="update">
+    <change>
+      <text locale="en">Updated joda-time to version 2.0</text>
+    </change>
+  </entry>
+  <release date="2011-07-31" version="2.5.1" />
+  <entry date="2011-07-31" category="tech" action="fix">
+    <change>
+      <text locale="en">Fixed PDTFactory API using Date and Calendar to use the correct JDK TimeZone</text>
+    </change>
+  </entry>
+  <release date="2011-07-26" version="2.5.0" />
+</changelog>
