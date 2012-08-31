@@ -36,8 +36,8 @@ import com.phloc.commons.string.ToStringGenerator;
 @NotThreadSafe
 public abstract class AbstractFlexiblePeriod <DATATYPE> implements IFlexiblePeriod <DATATYPE>
 {
-  protected DATATYPE m_aStart;
-  protected DATATYPE m_aEnd;
+  private DATATYPE m_aStart;
+  private DATATYPE m_aEnd;
 
   public AbstractFlexiblePeriod (@Nullable final DATATYPE aStart, @Nullable final DATATYPE aEnd)
   {

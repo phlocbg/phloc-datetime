@@ -55,9 +55,11 @@ public class DateTimePeriod extends AbstractFlexiblePeriod <DateTime> implements
     if (aDate == null)
       throw new NullPointerException ("date");
 
-    if (m_aStart != null && m_aStart.isAfter (aDate))
+    final DateTime aStart = getStart ();
+    if (aStart != null && aStart.isAfter (aDate))
       return false;
-    if (m_aEnd != null && m_aEnd.isBefore (aDate))
+    final DateTime aEnd = getEnd ();
+    if (aEnd != null && aEnd.isBefore (aDate))
       return false;
     return true;
   }
@@ -69,7 +71,7 @@ public class DateTimePeriod extends AbstractFlexiblePeriod <DateTime> implements
 
   public boolean canConvertToPeriod ()
   {
-    return m_aStart != null && m_aEnd != null;
+    return getStart () != null && getEnd () != null;
   }
 
   @Nonnull
@@ -77,12 +79,12 @@ public class DateTimePeriod extends AbstractFlexiblePeriod <DateTime> implements
   {
     if (!canConvertToPeriod ())
       throw new IllegalStateException ("Cannot convert to a Period!");
-    return new Period (m_aStart, m_aEnd);
+    return new Period (getStart (), getEnd ());
   }
 
   public boolean canConvertToInterval ()
   {
-    return m_aStart != null && m_aEnd != null;
+    return getStart () != null && getEnd () != null;
   }
 
   @Nonnull
@@ -90,6 +92,6 @@ public class DateTimePeriod extends AbstractFlexiblePeriod <DateTime> implements
   {
     if (!canConvertToInterval ())
       throw new IllegalStateException ("Cannot convert to an Interval!");
-    return new Interval (m_aStart, m_aEnd);
+    return new Interval (getStart (), getEnd ());
   }
 }
