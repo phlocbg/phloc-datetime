@@ -95,6 +95,6 @@ public abstract class AbstractFlexiblePeriod <DATATYPE> implements IFlexiblePeri
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("start", m_aStart).append ("end", m_aEnd).toString ();
+    return new ToStringGenerator (this).appendIfNotNull ("start", m_aStart).appendIfNotNull ("end", m_aEnd).toString ();
   }
 }
