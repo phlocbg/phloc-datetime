@@ -1,7 +1,8 @@
 #summary Change log of phloc-datetime
 = Change log =
 <wiki:comment>This content is generated. Do not modify!</wiki:comment>
-<table border="1" cellspacing="0"><thead><tr><th>Date</th><th>Action</th><th>Category</th><th>Incompatible?</th><th>Description</th></tr></thead><tbody><tr><td>9/20/12</td><td>update</td><td>performance</td><td></td><td>Performance improvement by using [http://code.google.com/p/phloc-commons phloc-commons] 3.8.4</td></tr>
+<table border="1" cellspacing="0"><thead><tr><th>Date</th><th>Action</th><th>Category</th><th>Incompatible?</th><th>Description</th></tr></thead><tbody><tr><td>10/24/12</td><td>add</td><td>api</td><td></td><td>Added new enums EDayOfWeek and EMonth to have type-safe constants</td></tr>
+<tr><td>9/20/12</td><td>update</td><td>performance</td><td></td><td>Performance improvement by using [http://code.google.com/p/phloc-commons phloc-commons] 3.8.4</td></tr>
 <tr border="1"><td>9/6/12</td><td colspan="4">_Release *3.0.0*_</td></tr>
 <tr><td>8/31/12</td><td>update</td><td>api</td><td>*yes*</td><td>Fixed protected member variables in period package</td></tr>
 <tr border="1"><td>7/31/12</td><td colspan="4">_Release *2.9.7*_</td></tr>
