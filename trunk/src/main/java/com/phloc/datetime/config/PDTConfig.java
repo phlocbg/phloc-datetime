@@ -42,7 +42,7 @@ import com.phloc.commons.state.ESuccess;
 public final class PDTConfig
 {
   /**
-   * The default date time zone.
+   * The default-default date time zone.
    */
   public static final String DEFAULT_DATETIMEZONEID = "Europe/Vienna";
 
@@ -57,6 +57,13 @@ public final class PDTConfig
   private PDTConfig ()
   {}
 
+  /**
+   * Set the default date time zone to use.
+   * 
+   * @param sDateTimeZoneID
+   *        Must be a valid, non-null time zone.
+   * @return {@link ESuccess}
+   */
   @Nonnull
   public static ESuccess setDefaultDateTimeZoneID (final String sDateTimeZoneID)
   {
@@ -79,6 +86,10 @@ public final class PDTConfig
     }
   }
 
+  /**
+   * @return The default date time zone to use. Never <code>null</code>. The
+   *         default default is {@link #DEFAULT_DATETIMEZONEID}.
+   */
   @Nonnull
   public static DateTimeZone getDefaultDateTimeZone ()
   {
@@ -93,12 +104,19 @@ public final class PDTConfig
     }
   }
 
+  /**
+   * @return The default UTC time zone.
+   */
   @Nonnull
   public static DateTimeZone getDateTimeZoneUTC ()
   {
     return DateTimeZone.UTC;
   }
 
+  /**
+   * @return The default GJ chronology using the result of
+   *         {@link #getDefaultDateTimeZone()}
+   */
   @Nonnull
   public static Chronology getDefaultChronology ()
   {
