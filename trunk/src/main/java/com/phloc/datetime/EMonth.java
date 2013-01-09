@@ -17,11 +17,16 @@
  */
 package com.phloc.datetime;
 
+import java.util.Calendar;
+import java.util.Locale;
+
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.joda.time.DateTimeConstants;
 
 import com.phloc.commons.id.IHasSimpleIntID;
+import com.phloc.commons.lang.DateFormatSymbolsFactory;
 import com.phloc.commons.lang.EnumHelper;
 
 /**
@@ -31,29 +36,59 @@ import com.phloc.commons.lang.EnumHelper;
  */
 public enum EMonth implements IHasSimpleIntID
 {
-  JANUARY (DateTimeConstants.JANUARY),
-  FEBRUARY (DateTimeConstants.FEBRUARY),
-  MARCH (DateTimeConstants.MARCH),
-  APRIL (DateTimeConstants.APRIL),
-  MAY (DateTimeConstants.MAY),
-  JUNE (DateTimeConstants.JUNE),
-  JULY (DateTimeConstants.JULY),
-  AUGUST (DateTimeConstants.AUGUST),
-  SEPTEMBER (DateTimeConstants.SEPTEMBER),
-  OCTOBER (DateTimeConstants.OCTOBER),
-  NOVEMBER (DateTimeConstants.NOVEMBER),
-  DECEMBER (DateTimeConstants.DECEMBER);
+  JANUARY (DateTimeConstants.JANUARY, Calendar.JANUARY),
+  FEBRUARY (DateTimeConstants.FEBRUARY, Calendar.FEBRUARY),
+  MARCH (DateTimeConstants.MARCH, Calendar.MARCH),
+  APRIL (DateTimeConstants.APRIL, Calendar.APRIL),
+  MAY (DateTimeConstants.MAY, Calendar.MAY),
+  JUNE (DateTimeConstants.JUNE, Calendar.JUNE),
+  JULY (DateTimeConstants.JULY, Calendar.JULY),
+  AUGUST (DateTimeConstants.AUGUST, Calendar.AUGUST),
+  SEPTEMBER (DateTimeConstants.SEPTEMBER, Calendar.SEPTEMBER),
+  OCTOBER (DateTimeConstants.OCTOBER, Calendar.OCTOBER),
+  NOVEMBER (DateTimeConstants.NOVEMBER, Calendar.NOVEMBER),
+  DECEMBER (DateTimeConstants.DECEMBER, Calendar.DECEMBER);
 
-  private final int m_nID;
+  private final int m_nJodaID;
+  private final int m_nCalID;
 
-  private EMonth (final int nID)
+  private EMonth (final int nJodaID, final int nCalID)
   {
-    m_nID = nID;
+    m_nJodaID = nJodaID;
+    m_nCalID = nCalID;
   }
 
   public int getID ()
   {
-    return m_nID;
+    return m_nJodaID;
+  }
+
+  /**
+   * @return The joda time ID
+   */
+  public int getDateTimeConstant ()
+  {
+    return m_nJodaID;
+  }
+
+  /**
+   * @return The java.util.Calendar ID
+   */
+  public int getCalendarConstant ()
+  {
+    return m_nCalID;
+  }
+
+  @Nullable
+  public String getMonthName (@Nonnull final Locale aLocale)
+  {
+    return DateFormatSymbolsFactory.getInstance (aLocale).getMonths ()[m_nCalID];
+  }
+
+  @Nullable
+  public String getMonthShortName (@Nonnull final Locale aLocale)
+  {
+    return DateFormatSymbolsFactory.getInstance (aLocale).getShortMonths ()[m_nCalID];
   }
 
   @Nullable
