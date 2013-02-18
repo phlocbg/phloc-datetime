@@ -110,7 +110,7 @@ public final class PeriodFormatMultilingual
   }
 
   @Nonnull
-  public static PeriodFormatter getFormatterLong (final Locale aContentLocale)
+  public static PeriodFormatter getFormatterLong (@Nonnull final Locale aContentLocale)
   {
     final String sSepFront = EText.LONG_SEPARATOR_FRONT.getDisplayText (aContentLocale);
     final String sSepFinal = EText.LONG_SEPARATOR_LAST.getDisplayText (aContentLocale);
@@ -150,12 +150,15 @@ public final class PeriodFormatMultilingual
   }
 
   /**
-   * Gets the short German PeriodFormatter.
+   * Gets the short {@link PeriodFormatter}.
    * 
+   * @param aContentLocale
+   *        The content locale for which the formatter is requested. May not be
+   *        <code>null</code>.
    * @return the formatter
    */
   @Nonnull
-  public static PeriodFormatter getFormatterShort (final Locale aContentLocale)
+  public static PeriodFormatter getFormatterShort (@Nonnull final Locale aContentLocale)
   {
     final String sSepFront = EText.LONG_SEPARATOR_FRONT.getDisplayText (aContentLocale);
     final String sSepFinal = EText.LONG_SEPARATOR_LAST.getDisplayText (aContentLocale);
@@ -189,10 +192,13 @@ public final class PeriodFormatMultilingual
   /**
    * Gets the very short {@link PeriodFormatter}.
    * 
+   * @param aContentLocale
+   *        The content locale for which the formatter is requested. May not be
+   *        <code>null</code>.
    * @return the formatter
    */
   @Nonnull
-  public static PeriodFormatter getFormatterVeryShort (final Locale aContentLocale)
+  public static PeriodFormatter getFormatterVeryShort (@Nonnull final Locale aContentLocale)
   {
     final String [] aVariants = { " ", ",", ", " };
     return new PeriodFormatterBuilder ().appendYears ()

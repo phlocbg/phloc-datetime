@@ -37,16 +37,25 @@ import com.phloc.commons.annotations.PresentForCodeCoverage;
 @Immutable
 public final class CPDT
 {
+  /** Default start of week: Monday */
   public static final int START_OF_WEEK_DAY = DateTimeConstants.MONDAY;
+  /** Default end of week: Sunday */
   public static final int END_OF_WEEK_DAY = DateTimeConstants.SUNDAY;
 
+  /** Default null local date: 1.1.1970 */
   public static final LocalDate NULL_LOCAL_DATE = PDTFactory.createLocalDate (1970, DateTimeConstants.JANUARY, 1);
+  /** Default null local time: 00:00:00.000 */
   public static final LocalTime NULL_LOCAL_TIME = PDTFactory.createLocalTime (0, 0, 0);
+  /** Default null local date time : 1.1.1970 00:00:00.000 */
   public static final LocalDateTime NULL_LOCAL_DATETIME = NULL_LOCAL_DATE.toLocalDateTime (NULL_LOCAL_TIME);
+  /** Default null date time : 1.1.1970 00:00:00.000 */
   public static final DateTime NULL_DATETIME = PDTFactory.createDateTimeFromMillis (0);
+  /** Default empty period */
   public static final Period NULL_PERIOD = new Period ();
+  /** Default empty duration */
   public static final Duration NULL_DURATION = new Duration (0);
 
+  /** The last year to which the Julian choreography can be applied. */
   public static final int LAST_JULIAN_YEAR = 1583;
 
   @PresentForCodeCoverage

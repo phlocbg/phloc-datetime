@@ -56,6 +56,7 @@ public final class SerializableDateTimeFormatter implements Serializable
     FULL ("F", DateFormat.FULL),
     NONE ("-", 4); // DateFormat.NONE
 
+    /** Default format style: {@link #MEDIUM} */
     public static final EFormatStyle DEFAULT = MEDIUM;
 
     private String m_sFormat;
