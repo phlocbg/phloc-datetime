@@ -36,6 +36,11 @@ import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistrarSPI;
 import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistry;
 import com.phloc.commons.microdom.convert.impl.StringBasedMicroTypeConverter;
 
+/**
+ * Implementation of {@link IMicroTypeConverterRegistrarSPI} for date time stuff
+ * 
+ * @author philip
+ */
 @Immutable
 @IsSPIImplementation
 public final class PDTMicroTypeConverterRegistrar implements IMicroTypeConverterRegistrarSPI

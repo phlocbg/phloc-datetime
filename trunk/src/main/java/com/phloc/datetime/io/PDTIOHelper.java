@@ -37,9 +37,11 @@ import com.phloc.datetime.format.PDTToString;
 @Immutable
 public final class PDTIOHelper
 {
-  // This would be suitable for generic sorting
+  /** Date pattern suitable for generic sorting */
   public static final String PATTERN_DATE = "yyyyMMdd";
+  /** Time pattern suitable for generic sorting */
   public static final String PATTERN_TIME = "HHmmss";
+  /** Date and time pattern suitable for generic sorting */
   public static final String PATTERN_DATETIME = PATTERN_DATE + '_' + PATTERN_TIME;
 
   @PresentForCodeCoverage
