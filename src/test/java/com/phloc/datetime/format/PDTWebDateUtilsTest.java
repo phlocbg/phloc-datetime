@@ -29,6 +29,7 @@ import org.junit.Test;
 
 import com.phloc.datetime.PDTFactory;
 
+@SuppressWarnings ("deprecation")
 /**
  * Test class for class {@link PDTWebDateUtils}.
  * 

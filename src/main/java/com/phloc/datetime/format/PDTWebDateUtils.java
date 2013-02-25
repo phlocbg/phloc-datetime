@@ -31,6 +31,7 @@ import org.joda.time.chrono.ISOChronology;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
+import com.phloc.commons.annotations.DevelopersNote;
 import com.phloc.commons.annotations.PresentForCodeCoverage;
 import com.phloc.commons.collections.pair.IReadonlyPair;
 import com.phloc.commons.collections.pair.ReadonlyPair;
@@ -51,6 +52,8 @@ import com.phloc.datetime.config.PDTConfig;
  * @author philip (major modification)
  */
 @Immutable
+@Deprecated
+@DevelopersNote ("Moved to phloc-web")
 public final class PDTWebDateUtils
 {
   private static final String FORMAT_RFC822 = "EEE, dd MMM yyyy HH:mm:ss 'GMT'";
