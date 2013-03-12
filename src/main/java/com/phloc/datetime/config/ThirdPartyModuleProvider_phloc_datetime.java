@@ -38,7 +38,7 @@ public final class ThirdPartyModuleProvider_phloc_datetime implements IThirdPart
   private static final IThirdPartyModule JODATIME = new ThirdPartyModule ("Joda-Time",
                                                                           "Stephen Colebourne",
                                                                           ELicense.APACHE2,
-                                                                          new Version (2, 1),
+                                                                          new Version (2, 2),
                                                                           "http://joda-time.sourceforge.net/");
 
   @Nonnull
