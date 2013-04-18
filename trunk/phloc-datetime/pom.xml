@@ -24,8 +24,8 @@
   
   <scm>
     <url>http://code.google.com/p/phloc-datetime/source/browse/</url>
-    <connection>scm:svn:http://phloc-datetime.googlecode.com/svn/trunk</connection>
-    <developerConnection>scm:svn:https://phloc-datetime.googlecode.com/svn/trunk</developerConnection>
+    <connection>scm:svn:http://phloc-datetime.googlecode.com/svn/trunk/phloc-datetime</connection>
+    <developerConnection>scm:svn:https://phloc-datetime.googlecode.com/svn/trunk/phloc-datetime</developerConnection>
   </scm>
   <organization>
     <name>phloc systems</name>
