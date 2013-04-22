@@ -33,7 +33,7 @@ import com.phloc.datetime.config.PDTConfig;
  * Create common {@link DateTimeFormatter} objects used for printing and parsing
  * date and time objects.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class PDTFormatter

@@ -49,7 +49,7 @@ import com.phloc.datetime.config.PDTConfig;
  * Original work Copyright 2004 Sun Microsystems, Inc.
  * 
  * @author Alejandro Abdelnur (original; mainly the formatting masks)
- * @author philip (major modification)
+ * @author Philip Helger (major modification)
  */
 @Immutable
 @Deprecated

@@ -40,7 +40,7 @@ import com.phloc.commons.text.resolve.DefaultTextResolver;
  * PeriodFormat is thread-safe and immutable, and the formatters it returns are
  * as well.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @NotThreadSafe
 public final class PeriodFormatMultilingual

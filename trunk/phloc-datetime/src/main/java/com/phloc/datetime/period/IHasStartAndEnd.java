@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * Base interface for an object that has a start and an end.
  * 
- * @author philip
+ * @author Philip Helger
  * @param <DATATYPE>
  *        Date and time type
  */

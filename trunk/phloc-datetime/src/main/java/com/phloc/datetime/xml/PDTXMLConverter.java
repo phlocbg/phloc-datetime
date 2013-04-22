@@ -38,7 +38,7 @@ import com.phloc.datetime.PDTFactory;
 /**
  * Utility class for XML date/time data type handling.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class PDTXMLConverter

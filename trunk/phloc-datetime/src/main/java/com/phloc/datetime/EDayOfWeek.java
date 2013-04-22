@@ -32,7 +32,7 @@ import com.phloc.commons.lang.EnumHelper;
 /**
  * Represents all known Gregorian Calendar days of a week as a type-safe enum
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum EDayOfWeek implements IHasSimpleIntID
 {

@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * Read-only interface for objects that can expire but offer a replacement once
  * the object expires.
  * 
- * @author philip
+ * @author Philip Helger
  * @param <DATATYPE>
  *        The type of the object use for defining a replacement.
  */

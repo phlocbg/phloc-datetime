@@ -24,7 +24,7 @@ import org.joda.time.Period;
 /**
  * Interface for objects providing a {@link Period}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IPeriodProvider
 {

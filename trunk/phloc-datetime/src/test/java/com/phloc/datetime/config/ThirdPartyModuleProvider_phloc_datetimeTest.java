@@ -30,7 +30,7 @@ import com.phloc.commons.thirdparty.ThirdPartyModuleRegistry;
 /**
  * Test class for class {@link ThirdPartyModuleProvider_phloc_datetime}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class ThirdPartyModuleProvider_phloc_datetimeTest
 {

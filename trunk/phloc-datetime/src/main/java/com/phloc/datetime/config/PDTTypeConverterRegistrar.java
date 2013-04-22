@@ -47,7 +47,7 @@ import com.phloc.datetime.PDTFactory;
  * Register all {@link ITypeConverter} objects to the central
  * {@link TypeConverterRegistry}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 @IsSPIImplementation

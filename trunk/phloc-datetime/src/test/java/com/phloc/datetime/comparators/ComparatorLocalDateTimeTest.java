@@ -31,7 +31,7 @@ import com.phloc.datetime.PDTFactory;
 /**
  * Test class for class {@link ComparatorLocalDateTime}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class ComparatorLocalDateTimeTest
 {

@@ -30,7 +30,7 @@ import com.phloc.datetime.PDTFactory;
 /**
  * Default implementation of the {@link IDateTimePeriod} interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @NotThreadSafe
 public class DateTimePeriod extends AbstractFlexiblePeriod <DateTime> implements IDateTimePeriod

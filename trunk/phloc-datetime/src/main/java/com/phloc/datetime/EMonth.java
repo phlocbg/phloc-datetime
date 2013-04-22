@@ -32,7 +32,7 @@ import com.phloc.commons.lang.EnumHelper;
 /**
  * Represents all known Gregorian Calendar month as a type-safe enum
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum EMonth implements IHasSimpleIntID
 {

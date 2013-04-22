@@ -23,7 +23,7 @@ import org.joda.time.LocalDateTime;
  * This interface is used for storing a period consisting of exactly a start and
  * end date time.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface ILocalDateTimePeriod extends IFlexiblePeriod <LocalDateTime>
 {

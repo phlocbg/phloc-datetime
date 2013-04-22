@@ -26,7 +26,7 @@ import com.phloc.commons.state.EChange;
 /**
  * Interface for objects that can expire.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IExpirable extends IReadonlyExpirable
 {

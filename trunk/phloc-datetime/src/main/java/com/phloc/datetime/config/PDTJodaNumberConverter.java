@@ -31,7 +31,7 @@ import org.joda.time.convert.PartialConverter;
  * arbitrary {@link Number} objects. This makes it easier to use
  * {@link java.math.BigInteger} and the like for type conversion.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 final class PDTJodaNumberConverter extends AbstractConverter implements

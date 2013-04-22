@@ -30,7 +30,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Default implementation of {@link IExpirableWithReplacement}
  * 
- * @author philip
+ * @author Philip Helger
  * @param <DATATYPE>
  *        The type of the object use for defining a replacement.
  */

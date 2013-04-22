@@ -30,7 +30,7 @@ import com.phloc.commons.annotations.PresentForCodeCoverage;
  * Create common {@link DateFormat} patterns to format date, time and datetime
  * objects.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class PDTFormatPatterns

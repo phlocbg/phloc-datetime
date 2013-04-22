@@ -27,7 +27,7 @@ import com.phloc.commons.lang.EnumHelper;
 /**
  * Represents the AM/PM values
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum EAmPm implements IHasSimpleIntID
 {

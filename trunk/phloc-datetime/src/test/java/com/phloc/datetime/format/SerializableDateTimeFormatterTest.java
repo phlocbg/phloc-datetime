@@ -32,7 +32,7 @@ import com.phloc.datetime.format.SerializableDateTimeFormatter.EFormatStyle;
 /**
  * Test class for class {@link SerializableDateTimeFormatter}
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class SerializableDateTimeFormatterTest
 {

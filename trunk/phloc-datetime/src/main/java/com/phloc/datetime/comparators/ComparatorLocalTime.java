@@ -27,7 +27,7 @@ import com.phloc.commons.compare.ESortOrder;
 /**
  * Comparator for {@link LocalTime} objects.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class ComparatorLocalTime extends AbstractComparator <LocalTime>
 {
