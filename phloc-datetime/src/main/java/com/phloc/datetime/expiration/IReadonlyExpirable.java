@@ -24,7 +24,7 @@ import org.joda.time.DateTime;
 /**
  * Read-only interface for objects that can expire.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IReadonlyExpirable
 {

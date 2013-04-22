@@ -40,7 +40,7 @@ import com.phloc.datetime.config.PDTConfig;
 /**
  * This class contains methods for creating date and time objects.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class PDTFactory

@@ -42,7 +42,7 @@ import com.phloc.commons.string.ToStringGenerator;
  * parameters (short/medium/long/full/none) or the pattern string plus the
  * respective optional locale that was used on creation.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class SerializableDateTimeFormatter implements Serializable
 {

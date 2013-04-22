@@ -39,7 +39,7 @@ import com.phloc.commons.microdom.convert.impl.StringBasedMicroTypeConverter;
 /**
  * Implementation of {@link IMicroTypeConverterRegistrarSPI} for date time stuff
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 @IsSPIImplementation

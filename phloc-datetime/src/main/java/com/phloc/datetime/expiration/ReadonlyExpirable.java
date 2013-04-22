@@ -28,7 +28,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Default implementation of {@link IReadonlyExpirable}
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class ReadonlyExpirable implements IReadonlyExpirable
 {

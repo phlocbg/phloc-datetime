@@ -38,7 +38,7 @@ import com.phloc.datetime.config.PDTConfig;
 /**
  * Test class for class {@link PDTXMLConverter}
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PDTXMLConverterTest
 {

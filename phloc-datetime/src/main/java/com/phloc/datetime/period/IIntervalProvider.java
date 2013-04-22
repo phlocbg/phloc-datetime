@@ -24,7 +24,7 @@ import org.joda.time.Interval;
 /**
  * Interface for objects providing an {@link Interval}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IIntervalProvider
 {

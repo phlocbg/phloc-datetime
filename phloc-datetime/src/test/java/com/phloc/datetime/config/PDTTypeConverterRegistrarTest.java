@@ -47,7 +47,7 @@ import com.phloc.datetime.PDTFactory;
 /**
  * Test class for class {@link PDTTypeConverterRegistrar}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PDTTypeConverterRegistrarTest
 {

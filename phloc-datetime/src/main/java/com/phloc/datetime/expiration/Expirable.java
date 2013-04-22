@@ -30,7 +30,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Default implementation of {@link IExpirable}
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class Expirable implements IExpirable
 {

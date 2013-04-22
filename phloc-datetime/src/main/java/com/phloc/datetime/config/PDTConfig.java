@@ -36,7 +36,7 @@ import com.phloc.commons.state.ESuccess;
  * This class provides the most basic settings for date time operating: the
  * date-time-zone and the chronology to use.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @ThreadSafe
 public final class PDTConfig

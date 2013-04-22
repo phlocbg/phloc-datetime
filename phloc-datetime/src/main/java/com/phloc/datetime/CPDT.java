@@ -32,7 +32,7 @@ import com.phloc.commons.annotations.PresentForCodeCoverage;
 /**
  * Some date/time related constants.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class CPDT

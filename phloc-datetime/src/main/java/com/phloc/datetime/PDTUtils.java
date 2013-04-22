@@ -41,7 +41,7 @@ import com.phloc.commons.collections.pair.ReadonlyPair;
 /**
  * Some date/time utility methods.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class PDTUtils

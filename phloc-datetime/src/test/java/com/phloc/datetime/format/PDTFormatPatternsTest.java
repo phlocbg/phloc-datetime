@@ -32,7 +32,7 @@ import com.phloc.commons.locale.LocaleCache;
 /**
  * Test class for class {@link PDTFormatPatterns}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PDTFormatPatternsTest
 {

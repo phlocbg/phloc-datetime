@@ -38,7 +38,7 @@ import com.phloc.commons.string.StringHelper;
  * Handles the conversion to date, time or date time objects from a
  * {@link String}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class PDTFromString

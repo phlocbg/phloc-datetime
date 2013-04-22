@@ -35,7 +35,7 @@ import com.phloc.commons.collections.pair.IReadonlyPair;
 /**
  * Test class for class {@link PDTUtils}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PDTUtilsTest
 {

@@ -25,7 +25,7 @@ import javax.annotation.Nonnull;
  * Base interface for an object that has a validity range based on arbitrary
  * objects.
  * 
- * @author philip
+ * @author Philip Helger
  * @param <DATATYPE>
  *        Date and time type
  */

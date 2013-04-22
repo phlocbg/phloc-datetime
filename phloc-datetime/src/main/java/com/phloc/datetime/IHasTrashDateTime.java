@@ -24,7 +24,7 @@ import org.joda.time.DateTime;
 /**
  * Interface for objects having a trash date time.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IHasTrashDateTime
 {

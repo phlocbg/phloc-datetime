@@ -35,7 +35,7 @@ import com.phloc.commons.annotations.PresentForCodeCoverage;
 /**
  * Standard API to convert a date, time or date time to a {@link String}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class PDTToString

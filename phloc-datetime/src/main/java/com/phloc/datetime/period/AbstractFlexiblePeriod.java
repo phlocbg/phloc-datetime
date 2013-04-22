@@ -29,7 +29,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Abstract base implementation for {@link IFlexiblePeriod}.
  * 
- * @author philip
+ * @author Philip Helger
  * @param <DATATYPE>
  *        Date and time type
  */

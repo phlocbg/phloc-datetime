@@ -32,7 +32,7 @@ import com.phloc.datetime.format.PDTToString;
 /**
  * Some date time specific routines especially helpful for IO.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class PDTIOHelper

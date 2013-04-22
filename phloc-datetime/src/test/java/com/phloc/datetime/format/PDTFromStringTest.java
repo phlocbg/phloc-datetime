@@ -38,7 +38,7 @@ import com.phloc.datetime.config.PDTConfig;
 /**
  * Test class for class {@link PDTFromString}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PDTFromStringTest
 {

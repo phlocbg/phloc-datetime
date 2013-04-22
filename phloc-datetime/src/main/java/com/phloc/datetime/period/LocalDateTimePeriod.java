@@ -29,7 +29,7 @@ import com.phloc.datetime.PDTFactory;
 /**
  * Default implementation of the {@link ILocalDateTimePeriod} interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @NotThreadSafe
 public class LocalDateTimePeriod extends AbstractFlexiblePeriod <LocalDateTime> implements ILocalDateTimePeriod

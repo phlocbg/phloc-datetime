@@ -39,7 +39,7 @@ import com.phloc.datetime.config.PDTConfig;
 /**
  * Test class for class {@link PDTFactory}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PDTFactoryTest
 {
