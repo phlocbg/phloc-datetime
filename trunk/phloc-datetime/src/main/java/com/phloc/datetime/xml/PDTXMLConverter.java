@@ -126,6 +126,17 @@ public final class PDTXMLConverter
   }
 
   /**
+   * Get the current date as {@link XMLGregorianCalendar}.
+   * 
+   * @return Never <code>null</code>.
+   */
+  @Nonnull
+  public static XMLGregorianCalendar getXMLCalendarDateNow ()
+  {
+    return getXMLCalendarDate (PDTFactory.getCurrentLocalDate ());
+  }
+
+  /**
    * Get the passed object as {@link XMLGregorianCalendar} date (without a
    * time).
    * 
@@ -249,6 +260,17 @@ public final class PDTXMLConverter
                                                          final int nTimezone)
   {
     return s_aDTFactory.newXMLGregorianCalendarDate (nYear, nMonth, nDay, nTimezone);
+  }
+
+  /**
+   * Get the current time as {@link XMLGregorianCalendar}.
+   * 
+   * @return Never <code>null</code>.
+   */
+  @Nonnull
+  public static XMLGregorianCalendar getXMLCalendarTimeNow ()
+  {
+    return getXMLCalendarTime (PDTFactory.getCurrentLocalTime ());
   }
 
   /**
@@ -385,6 +407,17 @@ public final class PDTXMLConverter
                                                          final int nTimezone)
   {
     return s_aDTFactory.newXMLGregorianCalendarTime (nHour, nMinute, nSecond, nMilliSecond, nTimezone);
+  }
+
+  /**
+   * Get the current date and time as {@link XMLGregorianCalendar}.
+   * 
+   * @return Never <code>null</code>.
+   */
+  @Nonnull
+  public static XMLGregorianCalendar getXMLCalendarNow ()
+  {
+    return getXMLCalendar (PDTFactory.getCurrentDateTime ());
   }
 
   /**
