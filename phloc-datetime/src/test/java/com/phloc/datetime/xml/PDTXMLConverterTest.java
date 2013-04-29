@@ -138,4 +138,12 @@ public final class PDTXMLConverterTest
                   aLDT2.withChronology (PDTConfig.getDefaultChronology ()));
     assertNull (PDTXMLConverter.getDateTime (null));
   }
+
+  @Test
+  public void testNow ()
+  {
+    assertNotNull (PDTXMLConverter.getXMLCalendarNow ());
+    assertNotNull (PDTXMLConverter.getXMLCalendarDateNow ());
+    assertNotNull (PDTXMLConverter.getXMLCalendarTimeNow ());
+  }
 }
