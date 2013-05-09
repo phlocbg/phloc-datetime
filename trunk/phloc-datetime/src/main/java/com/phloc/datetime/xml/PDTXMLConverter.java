@@ -410,7 +410,8 @@ public final class PDTXMLConverter
   }
 
   /**
-   * Get the current date and time as {@link XMLGregorianCalendar}.
+   * Get the current date and time as {@link XMLGregorianCalendar} in the
+   * default time zone.
    * 
    * @return Never <code>null</code>.
    */
@@ -418,6 +419,17 @@ public final class PDTXMLConverter
   public static XMLGregorianCalendar getXMLCalendarNow ()
   {
     return getXMLCalendar (PDTFactory.getCurrentDateTime ());
+  }
+
+  /**
+   * Get the current date and time as {@link XMLGregorianCalendar} in UTC.
+   * 
+   * @return Never <code>null</code>.
+   */
+  @Nonnull
+  public static XMLGregorianCalendar getXMLCalendarNowUTC ()
+  {
+    return getXMLCalendar (PDTFactory.getCurrentDateTimeUTC ());
   }
 
   /**
