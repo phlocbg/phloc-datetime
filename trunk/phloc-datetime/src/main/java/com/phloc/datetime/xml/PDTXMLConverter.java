@@ -34,6 +34,8 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.phloc.commons.CGlobal;
 import com.phloc.commons.annotations.PresentForCodeCoverage;
@@ -48,6 +50,7 @@ import com.phloc.datetime.PDTFactory;
 @Immutable
 public final class PDTXMLConverter
 {
+  private static final Logger s_aLogger = LoggerFactory.getLogger (PDTXMLConverter.class);
   private static final DatatypeFactory s_aDTFactory;
 
   static
@@ -511,6 +514,63 @@ public final class PDTXMLConverter
   public static XMLGregorianCalendar getXMLCalendar (@Nullable final GregorianCalendar aCal)
   {
     return aCal == null ? null : s_aDTFactory.newXMLGregorianCalendar (aCal);
+  }
+
+  /**
+   * Create a new {@link XMLGregorianCalendar} using separate objects for date
+   * and time.
+   * 
+   * @param aDate
+   *        Source date. May be <code>null</code>.
+   * @param aTime
+   *        Source time. May be <code>null</code>.
+   * @return <code>null</code> if the passed date and time are <code>null</code>
+   *         .
+   */
+  @Nullable
+  public static XMLGregorianCalendar getXMLCalendar (@Nullable final XMLGregorianCalendar aDate,
+                                                     @Nullable final XMLGregorianCalendar aTime)
+  {
+    if (aDate == null && aTime == null)
+      return null;
+    if (aTime == null)
+    {
+      // Date only
+      return s_aDTFactory.newXMLGregorianCalendar (aDate.getYear (),
+                                                   aDate.getMonth (),
+                                                   aDate.getDay (),
+                                                   0,
+                                                   0,
+                                                   0,
+                                                   0,
+                                                   aDate.getTimezone ());
+    }
+    if (aDate == null)
+    {
+      // Time only
+      return s_aDTFactory.newXMLGregorianCalendar (0,
+                                                   0,
+                                                   0,
+                                                   aTime.getHour (),
+                                                   aTime.getMinute (),
+                                                   aTime.getSecond (),
+                                                   aTime.getMillisecond (),
+                                                   aTime.getTimezone ());
+    }
+
+    if (aDate.getTimezone () != aTime.getTimezone ())
+      s_aLogger.warn ("Date and time have different timezones: " +
+                      aDate.getTimezone () +
+                      " vs. " +
+                      aTime.getTimezone ());
+    return s_aDTFactory.newXMLGregorianCalendar (aDate.getYear (),
+                                                 aDate.getMonth (),
+                                                 aDate.getDay (),
+                                                 aTime.getHour (),
+                                                 aTime.getMinute (),
+                                                 aTime.getSecond (),
+                                                 aTime.getMillisecond (),
+                                                 aDate.getTimezone ());
   }
 
   /**
