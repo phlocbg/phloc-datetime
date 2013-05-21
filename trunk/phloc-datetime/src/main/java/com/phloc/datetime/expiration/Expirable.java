@@ -69,7 +69,6 @@ public final class Expirable implements IExpirable
     return EChange.CHANGED;
   }
 
-  @Override
   public EChange resetExpiration ()
   {
     return setExpirationDateTime (null);
