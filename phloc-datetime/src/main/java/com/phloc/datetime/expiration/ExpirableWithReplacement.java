@@ -88,7 +88,6 @@ public final class ExpirableWithReplacement <DATATYPE> implements IExpirableWith
     return EChange.CHANGED;
   }
 
-  @Override
   public EChange resetExpiration ()
   {
     return setExpirationDateTime (null);

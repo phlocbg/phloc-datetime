@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
   <parent>
     <groupId>com.phloc</groupId>
     <artifactId>parent-pom</artifactId>
@@ -7,12 +7,12 @@
     <relativePath>../phloc-parent-pom/pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>phloc-datetime</artifactId>
+  <artifactId>phloc-datetime-jdk5</artifactId>
   <version>3.0.6-SNAPSHOT</version>
   <packaging>bundle</packaging>
-  <name>phloc-datetime</name>
+  <name>phloc-datetime-jdk5</name>
   <description>phloc base date and time stuff</description>
-  <url>http://repo.phloc.com/apidocs/phloc-datetime/${project.version}</url>
+  <url>http://repo.phloc.com/apidocs/phloc-datetime-jdk5/${project.version}</url>
   
   <licenses>
     <license>
@@ -24,8 +24,8 @@
   
   <scm>
     <url>http://code.google.com/p/phloc-datetime/source/browse/</url>
-    <connection>scm:svn:http://phloc-datetime.googlecode.com/svn/trunk/phloc-datetime</connection>
-    <developerConnection>scm:svn:https://phloc-datetime.googlecode.com/svn/trunk/phloc-datetime</developerConnection>
+    <connection>scm:svn:http://phloc-datetime.googlecode.com/svn/trunk/phloc-datetime-jdk5</connection>
+    <developerConnection>scm:svn:https://phloc-datetime.googlecode.com/svn/trunk/phloc-datetime-jdk5</developerConnection>
   </scm>
   <organization>
     <name>phloc systems</name>
@@ -85,7 +85,7 @@
   <dependencies>
     <dependency>
       <groupId>com.phloc</groupId>
-      <artifactId>phloc-commons</artifactId>
+      <artifactId>phloc-commons-jdk5</artifactId>
       <version>4.0.7-SNAPSHOT</version>
     </dependency>
 
@@ -115,6 +115,14 @@
           </instructions>
         </configuration>
       </plugin>
-    </plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+</plugins>
   </build>
 </project>
