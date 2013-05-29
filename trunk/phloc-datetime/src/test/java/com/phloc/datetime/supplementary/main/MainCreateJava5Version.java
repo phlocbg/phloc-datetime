@@ -1,4 +1,4 @@
-package com.phloc.datetime.jdk5;
+package com.phloc.datetime.supplementary.main;
 
 import java.io.File;
 import java.io.IOException;
