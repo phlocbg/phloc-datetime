@@ -188,6 +188,23 @@ public final class PDTXMLConverter
   }
 
   /**
+   * Get the passed object as {@link XMLGregorianCalendar} date (without a
+   * time).
+   * 
+   * @param aBase
+   *        The source object. May be <code>null</code>.
+   * @return <code>null</code> if the parameter is <code>null</code>.
+   */
+  @Nullable
+  public static XMLGregorianCalendar getXMLCalendarDate (@Nullable final XMLGregorianCalendar aBase)
+  {
+    return aBase == null ? null : s_aDTFactory.newXMLGregorianCalendarDate (aBase.getYear (),
+                                                                            aBase.getMonth (),
+                                                                            aBase.getDay (),
+                                                                            aBase.getTimezone ());
+  }
+
+  /**
    * <p>
    * Create a Java representation of XML Schema builtin datatype
    * <code>date</code> or <code>g*</code>.
@@ -324,6 +341,24 @@ public final class PDTXMLConverter
                                                                             aBase.get (Calendar.SECOND),
                                                                             aBase.get (Calendar.MILLISECOND),
                                                                             getTimezoneOffsetInMinutes (aBase));
+  }
+
+  /**
+   * Get the passed object as {@link XMLGregorianCalendar} time (without a
+   * date).
+   * 
+   * @param aBase
+   *        The source object. May be <code>null</code>.
+   * @return <code>null</code> if the parameter is <code>null</code>.
+   */
+  @Nullable
+  public static XMLGregorianCalendar getXMLCalendarTime (@Nullable final XMLGregorianCalendar aBase)
+  {
+    return aBase == null ? null : s_aDTFactory.newXMLGregorianCalendarTime (aBase.getHour (),
+                                                                            aBase.getMinute (),
+                                                                            aBase.getSecond (),
+                                                                            aBase.getMillisecond (),
+                                                                            aBase.getTimezone ());
   }
 
   /**
