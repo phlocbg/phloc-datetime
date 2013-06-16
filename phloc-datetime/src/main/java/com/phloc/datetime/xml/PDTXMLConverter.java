@@ -153,7 +153,7 @@ public final class PDTXMLConverter
     return aBase == null ? null : s_aDTFactory.newXMLGregorianCalendarDate (aBase.getYear (),
                                                                             aBase.getMonthOfYear (),
                                                                             aBase.getDayOfMonth (),
-                                                                            0);
+                                                                            DatatypeConstants.FIELD_UNDEFINED);
   }
 
   /**
@@ -198,10 +198,12 @@ public final class PDTXMLConverter
   @Nullable
   public static XMLGregorianCalendar getXMLCalendarDate (@Nullable final XMLGregorianCalendar aBase)
   {
-    return aBase == null ? null : s_aDTFactory.newXMLGregorianCalendarDate (aBase.getYear (),
-                                                                            aBase.getMonth (),
-                                                                            aBase.getDay (),
-                                                                            aBase.getTimezone ());
+    return aBase == null ? null
+                        : s_aDTFactory.newXMLGregorianCalendarDate (aBase.getYear (),
+                                                                    aBase.getMonth (),
+                                                                    aBase.getDay (),
+                                                                    aBase.getTimezone () == 0 ? DatatypeConstants.FIELD_UNDEFINED
+                                                                                             : aBase.getTimezone ());
   }
 
   /**
@@ -308,7 +310,7 @@ public final class PDTXMLConverter
                                                                             aBase.getMinuteOfHour (),
                                                                             aBase.getSecondOfMinute (),
                                                                             aBase.getMillisOfSecond (),
-                                                                            0);
+                                                                            DatatypeConstants.FIELD_UNDEFINED);
   }
 
   /**
@@ -497,7 +499,7 @@ public final class PDTXMLConverter
                                                                         aBase.getMinuteOfHour (),
                                                                         aBase.getSecondOfMinute (),
                                                                         aBase.getMillisOfSecond (),
-                                                                        0);
+                                                                        DatatypeConstants.FIELD_UNDEFINED);
   }
 
   /**
