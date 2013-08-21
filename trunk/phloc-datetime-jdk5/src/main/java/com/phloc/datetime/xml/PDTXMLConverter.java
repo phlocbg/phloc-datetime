@@ -153,7 +153,7 @@ public final class PDTXMLConverter
     return aBase == null ? null : s_aDTFactory.newXMLGregorianCalendarDate (aBase.getYear (),
                                                                             aBase.getMonthOfYear (),
                                                                             aBase.getDayOfMonth (),
-                                                                            0);
+                                                                            DatatypeConstants.FIELD_UNDEFINED);
   }
 
   /**
@@ -185,6 +185,25 @@ public final class PDTXMLConverter
                                                                             aBase.get (Calendar.MONTH),
                                                                             aBase.get (Calendar.DAY_OF_MONTH),
                                                                             getTimezoneOffsetInMinutes (aBase));
+  }
+
+  /**
+   * Get the passed object as {@link XMLGregorianCalendar} date (without a
+   * time).
+   * 
+   * @param aBase
+   *        The source object. May be <code>null</code>.
+   * @return <code>null</code> if the parameter is <code>null</code>.
+   */
+  @Nullable
+  public static XMLGregorianCalendar getXMLCalendarDate (@Nullable final XMLGregorianCalendar aBase)
+  {
+    return aBase == null ? null
+                        : s_aDTFactory.newXMLGregorianCalendarDate (aBase.getYear (),
+                                                                    aBase.getMonth (),
+                                                                    aBase.getDay (),
+                                                                    aBase.getTimezone () == 0 ? DatatypeConstants.FIELD_UNDEFINED
+                                                                                             : aBase.getTimezone ());
   }
 
   /**
@@ -291,7 +310,7 @@ public final class PDTXMLConverter
                                                                             aBase.getMinuteOfHour (),
                                                                             aBase.getSecondOfMinute (),
                                                                             aBase.getMillisOfSecond (),
-                                                                            0);
+                                                                            DatatypeConstants.FIELD_UNDEFINED);
   }
 
   /**
@@ -324,6 +343,24 @@ public final class PDTXMLConverter
                                                                             aBase.get (Calendar.SECOND),
                                                                             aBase.get (Calendar.MILLISECOND),
                                                                             getTimezoneOffsetInMinutes (aBase));
+  }
+
+  /**
+   * Get the passed object as {@link XMLGregorianCalendar} time (without a
+   * date).
+   * 
+   * @param aBase
+   *        The source object. May be <code>null</code>.
+   * @return <code>null</code> if the parameter is <code>null</code>.
+   */
+  @Nullable
+  public static XMLGregorianCalendar getXMLCalendarTime (@Nullable final XMLGregorianCalendar aBase)
+  {
+    return aBase == null ? null : s_aDTFactory.newXMLGregorianCalendarTime (aBase.getHour (),
+                                                                            aBase.getMinute (),
+                                                                            aBase.getSecond (),
+                                                                            aBase.getMillisecond (),
+                                                                            aBase.getTimezone ());
   }
 
   /**
@@ -462,7 +499,7 @@ public final class PDTXMLConverter
                                                                         aBase.getMinuteOfHour (),
                                                                         aBase.getSecondOfMinute (),
                                                                         aBase.getMillisOfSecond (),
-                                                                        0);
+                                                                        DatatypeConstants.FIELD_UNDEFINED);
   }
 
   /**

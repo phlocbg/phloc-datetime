@@ -67,7 +67,7 @@ public final class PDTXMLConverterTest
     assertEquals (DatatypeConstants.FIELD_UNDEFINED, c1.getMinute ());
     assertEquals (DatatypeConstants.FIELD_UNDEFINED, c1.getSecond ());
     assertEquals (DatatypeConstants.FIELD_UNDEFINED, c1.getMillisecond ());
-    assertEquals (0, c1.getTimezone ());
+    assertEquals (DatatypeConstants.FIELD_UNDEFINED, c1.getTimezone ());
     final LocalDate aLD2 = PDTXMLConverter.getLocalDate (c1);
     assertNotNull (aLD2);
     assertEquals (aLD, aLD2);
@@ -88,7 +88,7 @@ public final class PDTXMLConverterTest
     assertEquals (aLT.getMinuteOfHour (), c1.getMinute ());
     assertEquals (aLT.getSecondOfMinute (), c1.getSecond ());
     assertEquals (aLT.getMillisOfSecond (), c1.getMillisecond ());
-    assertEquals (0, c1.getTimezone ());
+    assertEquals (DatatypeConstants.FIELD_UNDEFINED, c1.getTimezone ());
     final LocalTime aLT2 = PDTXMLConverter.getLocalTime (c1);
     assertNotNull (aLT2);
     assertEquals (aLT, aLT2);
@@ -109,7 +109,7 @@ public final class PDTXMLConverterTest
     assertEquals (aLDT.getMinuteOfHour (), c1.getMinute ());
     assertEquals (aLDT.getSecondOfMinute (), c1.getSecond ());
     assertEquals (aLDT.getMillisOfSecond (), c1.getMillisecond ());
-    assertEquals (0, c1.getTimezone ());
+    assertEquals (DatatypeConstants.FIELD_UNDEFINED, c1.getTimezone ());
     final LocalDateTime aLT2 = PDTXMLConverter.getLocalDateTime (c1);
     assertNotNull (aLT2);
     assertEquals (aLDT, aLT2);
