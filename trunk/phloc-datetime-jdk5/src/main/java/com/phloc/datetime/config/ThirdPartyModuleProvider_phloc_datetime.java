@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2006-2013 phloc systems
+ * Copyright (C) 2006-2014 phloc systems
  * http://www.phloc.com
  * office[at]phloc[dot]com
  *
@@ -35,11 +35,11 @@ import com.phloc.commons.version.Version;
 @IsSPIImplementation
 public final class ThirdPartyModuleProvider_phloc_datetime implements IThirdPartyModuleProviderSPI
 {
-  private static final IThirdPartyModule JODATIME = new ThirdPartyModule ("Joda-Time",
-                                                                          "Stephen Colebourne",
-                                                                          ELicense.APACHE2,
-                                                                          new Version (2, 3),
-                                                                          "http://www.joda.org/joda-time/");
+  public static final IThirdPartyModule JODATIME = new ThirdPartyModule ("Joda-Time",
+                                                                         "Stephen Colebourne",
+                                                                         ELicense.APACHE2,
+                                                                         new Version (2, 3),
+                                                                         "http://www.joda.org/joda-time/");
 
   @Nonnull
   public IThirdPartyModule [] getAllThirdPartyModules ()
