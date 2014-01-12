@@ -18,10 +18,12 @@
 package com.phloc.datetime.comparators;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.joda.time.LocalDate;
 
 import com.phloc.commons.compare.AbstractComparator;
+import com.phloc.commons.compare.CompareUtils;
 import com.phloc.commons.compare.ESortOrder;
 
 /**
@@ -29,19 +31,34 @@ import com.phloc.commons.compare.ESortOrder;
  * 
  * @author Philip Helger
  */
-public final class ComparatorLocalDate extends AbstractComparator <LocalDate>
+public class ComparatorLocalDate extends AbstractComparator <LocalDate>
 {
+  private final boolean m_bNullValueComeFirst;
+
   public ComparatorLocalDate ()
-  {}
+  {
+    this (CompareUtils.DEFAULT_NULL_VALUES_COME_FIRST);
+  }
 
   public ComparatorLocalDate (@Nonnull final ESortOrder eSortOrder)
   {
+    this (eSortOrder, CompareUtils.DEFAULT_NULL_VALUES_COME_FIRST);
+  }
+
+  public ComparatorLocalDate (final boolean bNullValueComeFirst)
+  {
+    m_bNullValueComeFirst = bNullValueComeFirst;
+  }
+
+  public ComparatorLocalDate (@Nonnull final ESortOrder eSortOrder, final boolean bNullValueComeFirst)
+  {
     super (eSortOrder);
+    m_bNullValueComeFirst = bNullValueComeFirst;
   }
 
   @Override
-  protected int mainCompare (@Nonnull final LocalDate aDateTime1, @Nonnull final LocalDate aDateTime2)
+  protected int mainCompare (@Nullable final LocalDate aDateTime1, @Nullable final LocalDate aDateTime2)
   {
-    return aDateTime1.compareTo (aDateTime2);
+    return CompareUtils.nullSafeCompare (aDateTime1, aDateTime2, m_bNullValueComeFirst);
   }
 }
