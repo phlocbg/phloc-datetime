@@ -29,7 +29,7 @@ import com.phloc.commons.version.Version;
 /**
  * Implement this SPI interface if your JAR file contains external third party
  * modules.
- * 
+ *
  * @author Philip Helger
  */
 @IsSPIImplementation
@@ -38,7 +38,7 @@ public final class ThirdPartyModuleProvider_phloc_datetime implements IThirdPart
   public static final IThirdPartyModule JODATIME = new ThirdPartyModule ("Joda-Time",
                                                                          "Stephen Colebourne",
                                                                          ELicense.APACHE2,
-                                                                         new Version (2, 3),
+                                                                         new Version (2, 4),
                                                                          "http://www.joda.org/joda-time/");
 
   @Nonnull
