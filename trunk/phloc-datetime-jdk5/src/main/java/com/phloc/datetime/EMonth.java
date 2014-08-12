@@ -25,13 +25,14 @@ import javax.annotation.Nullable;
 
 import org.joda.time.DateTimeConstants;
 
+import com.phloc.commons.collections.ArrayHelper;
 import com.phloc.commons.id.IHasSimpleIntID;
 import com.phloc.commons.lang.DateFormatSymbolsFactory;
 import com.phloc.commons.lang.EnumHelper;
 
 /**
  * Represents all known Gregorian Calendar month as a type-safe enum
- * 
+ *
  * @author Philip Helger
  */
 public enum EMonth implements IHasSimpleIntID
@@ -82,13 +83,13 @@ public enum EMonth implements IHasSimpleIntID
   @Nullable
   public String getMonthName (@Nonnull final Locale aLocale)
   {
-    return DateFormatSymbolsFactory.getInstance (aLocale).getMonths ()[m_nCalID];
+    return ArrayHelper.getSafeElement (DateFormatSymbolsFactory.getInstance (aLocale).getMonths (), m_nCalID);
   }
 
   @Nullable
   public String getMonthShortName (@Nonnull final Locale aLocale)
   {
-    return DateFormatSymbolsFactory.getInstance (aLocale).getShortMonths ()[m_nCalID];
+    return ArrayHelper.getSafeElement (DateFormatSymbolsFactory.getInstance (aLocale).getShortMonths (), m_nCalID);
   }
 
   @Nullable

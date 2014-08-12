@@ -34,13 +34,14 @@ import org.joda.time.ReadableDateTime;
 import org.joda.time.base.AbstractInstant;
 import org.joda.time.base.AbstractPartial;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.PresentForCodeCoverage;
 import com.phloc.commons.collections.pair.IReadonlyPair;
 import com.phloc.commons.collections.pair.ReadonlyPair;
 
 /**
  * Some date/time utility methods.
- * 
+ *
  * @author Philip Helger
  */
 @Immutable
@@ -130,7 +131,7 @@ public final class PDTUtils
 
   /**
    * Count all non-weekend days in the range. Does not consider holidays!
-   * 
+   *
    * @param aStartDate
    *        start date
    * @param aEndDate
@@ -141,10 +142,8 @@ public final class PDTUtils
    */
   public static int getWeekDays (@Nonnull final LocalDate aStartDate, @Nonnull final LocalDate aEndDate)
   {
-    if (aStartDate == null)
-      throw new NullPointerException ("start");
-    if (aEndDate == null)
-      throw new NullPointerException ("end");
+    ValueEnforcer.notNull (aStartDate, "StartDate");
+    ValueEnforcer.notNull (aEndDate, "EndDate");
 
     final boolean bFlip = aStartDate.isAfter (aEndDate);
     LocalDate aCurDate = bFlip ? aEndDate : aStartDate;
@@ -186,7 +185,7 @@ public final class PDTUtils
 
   /**
    * Get the start- and end-week numbers for the passed year and month.
-   * 
+   *
    * @param aDT
    *        The object to use year and month from.
    * @return A non-<code>null</code> pair where the first item is the initial
@@ -213,7 +212,7 @@ public final class PDTUtils
    * Get the next working day based on the current day. If the current day is a
    * working day, the current day is returned. A working day is determined by:
    * it's not a weekend day (usually Saturday or Sunday).
-   * 
+   *
    * @return The next matching date.
    */
   @Nonnull
@@ -228,7 +227,7 @@ public final class PDTUtils
   /**
    * Compare two dates by birthday. This means, the dates are only compared by
    * day and month, and <b>not</b> by year!
-   * 
+   *
    * @param aDate1
    *        First date. May be <code>null</code>.
    * @param aDate2
@@ -257,7 +256,7 @@ public final class PDTUtils
   /**
    * Check if the two birthdays are equal. Equal birthdays are identified by
    * equal months and equal days.
-   * 
+   *
    * @param aDate1
    *        First date. May be <code>null</code>.
    * @param aDate2
@@ -320,7 +319,7 @@ public final class PDTUtils
    * Compare two periods. The problem is, that
    * <code>period1.equals (period2)</code> is not equal even though they are
    * semantically equal.
-   * 
+   *
    * @param aPeriod1
    *        First period. May not be <code>null</code>.
    * @param aPeriod2
@@ -339,7 +338,7 @@ public final class PDTUtils
    * {@link com.phloc.commons.compare.CompareUtils#nullSafeCompare(Comparable, Comparable)}
    * except that the parameter class does not implement
    * {@link java.lang.Comparable} in a Generics-way!
-   * 
+   *
    * @param aPeriod1
    *        First object. May be <code>null</code>.
    * @param aPeriod2
@@ -353,7 +352,7 @@ public final class PDTUtils
 
   /**
    * Check if two periods are equal.
-   * 
+   *
    * @param aPeriod1
    *        First period. May not be <code>null</code>.
    * @param aPeriod2
@@ -391,7 +390,7 @@ public final class PDTUtils
    * {@link com.phloc.commons.compare.CompareUtils#nullSafeCompare(Comparable, Comparable)}
    * except that the parameter class does not implement
    * {@link java.lang.Comparable} in a Generics-way!
-   * 
+   *
    * @param aDuration1
    *        First object. May be <code>null</code>.
    * @param aDuration2
@@ -431,7 +430,7 @@ public final class PDTUtils
    * {@link com.phloc.commons.compare.CompareUtils#nullSafeCompare(Comparable, Comparable)}
    * except that the parameter class does not implement
    * {@link java.lang.Comparable} in a Generics-way!
-   * 
+   *
    * @param aDT1
    *        First object. May be <code>null</code>.
    * @param aDT2
@@ -469,7 +468,7 @@ public final class PDTUtils
    * {@link com.phloc.commons.compare.CompareUtils#nullSafeCompare(Comparable, Comparable)}
    * except that the parameter class does not implement
    * {@link java.lang.Comparable} in a Generics-way!
-   * 
+   *
    * @param aDate1
    *        First object. May be <code>null</code>.
    * @param aDate2
@@ -507,7 +506,7 @@ public final class PDTUtils
    * {@link com.phloc.commons.compare.CompareUtils#nullSafeCompare(Comparable, Comparable)}
    * except that the parameter class does not implement
    * {@link java.lang.Comparable} in a Generics-way!
-   * 
+   *
    * @param aTime1
    *        First object. May be <code>null</code>.
    * @param aTime2
@@ -545,7 +544,7 @@ public final class PDTUtils
    * {@link com.phloc.commons.compare.CompareUtils#nullSafeCompare(Comparable, Comparable)}
    * except that the parameter class does not implement
    * {@link java.lang.Comparable} in a Generics-way!
-   * 
+   *
    * @param aDateTime1
    *        First object. May be <code>null</code>.
    * @param aDateTime2
