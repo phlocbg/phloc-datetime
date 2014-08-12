@@ -26,6 +26,7 @@ import javax.annotation.concurrent.ThreadSafe;
 import org.joda.time.Chronology;
 import org.joda.time.DateTimeZone;
 import org.joda.time.chrono.GJChronology;
+import org.joda.time.chrono.ISOChronology;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +36,7 @@ import com.phloc.commons.state.ESuccess;
 /**
  * This class provides the most basic settings for date time operating: the
  * date-time-zone and the chronology to use.
- * 
+ *
  * @author Philip Helger
  */
 @ThreadSafe
@@ -49,6 +50,7 @@ public final class PDTConfig
   private static final Logger s_aLogger = LoggerFactory.getLogger (PDTConfig.class);
   private static final ReadWriteLock s_aRWLock = new ReentrantReadWriteLock ();
   private static DateTimeZone s_aDateTimeZone = DateTimeZone.forID (DEFAULT_DATETIMEZONEID);
+  private static volatile boolean s_bUseISOChronology = false;
 
   @PresentForCodeCoverage
   @SuppressWarnings ("unused")
@@ -59,7 +61,7 @@ public final class PDTConfig
 
   /**
    * Set the default date time zone to use.
-   * 
+   *
    * @param sDateTimeZoneID
    *        Must be a valid, non-null time zone.
    * @return {@link ESuccess}
@@ -113,6 +115,16 @@ public final class PDTConfig
     return DateTimeZone.UTC;
   }
 
+  public static boolean isUseISOChronology ()
+  {
+    return s_bUseISOChronology;
+  }
+
+  public static void setUseISOChronology (final boolean bUse)
+  {
+    s_bUseISOChronology = bUse;
+  }
+
   /**
    * @return The default GJ chronology using the result of
    *         {@link #getDefaultDateTimeZone()}
@@ -120,6 +132,8 @@ public final class PDTConfig
   @Nonnull
   public static Chronology getDefaultChronology ()
   {
+    if (s_bUseISOChronology)
+      return ISOChronology.getInstance (getDefaultDateTimeZone ());
     return GJChronology.getInstance (getDefaultDateTimeZone ());
   }
 
@@ -129,6 +143,8 @@ public final class PDTConfig
   @Nonnull
   public static Chronology getDefaultChronologyWithoutDateTimeZone ()
   {
+    if (s_bUseISOChronology)
+      return ISOChronology.getInstance ();
     return GJChronology.getInstance ();
   }
 
@@ -138,6 +154,8 @@ public final class PDTConfig
   @Nonnull
   public static Chronology getDefaultChronologyUTC ()
   {
+    if (s_bUseISOChronology)
+      return ISOChronology.getInstanceUTC ();
     return GJChronology.getInstanceUTC ();
   }
 }

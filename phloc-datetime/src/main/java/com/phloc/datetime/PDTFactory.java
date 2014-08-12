@@ -39,7 +39,7 @@ import com.phloc.datetime.config.PDTConfig;
 
 /**
  * This class contains methods for creating date and time objects.
- * 
+ *
  * @author Philip Helger
  */
 @Immutable
@@ -207,7 +207,7 @@ public final class PDTFactory
 
   /**
    * Parse string using ISO format
-   * 
+   *
    * @param sDate
    *        A date in the format yyyy-MM-dd
    * @return the {@link LocalDate}
@@ -220,7 +220,7 @@ public final class PDTFactory
 
   /**
    * Creates a LocalDate. Does not use the Chronology of the Calendar.
-   * 
+   *
    * @param aCalendar
    *        The calendar to be converted.
    * @return The local date representing the provided date.
@@ -292,7 +292,7 @@ public final class PDTFactory
 
   /**
    * Parse string using ISO format
-   * 
+   *
    * @param sTime
    *        A time in the format HH:mm:ss.SSSZZ
    * @return the {@link LocalTime}
@@ -342,7 +342,7 @@ public final class PDTFactory
 
   /**
    * Parse milli seconds string
-   * 
+   *
    * @param sDateTime
    *        A date and time as a string representation of the milli seconds
    * @return the {@link LocalDateTime}
@@ -381,6 +381,49 @@ public final class PDTFactory
   public static LocalDateTime createLocalDateTime (final int nYears, final int nMonths, final int nDays)
   {
     return createLocalDateTime (nYears, nMonths, nDays, 0, 0, 0, 0);
+  }
+
+  @Nonnull
+  public static LocalDateTime createLocalDateTime (@Nonnull final LocalDate aDate, final int nHours, final int nMinutes)
+  {
+    return createLocalDateTime (aDate.getYear (),
+                                aDate.getMonthOfYear (),
+                                aDate.getDayOfMonth (),
+                                nHours,
+                                nMinutes,
+                                0,
+                                0);
+  }
+
+  @Nonnull
+  public static LocalDateTime createLocalDateTime (@Nonnull final LocalDate aDate,
+                                                   final int nHours,
+                                                   final int nMinutes,
+                                                   final int nSeconds)
+  {
+    return createLocalDateTime (aDate.getYear (),
+                                aDate.getMonthOfYear (),
+                                aDate.getDayOfMonth (),
+                                nHours,
+                                nMinutes,
+                                nSeconds,
+                                0);
+  }
+
+  @Nonnull
+  public static LocalDateTime createLocalDateTime (@Nonnull final LocalDate aDate,
+                                                   final int nHours,
+                                                   final int nMinutes,
+                                                   final int nSeconds,
+                                                   final int nMilliSeconds)
+  {
+    return createLocalDateTime (aDate.getYear (),
+                                aDate.getMonthOfYear (),
+                                aDate.getDayOfMonth (),
+                                nHours,
+                                nMinutes,
+                                nSeconds,
+                                nMilliSeconds);
   }
 
   @Nonnull
