@@ -44,7 +44,7 @@ import com.phloc.datetime.PDTFactory;
 
 /**
  * Utility class for XML date/time data type handling.
- * 
+ *
  * @author Philip Helger
  */
 @Immutable
@@ -76,7 +76,7 @@ public final class PDTXMLConverter
   /**
    * Get the timezone offset to UTC of the passed calendar in minutes to be used
    * in {@link XMLGregorianCalendar}.
-   * 
+   *
    * @param aCalendar
    *        The calendar to use. May not be <code>null</code>.
    * @return 0 for no offset to UTC, the minutes otherwise. Usually in 60minutes
@@ -90,7 +90,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed date as {@link GregorianCalendar}.
-   * 
+   *
    * @param aDate
    *        The source date. May be <code>null</code>.
    * @return Never <code>null</code>.
@@ -105,7 +105,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed milli seconds as {@link GregorianCalendar}.
-   * 
+   *
    * @param nMillis
    *        Milli seconds since 1.1.1970
    * @return Never <code>null</code>.
@@ -130,7 +130,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the current date as {@link XMLGregorianCalendar}.
-   * 
+   *
    * @return Never <code>null</code>.
    */
   @Nonnull
@@ -142,7 +142,7 @@ public final class PDTXMLConverter
   /**
    * Get the passed object as {@link XMLGregorianCalendar} date (without a
    * time).
-   * 
+   *
    * @param aBase
    *        The source object. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -159,7 +159,7 @@ public final class PDTXMLConverter
   /**
    * Get the passed object as {@link XMLGregorianCalendar} date (without a
    * time).
-   * 
+   *
    * @param aBase
    *        The source object. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -173,7 +173,7 @@ public final class PDTXMLConverter
   /**
    * Get the passed object as {@link XMLGregorianCalendar} date (without a
    * time).
-   * 
+   *
    * @param aBase
    *        The source object. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -190,7 +190,7 @@ public final class PDTXMLConverter
   /**
    * Get the passed object as {@link XMLGregorianCalendar} date (without a
    * time).
-   * 
+   *
    * @param aBase
    *        The source object. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -220,7 +220,7 @@ public final class PDTXMLConverter
    * A {@link DatatypeConstants#FIELD_UNDEFINED} value indicates that field is
    * not set.
    * </p>
-   * 
+   *
    * @param nYear
    *        Year to be created.
    * @param nMonth
@@ -256,7 +256,7 @@ public final class PDTXMLConverter
    * A {@link DatatypeConstants#FIELD_UNDEFINED} value indicates that field is
    * not set.
    * </p>
-   * 
+   *
    * @param nYear
    *        Year to be created.
    * @param nMonth
@@ -286,7 +286,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the current time as {@link XMLGregorianCalendar}.
-   * 
+   *
    * @return Never <code>null</code>.
    */
   @Nonnull
@@ -298,7 +298,7 @@ public final class PDTXMLConverter
   /**
    * Get the passed object as {@link XMLGregorianCalendar} time (without a
    * date).
-   * 
+   *
    * @param aBase
    *        The source object. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -316,7 +316,7 @@ public final class PDTXMLConverter
   /**
    * Get the passed object as {@link XMLGregorianCalendar} time (without a
    * date).
-   * 
+   *
    * @param aBase
    *        The source object. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -330,7 +330,7 @@ public final class PDTXMLConverter
   /**
    * Get the passed object as {@link XMLGregorianCalendar} time (without a
    * date).
-   * 
+   *
    * @param aBase
    *        The source object. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -348,7 +348,7 @@ public final class PDTXMLConverter
   /**
    * Get the passed object as {@link XMLGregorianCalendar} time (without a
    * date).
-   * 
+   *
    * @param aBase
    *        The source object. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -377,7 +377,7 @@ public final class PDTXMLConverter
    * A {@link DatatypeConstants#FIELD_UNDEFINED} value indicates that field is
    * not set.
    * </p>
-   * 
+   *
    * @param nHour
    *        Hour to be created.
    * @param nMinute
@@ -418,7 +418,7 @@ public final class PDTXMLConverter
    * A {@link DatatypeConstants#FIELD_UNDEFINED} value indicates that field is
    * not set.
    * </p>
-   * 
+   *
    * @param nHour
    *        Hour to be created.
    * @param nMinute
@@ -452,7 +452,7 @@ public final class PDTXMLConverter
   /**
    * Get the current date and time as {@link XMLGregorianCalendar} in the
    * default time zone.
-   * 
+   *
    * @return Never <code>null</code>.
    */
   @Nonnull
@@ -463,7 +463,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the current date and time as {@link XMLGregorianCalendar} in UTC.
-   * 
+   *
    * @return Never <code>null</code>.
    */
   @Nonnull
@@ -473,18 +473,8 @@ public final class PDTXMLConverter
   }
 
   /**
-   * @deprecated Use {@link #getXMLCalendar(LocalDateTime)} instead
-   */
-  @Deprecated
-  @Nullable
-  public static XMLGregorianCalendar getXMLCalendarDateTime (@Nullable final LocalDateTime aBase)
-  {
-    return getXMLCalendar (aBase);
-  }
-
-  /**
    * Get the passed object as {@link XMLGregorianCalendar} with date and time.
-   * 
+   *
    * @param aBase
    *        The source object. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -503,18 +493,8 @@ public final class PDTXMLConverter
   }
 
   /**
-   * @deprecated Use {@link #getXMLCalendar(DateTime)} instead
-   */
-  @Deprecated
-  @Nullable
-  public static XMLGregorianCalendar getXMLCalendarDateTime (@Nullable final DateTime aBase)
-  {
-    return getXMLCalendar (aBase);
-  }
-
-  /**
    * Get the passed object as {@link XMLGregorianCalendar} with date and time.
-   * 
+   *
    * @param aBase
    *        The source object. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -527,22 +507,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed {@link GregorianCalendar} as {@link XMLGregorianCalendar}.
-   * 
-   * @param aCal
-   *        Source calendar. May be <code>null</code>.
-   * @return <code>null</code> if the passed calendar is <code>null</code>.
-   * @deprecated Use {@link #getXMLCalendar(GregorianCalendar)} instead
-   */
-  @Deprecated
-  @Nullable
-  public static XMLGregorianCalendar getConverted (@Nullable final GregorianCalendar aCal)
-  {
-    return getXMLCalendar (aCal);
-  }
-
-  /**
-   * Get the passed {@link GregorianCalendar} as {@link XMLGregorianCalendar}.
-   * 
+   *
    * @param aCal
    *        Source calendar. May be <code>null</code>.
    * @return <code>null</code> if the passed calendar is <code>null</code>.
@@ -556,7 +521,7 @@ public final class PDTXMLConverter
   /**
    * Create a new {@link XMLGregorianCalendar} using separate objects for date
    * and time.
-   * 
+   *
    * @param aDate
    *        Source date. May be <code>null</code>.
    * @param aTime
@@ -612,7 +577,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed milli seconds as {@link XMLGregorianCalendar}.
-   * 
+   *
    * @param nMillis
    *        Milli seconds since 1.1.1970
    * @return Never <code>null</code>.
@@ -625,7 +590,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed {@link Date} as {@link XMLGregorianCalendar}.
-   * 
+   *
    * @param aDate
    *        Source date. May be <code>null</code>.
    * @return <code>null</code> if the passed date is <code>null</code>.
@@ -639,23 +604,7 @@ public final class PDTXMLConverter
   /**
    * Convert the passed {@link XMLGregorianCalendar} to a
    * {@link GregorianCalendar}.
-   * 
-   * @param aCal
-   *        Source calendar. May be <code>null</code>.
-   * @return <code>null</code> if the parameter is <code>null</code>.
-   * @deprecated Use {@link #getGregorianCalendar(XMLGregorianCalendar)} instead
-   */
-  @Deprecated
-  @Nullable
-  public static GregorianCalendar getConverted (@Nullable final XMLGregorianCalendar aCal)
-  {
-    return getGregorianCalendar (aCal);
-  }
-
-  /**
-   * Convert the passed {@link XMLGregorianCalendar} to a
-   * {@link GregorianCalendar}.
-   * 
+   *
    * @param aCal
    *        Source calendar. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -668,7 +617,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed {@link XMLGregorianCalendar} as {@link LocalDate}.
-   * 
+   *
    * @param aCal
    *        The source {@link XMLGregorianCalendar}. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -681,7 +630,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed {@link XMLGregorianCalendar} as {@link LocalTime}.
-   * 
+   *
    * @param aCal
    *        The source {@link XMLGregorianCalendar}. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -694,7 +643,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed {@link XMLGregorianCalendar} as {@link LocalDateTime}.
-   * 
+   *
    * @param aCal
    *        The source {@link XMLGregorianCalendar}. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -707,7 +656,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed {@link XMLGregorianCalendar} as {@link DateTime}.
-   * 
+   *
    * @param aCal
    *        The source {@link XMLGregorianCalendar}. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -720,7 +669,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed {@link XMLGregorianCalendar} as {@link Date}.
-   * 
+   *
    * @param aCal
    *        The source {@link XMLGregorianCalendar}. May be <code>null</code>.
    * @return <code>null</code> if the parameter is <code>null</code>.
@@ -734,7 +683,7 @@ public final class PDTXMLConverter
 
   /**
    * Get the passed {@link XMLGregorianCalendar} as milli seconds.
-   * 
+   *
    * @param aCal
    *        The source {@link XMLGregorianCalendar}. May be <code>null</code>.
    * @return <code>{@link CGlobal#ILLEGAL_ULONG}</code> if the parameter is
