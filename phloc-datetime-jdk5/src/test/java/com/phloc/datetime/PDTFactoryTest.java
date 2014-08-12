@@ -38,7 +38,7 @@ import com.phloc.datetime.config.PDTConfig;
 
 /**
  * Test class for class {@link PDTFactory}.
- * 
+ *
  * @author Philip Helger
  */
 public final class PDTFactoryTest
@@ -115,12 +115,27 @@ public final class PDTFactoryTest
     assertEquals (aDate, aLD.toDateTimeAtStartOfDay ().toDate ());
     assertEquals (aCal, aLD.toDateTimeAtStartOfDay ().toCalendar (null));
     assertEquals (PDTConfig.getDefaultChronologyUTC (), aLD.getChronology ());
-    final DateTime aDT = PDTFactory.createDateTime (aLD);
+    DateTime aDT = PDTFactory.createDateTime (aLD);
     assertEquals (PDTConfig.getDefaultChronology (), aDT.getChronology ());
 
     aLD = PDTFactory.createLocalDate (aCal);
     assertEquals (aDate, aLD.toDateTimeAtStartOfDay ().toDate ());
     assertEquals (aCal, aLD.toDateTimeAtStartOfDay ().toCalendar (null));
+
+    PDTConfig.setUseISOChronology (true);
+
+    aLD = PDTFactory.createLocalDate (aDate);
+    assertEquals (aDate, aLD.toDateTimeAtStartOfDay ().toDate ());
+    assertEquals (aCal, aLD.toDateTimeAtStartOfDay ().toCalendar (null));
+    assertEquals (PDTConfig.getDefaultChronologyUTC (), aLD.getChronology ());
+    aDT = PDTFactory.createDateTime (aLD);
+    assertEquals (PDTConfig.getDefaultChronology (), aDT.getChronology ());
+
+    aLD = PDTFactory.createLocalDate (aCal);
+    assertEquals (aDate, aLD.toDateTimeAtStartOfDay ().toDate ());
+    assertEquals (aCal, aLD.toDateTimeAtStartOfDay ().toCalendar (null));
+
+    PDTConfig.setUseISOChronology (false);
   }
 
   @Test
