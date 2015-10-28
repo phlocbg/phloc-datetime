@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2006-2014 phloc systems
+    Copyright (C) 2006-2015 phloc systems
     http://www.phloc.com
     office[at]phloc[dot]com
 
@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.phloc</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>23.2</version>
+    <version>24.0</version>
     <relativePath>../phloc-parent-pom/pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -31,7 +31,7 @@
   <packaging>bundle</packaging>
   <name>phloc-datetime</name>
   <description>phloc base date and time stuff</description>
-  <url>http://repo.phloc.com/apidocs/phloc-datetime/${project.version}</url>
+  <url>https://github.com/phlocbg/phloc-datetime/tree/master/phloc-datetime</url>
   
   <licenses>
     <license>
@@ -42,12 +42,14 @@
   </licenses>
   
   <scm>
-    <url>http://code.google.com/p/phloc-datetime/source/browse/</url>
-    <connection>scm:svn:http://phloc-datetime.googlecode.com/svn/trunk/phloc-datetime</connection>
-    <developerConnection>scm:svn:https://phloc-datetime.googlecode.com/svn/trunk/phloc-datetime</developerConnection>
-  </scm>
+    <connection>scm:git:https://github.com/phlocbg/phloc-datetime</connection>
+    <developerConnection>scm:git:https://github.com/phlocbg/phloc-datetime</developerConnection>
+  <url>http://github.com/phlocbg/phloc-datetime</url>
+    <tag>HEAD</tag>
+
+</scm>
   
-  <organization>
+<organization>
     <name>phloc systems</name>
     <url>http://www.phloc.com</url>
   </organization>
@@ -69,7 +71,7 @@
       <version>4.3.6</version>
     </dependency>
 
-    <dependency>
+<dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
       <version>2.4</version>
