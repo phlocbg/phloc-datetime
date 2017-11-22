@@ -25,6 +25,7 @@ import org.joda.time.LocalDate;
 import com.phloc.commons.compare.AbstractComparator;
 import com.phloc.commons.compare.CompareUtils;
 import com.phloc.commons.compare.ESortOrder;
+import com.phloc.commons.compare.GlobalCompareSettings;
 
 /**
  * Comparator for {@link LocalDate} objects.
@@ -37,28 +38,28 @@ public class ComparatorLocalDate extends AbstractComparator <LocalDate>
 
   public ComparatorLocalDate ()
   {
-    this (CompareUtils.DEFAULT_NULL_VALUES_COME_FIRST);
+    this (GlobalCompareSettings.getInstance ().isSortNullValuesFirst ());
   }
 
   public ComparatorLocalDate (@Nonnull final ESortOrder eSortOrder)
   {
-    this (eSortOrder, CompareUtils.DEFAULT_NULL_VALUES_COME_FIRST);
+    this (eSortOrder, GlobalCompareSettings.getInstance ().isSortNullValuesFirst ());
   }
 
   public ComparatorLocalDate (final boolean bNullValueComeFirst)
   {
-    m_bNullValueComeFirst = bNullValueComeFirst;
+    this.m_bNullValueComeFirst = bNullValueComeFirst;
   }
 
   public ComparatorLocalDate (@Nonnull final ESortOrder eSortOrder, final boolean bNullValueComeFirst)
   {
     super (eSortOrder);
-    m_bNullValueComeFirst = bNullValueComeFirst;
+    this.m_bNullValueComeFirst = bNullValueComeFirst;
   }
 
   @Override
   protected int mainCompare (@Nullable final LocalDate aDateTime1, @Nullable final LocalDate aDateTime2)
   {
-    return CompareUtils.nullSafeCompare (aDateTime1, aDateTime2, m_bNullValueComeFirst);
+    return CompareUtils.nullSafeCompare (aDateTime1, aDateTime2, this.m_bNullValueComeFirst);
   }
 }

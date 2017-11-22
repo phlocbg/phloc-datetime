@@ -29,10 +29,13 @@ import org.joda.time.Chronology;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeUtils;
 import org.joda.time.DateTimeZone;
+import org.joda.time.IllegalInstantException;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
 import org.joda.time.MutableDateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.phloc.commons.annotations.PresentForCodeCoverage;
 import com.phloc.datetime.config.PDTConfig;
@@ -40,11 +43,12 @@ import com.phloc.datetime.config.PDTConfig;
 /**
  * This class contains methods for creating date and time objects.
  *
- * @author Philip Helger
+ * @author Boris Gregorcic
  */
 @Immutable
 public final class PDTFactory
 {
+  private static final Logger LOG = LoggerFactory.getLogger (PDTFactory.class);
   @PresentForCodeCoverage
   @SuppressWarnings ("unused")
   private static final PDTFactory s_aInstance = new PDTFactory ();
@@ -79,7 +83,10 @@ public final class PDTFactory
   @Nonnull
   public static DateTime createDateTime (final int nYears, final int nMonths, final int nDays)
   {
-    return createDateTime (nYears, nMonths, nDays, 0, 0, 0, 0);
+    return new LocalDate (nYears,
+                          nMonths,
+                          nDays,
+                          PDTConfig.getDefaultChronology ()).toDateTimeAtStartOfDay (PDTConfig.getDefaultDateTimeZone ());
   }
 
   @Nonnull
@@ -112,14 +119,36 @@ public final class PDTFactory
                                          final int nSeconds,
                                          final int nMilliSeconds)
   {
-    return new DateTime (nYears,
-                         nMonths,
-                         nDays,
-                         nHours,
-                         nMinutes,
-                         nSeconds,
-                         nMilliSeconds,
-                         PDTConfig.getDefaultChronology ());
+    try
+    {
+      return new DateTime (nYears,
+                           nMonths,
+                           nDays,
+                           nHours,
+                           nMinutes,
+                           nSeconds,
+                           nMilliSeconds,
+                           PDTConfig.getDefaultChronology ());
+    }
+    catch (final IllegalInstantException aEx)
+    {
+      LOG.warn ("Treating date time " +
+                nYears +
+                "/" +
+                nMonths +
+                "/" +
+                nDays +
+                " " +
+                nHours +
+                ":" +
+                nMinutes +
+                ":" +
+                nSeconds +
+                "," +
+                nMilliSeconds +
+                " as date (start of day) to handle invalid instant (DST gap?)");
+      return createDateTime (nYears, nMonths, nDays);
+    }
   }
 
   @Nonnull
@@ -143,8 +172,9 @@ public final class PDTFactory
   @Nonnull
   public static DateTime createDateTime (@Nonnull final Calendar aCalendar)
   {
-    return new DateTime (aCalendar, PDTConfig.getDefaultChronology ()
-                                             .withZone (DateTimeZone.forTimeZone (aCalendar.getTimeZone ())));
+    return new DateTime (aCalendar,
+                         PDTConfig.getDefaultChronology ()
+                                  .withZone (DateTimeZone.forTimeZone (aCalendar.getTimeZone ())));
   }
 
   @Nonnull

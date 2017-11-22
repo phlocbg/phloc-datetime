@@ -20,6 +20,22 @@
 -->
 <changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-datetime">
+  <release date="2017-11-22" version="3.2.1" />
+  <entry date="2017-11-22" category="tech" action="fix" >
+    <change>
+      <text locale="en">Added safety handling for Date creation and parsing concerning IllegalInstantException, which happens when trying to parse or create a DateTime object in an illegal hour (during DST gap)</text>
+    </change>
+  </entry>
+  <entry date="2017-11-22" category="tech" action="update" >
+    <change>
+      <text locale="en">Adapted comparator sorting behaviour concerning null values to use GlobalCompareSettings</text>
+    </change>
+  </entry>
+  <entry date="2017-11-22" category="tech" action="update" >
+    <change>
+      <text locale="en">Updated to phloc-commons 4.4.12</text>
+    </change>
+  </entry>
   <release date="2014-08-12" version="3.1.5" />
   <entry date="2014-08-12" category="api" action="add" >
     <change>

@@ -33,6 +33,7 @@ import org.slf4j.LoggerFactory;
 
 import com.phloc.commons.annotations.PresentForCodeCoverage;
 import com.phloc.commons.string.StringHelper;
+import com.phloc.datetime.config.PDTConfig;
 
 /**
  * Handles the conversion to date, time or date time objects from a
@@ -69,10 +70,23 @@ public final class PDTFromString
       {
         return aDF.parseDateTime (sValue);
       }
-      catch (final IllegalArgumentException ex)
+      catch (final IllegalArgumentException aEx1)
       {
-        if (s_aLogger.isDebugEnabled ())
-          s_aLogger.debug ("Failed to parse date '" + sValue + "' with " + aDF);
+        // retry with local date (to work around DST gaps)
+        try
+        {
+          final LocalDate aLD = new LocalDate (LocalDate.parse (sValue, aDF), PDTConfig.getDefaultChronology ());
+          final DateTime aCorrected = aLD.toDateTimeAtStartOfDay (PDTConfig.getDefaultDateTimeZone ());
+          s_aLogger.warn ("Correcting date time '" +
+                          sValue +
+                          "' to handle invalid instant (DST gap): --> " +
+                          aCorrected);
+          return aCorrected;
+        }
+        catch (final IllegalArgumentException aEx2)
+        {
+          s_aLogger.error ("Failed to parse date '" + sValue + "' with " + aDF, aEx2);
+        }
       }
     return null;
   }
