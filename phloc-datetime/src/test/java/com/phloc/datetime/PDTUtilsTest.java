@@ -205,4 +205,39 @@ public final class PDTUtilsTest
     assertTrue (PDTUtils.isGreaterOrEqual (p2, p1));
     assertTrue (PDTUtils.isGreater (p2, p1));
   }
+
+  @Test
+  public void testGetYearWeekStart ()
+  {
+    {
+      // just some day
+      final LocalDate aDay = new LocalDate (2019, 8, 1);
+      final int nYearWeek = aDay.getWeekOfWeekyear ();
+      assertEquals (new LocalDate (2019, 7, 29), PDTUtils.getYearWeekStart (2019, nYearWeek));
+      assertEquals (new LocalDate (2019, 8, 4), PDTUtils.getYearWeekEnd (2019, nYearWeek));
+    }
+    {
+      // early in year (week part of old year)
+      final LocalDate aDay = new LocalDate (2020, 1, 2);
+      final int nYearWeek = aDay.getWeekOfWeekyear ();
+      assertEquals (new LocalDate (2019, 12, 30), PDTUtils.getYearWeekStart (2020, nYearWeek));
+      assertEquals (new LocalDate (2020, 1, 5), PDTUtils.getYearWeekEnd (2020, nYearWeek));
+    }
+    {
+      // late in year (week part of new year)
+      final LocalDate aDay = new LocalDate (2019, 12, 31);
+      final int nYearWeek = aDay.getWeekOfWeekyear ();
+      assertEquals (new LocalDate (2019, 12, 30), PDTUtils.getYearWeekStart (2020, nYearWeek));
+      assertEquals (new LocalDate (2020, 1, 5), PDTUtils.getYearWeekEnd (2020, nYearWeek));
+    }
+
+  }
+
+  @Test
+  public void testGetDifferenceDays ()
+  {
+    assertEquals (5, PDTUtils.getDifferenceDays (new LocalDate (2019, 8, 8), new LocalDate (2019, 8, 13)));
+    assertEquals (9, PDTUtils.getDifferenceDays (new LocalDate (2019, 8, 30), new LocalDate (2019, 9, 8)));
+    assertEquals (8, PDTUtils.getDifferenceDays (new LocalDate (2019, 12, 28), new LocalDate (2020, 1, 5)));
+  }
 }

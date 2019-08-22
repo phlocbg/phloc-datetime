@@ -17,6 +17,7 @@
  */
 package com.phloc.datetime;//NOPMD
 
+import java.util.Calendar;
 import java.util.Comparator;
 
 import javax.annotation.Nonnull;
@@ -25,6 +26,7 @@ import javax.annotation.concurrent.Immutable;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
+import org.joda.time.Days;
 import org.joda.time.Duration;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
@@ -399,9 +401,9 @@ public final class PDTUtils
    */
   public static int nullSafeCompare (@Nullable final Duration aDuration1, @Nullable final Duration aDuration2)
   {
-    return aDuration1 == aDuration2 ? 0 : aDuration1 == null ? -1
-                                                            : aDuration2 == null ? +1
-                                                                                : aDuration1.compareTo (aDuration2);
+    return aDuration1 == aDuration2 ? 0
+                                    : aDuration1 == null ? -1
+                                                         : aDuration2 == null ? +1 : aDuration1.compareTo (aDuration2);
   }
 
   public static boolean isGreater (@Nonnull final Duration aDuration1, @Nonnull final Duration aDuration2)
@@ -553,9 +555,9 @@ public final class PDTUtils
    */
   public static int nullSafeCompare (@Nullable final LocalDateTime aDateTime1, @Nullable final LocalDateTime aDateTime2)
   {
-    return aDateTime1 == aDateTime2 ? 0 : aDateTime1 == null ? -1
-                                                            : aDateTime2 == null ? +1
-                                                                                : aDateTime1.compareTo (aDateTime2);
+    return aDateTime1 == aDateTime2 ? 0
+                                    : aDateTime1 == null ? -1
+                                                         : aDateTime2 == null ? +1 : aDateTime1.compareTo (aDateTime2);
   }
 
   public static boolean isGreater (@Nonnull final LocalDateTime aDateTime1, @Nonnull final LocalDateTime aDateTime2)
@@ -577,5 +579,27 @@ public final class PDTUtils
   public static boolean isLessOrEqual (@Nonnull final LocalDateTime aDateTime1, @Nonnull final LocalDateTime aDateTime2)
   {
     return aDateTime1.compareTo (aDateTime2) <= 0;
+  }
+
+  public static LocalDate getYearWeekStart (final int nYear, final int nWeek)
+  {
+    return LocalDate.fromCalendarFields (getYearWeekDate (nYear, nWeek, Calendar.MONDAY));
+  }
+
+  public static LocalDate getYearWeekEnd (final int nYear, final int nWeek)
+  {
+    return LocalDate.fromCalendarFields (getYearWeekDate (nYear, nWeek, Calendar.SUNDAY));
+  }
+
+  public static Calendar getYearWeekDate (final int nYear, final int nWeek, final int nDayOfWeek)
+  {
+    final Calendar aCal = Calendar.getInstance ();
+    aCal.setWeekDate (nYear, nWeek, nDayOfWeek);
+    return aCal;
+  }
+
+  public static int getDifferenceDays (final LocalDate aDate1, final LocalDate aDate2)
+  {
+    return Days.daysBetween (aDate1, aDate2).getDays ();
   }
 }
